@@ -7,7 +7,7 @@ All of the files to set up a local working version of the 6 games are in this re
 
 To set up a local version:
 
-Clone this repository into a local directory. Then, you will need to either edit each index.html file to include all the .js files in each game directory and the /common directory or build the <game>_net.js file and common_net.js file. The scripts used to build those _net.js files are in /helpers: make_net.sh or make_common_net.sh. Correct the directory pointers in those files. These scripts use uglifyjs.
+Clone this repository into a local directory. Then, you will need to either edit each index.html file to include all the .js files in each game directory and the /common directory or build the <game>_net.js file and common_net.js file. The scripts used to build those _net.js files are in /helpers: make_net.sh or make_common_net.sh. Correct the directory pointers in those files. These scripts use uglifyjs. That is not required, you can simply concatenate the js files into the _net.js file. To make the common_net.js file, be sure to include only IGvars.js utilities.js utilitiesDIV.js comm.js ios-drag-drop.js
 
 The games are configured to send usage data back to the Ideate Games database. This is optional (the games work without), and I have left this code out of the repository, but put in a dummy file to substitute.
 
