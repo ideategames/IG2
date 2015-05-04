@@ -1,0 +1,141 @@
+
+/* Style sheet for the IdeateGames start files
+ *
+ *
+ *
+*/
+	a {
+		text-decoration: none;
+		color: #ffffff;
+	}
+	div {
+		font-family: 'Roboto';
+		text-align:center;
+		color:#ffffff
+	}
+	.IGgameEnd {
+		position:absolute;
+		vertical-align: middle;
+		height: 40px;
+		width: 210px;
+		border-radius: 5px;
+		font-family: 'Roboto';
+		font-size: 32;
+		text-align:center;
+		line-height: 40px;
+		color: #ffffff;
+		background-color: #4CA9F5;
+	}
+	.IGtextObj {
+		position:absolute;
+		vertical-align: middle;
+		height: 20px;
+		width: 220px;
+		border-radius: 5px;
+		font-family: 'Roboto';
+		font-size: 16;
+		text-align:center;
+		line-height: 20px;
+		color: #000000;
+	}
+	.back {
+		position: absolute;
+		font-size:40;
+		top:50px;
+		left:20px;
+	}
+	div.play {
+		position: absolute;
+		top: 320px;
+		left: 43%;
+		font-size:60;
+	}
+	div.rules {
+		position: absolute;
+		top: 450px;
+		left: 30%;
+		font-size:40;
+	}
+	div.credits {
+		position: absolute;
+		top: 450px;
+		left: 58%;
+		font-size:40;
+	}
+	#infoi {
+		background-color: #888888;
+		display: none;
+		font-size:20;
+		color:#ffffff;
+		border: 2px solid;
+		border-radius: 25px;
+	    width: 200px;
+	    height: 180px;
+	    position: absolute;
+	    top:280;
+	    left:40%;
+	    z-index: 11;
+	}
+	.gameNav {
+		font-size:30;
+		vertical-align: middle;
+	}
+	.gameNavC {
+		font-size:30;
+		vertical-align: middle;
+		color:#ffffff;
+		height:240px;
+		width:216px;
+	}
+	#strings {
+		position: absolute;
+		left:26.5%;
+		top:20px;
+		margin:auto;
+	}
+	#squares {
+		position: absolute;
+		left:56.5%;
+		top:20px;
+		margin:auto;
+		z-index: 5;
+	}
+	#collections {
+		position: absolute;
+		left: 20%;
+		top:334px;
+		margin:auto;
+	}
+	#rooms {
+		position: absolute;
+		left: 40%;
+		top:334px;
+		margin:auto;
+	}
+	#paths {
+		position: absolute;
+		left: 60%;
+		top:334px;
+		margin:auto;
+	}
+	.titles {
+		position:absolute;
+		top:40%;
+		height:60px;
+		width:216px;
+		font-size:30;
+		text-align:center;
+		vertical-align: middle;
+		z-index: 15;
+	}
+
+	body {
+		margin: 20px auto;
+	}
+
+	.circle .image-wrap {
+		-webkit-border-radius: 50em;
+		-moz-border-radius: 50em;
+		border-radius: 50em;
+	    opacity: 0.35;
+	}

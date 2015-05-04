@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Rooms from Ideate Games</title>
+<script src="/common/js/IGga.js"></script>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet" type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/common/css/ideateOver.css" type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/common/js/jquery-latest.min.js"></script>
+    <script src="/common/js/bootstrap.min.js"></script>
+    <script src="/common/js/phaser207.js"></script>
+    <script src="/common/js/sha1.js"></script>
+
+    <script type="text/javascript" src="/common/js/raphael-min.js"></script>
+    <script type="text/javascript" src="/common/js/dracula_graffle.js"></script>
+    <script type="text/javascript" src="/common/js/dracula_graph.js"></script>
+    <script type="text/javascript" src="/common/js/dracula_algorithms.js"></script>
+
+    <script type="text/javascript" src="/common/js/spin.min.js"></script>
+ 
+        <script src="/common/js/common_net.js?v=1"></script>
+        <script src="/common/js/IGroomPaths.js?v=1"></script>
+        <script src="/common/js/IGroomMap.js?v=1"></script>
+
+        <script src="Stacks_net.js?v=1"></script>
+        <!--script src="/Stacks/commDispatch.js?v=1"></script>
+        <script src="/Stacks/appComm.js"></script>
+        <script src="/Stacks/sselect.js?v=10"></script>
+        <script src="/Stacks/scredits.js?v=10"></script>
+        <script src="/Stacks/stacks_vars.js?v=10"></script>
+        <script src="/Stacks/stacks.js?v=10"></script-->
+
+        <script type="text/javascript">
+
+            function qs(key) {
+                key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+                var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+                return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+            }
+            function myIP() {
+                if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+                else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+                xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+                xmlhttp.send();
+
+                hostipInfo = xmlhttp.responseText.split("\n");
+
+                for (i=0; hostipInfo.length >= i; i++) {
+                    ipAddress = hostipInfo[i].split(":");
+                    if ( ipAddress[0] == "IP" ) return ipAddress[1];
+                }
+
+                return false;
+            }
+       </script>
+        <!--script type="text/javascript" src="http://l2.io/ip.js?var=clientIP"></script-->
+    <!--style>
+        #game {
+
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: -webkit-calc(100% - 300px); /* Safari */
+            width: calc(100% - 300px);
+            height: 100%;
+            border: 20px;
+
+        }
+    </style-->
+        <script type="text/javascript">
+        // if (!qs('pwd')) {
+        //     window.location.replace("http://www.ideategames.org")
+        // } else {
+            window.onload = function() {
+
+            IGga();
+
+                var loc = window.location.pathname;
+                AppPath = loc.substring(0, loc.lastIndexOf('/')+1);
+                CommonPath = "/common/"
+                ImgPath = "/stringsThumbs/"
+                IGisApp = false
+
+                var ua = navigator.userAgent;
+                var plat = navigator.platform
+                isKindle = /Kindle/i.test(ua) || /Silk/i.test(ua) || /KFTT/i.test(ua) || /KFOT/i.test(ua) || /KFJWA/i.test(ua) || /KFJWI/i.test(ua) || /KFSOWI/i.test(ua) || /KFTHWA/i.test(ua) || /KFTHWI/i.test(ua) || /KFAPWA/i.test(ua) || /KFAPWI/i.test(ua);
+                // fill the screen as much as possible, but need a 10 px border
+                isAndroid = (ua.indexOf('Android') != -1) ? true : false
+                isGalaxy = (ua.indexOf('GT-') != -1) ? true : false
+                isiOS = ((ua.indexOf('iPhone') != -1) || (ua.indexOf('iPad') != -1) ) ? true : false
+                isDolphin = (ua.indexOf('Dolphin') != -1) ? true : false // this doesn't work, Dolphin IDs as Safari, exactly
+                var swid = window.innerWidth
+                var shgt = window.innerHeight
+                var prat = window.devicePixelRatio
+                // but note: Kindle incorrectly returns 1.0 for device Pixel Ratio
+
+                // all of this was trying to adjust for different device/pixel ratios, but none of it worked
+                if(isKindle) {
+                    // console.log("Kindle")
+                    HEIGHT = (shgt>swid) ? swid-20 : shgt-20
+                    WIDTH = (swid>shgt) ? swid-20 : shgt- 20
+                    // HEIGHT = HEIGHT * 0.9
+                    // WIDTH = WIDTH * 0.9
+                    // Kindle Fire does not seem to like naming the div, mis-fits on the screen if I do
+                    // game = new Phaser.Game(WIDTH, HEIGHT, Phaser.CANVAS, '',null,true);
+                } else if (isGalaxy) {
+                    // console.log("Galaxy")
+                    // even with 1.33 device/pixel ratio, have to use window width
+                    HEIGHT = (shgt>swid) ? swid-20 : shgt-20
+                    WIDTH = (swid>shgt) ? swid-20 : shgt-20
+                    // game = new Phaser.Game(WIDTH, HEIGHT, Phaser.CANVAS, 'game',null,true);
+                } else if (isiOS) {
+                    // console.log("iOS")
+                    // can't yet figure out how to use Retina displays
+                    if (isDolphin) {
+                        HEIGHT = shgt-20
+                        WIDTH = swid-20
+                    } else {
+                        HEIGHT = (shgt>swid) ? swid-20 : shgt-20
+                        WIDTH = (swid>shgt) ? swid-20 : shgt-20
+                    }
+                    // makes the startup work directly into this partition
+                    // game = new Phaser.Game(WIDTH, HEIGHT, Phaser.CANVAS, 'game',null,true);
+                } else {
+                    // console.log("other")
+                    // for non-tablet, square at least
+                    HEIGHT = (shgt>swid) ? swid-20 : shgt-20
+                    WIDTH = swid-20
+                    // game = new Phaser.Game(WIDTH, HEIGHT, Phaser.CANVAS, 'game',null,true);
+                }
+
+                // for debugging small screen
+                // WIDTH = 1280
+                // HEIGHT = 600
+
+                WIDTH = (WIDTH<1100) ? WIDTH : 1100;
+                HEIGHT = (HEIGHT<800) ? HEIGHT: 800
+                if (WIDTH<swid) {MXOFF = (swid-WIDTH)/2}
+
+                game = new Phaser.Game(WIDTH, HEIGHT, Phaser.CANVAS, 'game',null,true);
+ 
+                IGyratio = (HEIGHT < 700) ? HEIGHT/700 : 1.0
+                IGxratio = (WIDTH < 1100) ? WIDTH/1100 : 1.0
+                IGratio = (IGyratio > IGxratio) ? IGxratio : IGyratio
+                console.log("IGratio: "+IGxratio.toFixed(2)+":"+IGyratio.toFixed(2)+":"+WIDTH+":"+HEIGHT)
+
+                // now, adjust all the scale items to this window
+//                game.camera.setSize(WIDTH, HEIGHT);
+//                Phaser.Canvas.setSmoothingEnabled(game.context, false); 
+                game.width = WIDTH;
+                game.height = HEIGHT;
+
+                // game.stage.bounds.width = WIDTH;
+                // game.stage.bounds.height = HEIGHT;
+
+                var sender = navigator.userAgent.replace(/\(|\)|\.|,|\/| |;|_/g,"")
+                // IGconsole("Sender: "+sender)
+                setSender(sender)
+                // alias is passed along by the controller
+                if (qs('alias')) {DMMalias=qs('alias')}
+                else {DMMalias="anonymous"}
+                // is this a public user?
+                if (parseInt("{{=public}}")<0) {IGisPublic=false} else (IGisPublic=true)
+
+                // DMMGetHttpRequest({query: "aliasList", topic: "aliasList"},"IGfetch_aliases")
+
+                if (qs('topic')) {EventType=qs('topic')}
+                else {EventType=""}
+                if (qs('partner')) {
+                    IGpartner=qs('partner')
+                    // EventType=IGpartner
+                }
+
+                if (EventType.length>2) {
+                    // must fetch the topic data
+                    // var tmp = {topic: EventType}
+                    dispatchEvent2(EventType)
+                    game.state.add('stacks', PSpathway);
+                    game.state.add('select',pathsSelect)
+                } else {
+                    game.state.add('stacks', PSpathway);
+                    game.state.add('select',pathsSelect,true)
+                }
+                // starting with transparent game then switching to this
+                // avoids the initial black screen
+                // game.transparent = false
+                
+                IGwhite = true
+                IGdefineScales()
+                IGgameApp = 'Stacks'
+                // this formula comes from stacks.js; sorry about that
+            };
+        // }
+    $(function(){
+      $("#includedSubMenu").load("/common/css/navBarSub.html"); 
+    });
+
+        </script>
+
+    </head>
+    <body>
+
+    <div id="map" align="center" ></div>
+    <div id="game" class="game" align="center">
+        <!--div id="includedSubMenu" class="IGnavMenu"></div-->
+    </div>
+    <!--div id="chat">
+        <script type="text/javascript">
+            document.write('<iframe src="http://www.ideategames.org/init/strings/gameChats?game=stacks&alias='+qs("alias")+'" width="80%" height="600" align="center"></iframe>')
+        </script>
+    </div-->
+
+
+    </body>
+</html>

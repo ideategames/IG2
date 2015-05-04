@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Rules for Collections</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet" type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/common/css/ideateOver.css" type='text/css'>
+    <link rel="stylesheet" href="/common/css/ideateOver2.css" type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href='/common/css/select.css' rel='stylesheet' type='text/css'>
+	<script src="/common/js/jquery-2.0.3.min.js"></script>
+	<script src="/common/js/bootstrap.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53888584-1', 'auto');
+  ga('send', 'pageview');
+
+	function qs(key) {
+	    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+	    var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+	    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+	}
+	if (qs('alias')) {
+		alias = qs('alias')
+	} else {alias=""}
+
+    function goIndex() {
+    	window.open("/launch/dindex.html?alias="+alias,"_self")
+    }
+    function dispatch(game) {
+      alias = alias.trim()
+        window.open('/launch/'+game+'.html?alias='+alias,"_self")
+      return false;
+    }
+    function navDispatch(page) {
+      alias = alias.trim()
+        window.open('/'+page+'.html?alias='+alias+"&partner="+IGpartner,"_self")
+      return false;
+    }
+    $(function(){
+      $("#includedContent").load("/common/css/navBar.html"); 
+    });
+    if (qs('partner')) {
+        IGpartner=qs('partner')
+        // currentTopic = IGpartner
+        dispatch2(IGpartner,true)
+      } else {IGpartner = ""}
+
+</script>
+<style>
+td {
+	padding: 12px 5px;
+}
+</style>
+<body style="background-color:#ff5d5c">
+<div id="includedContent"></div>
+<div class="container" style="position:absolute;top:10%">
+	<h2 align="center">Help and Scoring Rules for Collections</h2>
+<table border="0" align="center" width="50%">
+<tr align="center">
+	<td/>
+	<td id="h">
+		You are a gofer (http://en.wikipedia.org/wiki/Gofer) at the museum. The curator has sent you to find and collect 4 objects from the museum and bring them to
+		her for more work -- whatever it is she does.
+	</td></tr>
+<tr align="center">
+	<td/>
+	<td id="h">
+	Because you are the newbie,
+	she has only given you a set of clues, and your task is to find and collect the
+	objects identified in the clues.
+</td></tr>
+<tr align="center">
+	<td/>
+	<td id="h">
+		Collect them by dragging them onto the their clues on the cart at the left.
+</td></tr>
+<tr align="center">
+	<td/>
+	<td id="h">
+        Full points are awarded for collecting all objects.
+</td></tr>
+<tr align="center">
+	<td/>
+	<td id="h">
+		Penalties are given for attempting to collect objects that are not in the list.
+</td></tr>
+<tr align="center">
+	<td/>
+	<td id="h">
+		Move between rooms by touching/clicking the door describing the object or subject in that room.
+</td></tr>
+<tr align="center">
+	<td/>
+	<td id="h">
+		A map is provided to help you navigate the rooms efficiently.
+</td></tr>
+<tr align="center">
+	<td/>
+	<td id="h">
+		Click or touch the filmstrip icon
+			to see a filmstrip of all images in all rooms at full size. Click on each large image to advance through the deck.
+	</td></tr>
+<tr height="40"/>
+</table>
+</body>
+</html>

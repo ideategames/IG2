@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ideate Games - Sources and Credits for the Game Content</title>
+    <meta name="description" content="All images used in the public games are cleared for this non-commercial use
+    as we understand all their terms or licenses. Details are listed on this page."/>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53888584-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+ <script>
+    var alias = ""
+    var game = ""
+    function qs(key) {
+        key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+        var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+        return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+    }
+    window.onload = function() {
+      if (qs('alias')) {
+         alias = qs('alias')
+      } else {alias = "anonymous"}
+    }
+    function dispatch(game) {
+      alias = alias.trim()
+        window.open('/launch/'+game+'.html?alias='+alias+"&partner="+IGpartner,"_self")
+      return false;
+    }
+    function navDispatch(page) {
+      alias = alias.trim()
+        window.open('/'+page+'.html?alias='+alias+"&partner="+IGpartner,"_self")
+      return false;
+    }
+    if (qs('partner')) {IGpartner=qs('partner')} else {IGpartner=""}
+</script>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Jez Alder, David Marques">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/common/css/bootstrap.min.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="/common/css/carousel.css" rel="stylesheet" type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/common/css/ideateOver.css" type='text/css'>
+    <link rel="stylesheet" href="/common/css/ideateOver2.css" type='text/css'>
+    <link href="/common/css/font-awesome.min.css" rel="stylesheet">
+<script src="/common/js/jquery-2.0.3.min.js"></script>
+<script src="/common/js/bootstrap.min.js"></script>
+  <style id="holderjs-style" type="text/css"></style>
+  <style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style>
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -90px !important;
+    width: 180px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style>
+<script>
+      $(function(){
+          $("#includedContent").load("/common/css/navBar.html"); 
+      });
+      $(function(){
+          $("#includedFooter").load("/common/css/footer.html"); 
+      });
+</script>
+</head>
+<!-- NAVBAR
+================================================== -->
+  <body data-pinterest-extension-installed="cr1.35">
+  <!--div id="includedContent"></div-->
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header" id="headerdiv">
+              <img style="float:left" src='/common/pics/IGlogo_50.png'/>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <script>
+                var foo = document.getElementById('headerdiv')
+                var Partners = {Museum: 'The British Museum'}
+                var title = "&nbsp;&nbsp;Ideate Games"
+                var nav = "/"+IGpartner
+                if (IGpartner) {title = "&nbsp;&nbsp;Ideate Games for "+Partners[IGpartner]}
+                foo.innerHTML += '<a class="navbar-brand" href="'+nav+'">'+title+'</a>'
+              </script>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="Javascript:navDispatch('about')">About</a></li>
+                <li><a href="Javascript:navDispatch('players')">Players</a></li>
+                <li><a href="Javascript:navDispatch('content')">Educators</a></li>
+                <!--li><a href="Javascript:navDispatch('contribute')">Contribute</a></li-->
+                <li class="active"><a href="Javascript:navDispatch('credits')">Credits</a></li>
+                <li class="dropdown">
+                  <a href="http://getbootstrap.com/examples/carousel/#" class="dropdown-toggle" data-toggle="dropdown">Play <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="Javascript:dispatch('index')">Strings</a></li>
+                    <li><a href="Javascript:dispatch('ssindex')">Clues</a></li>
+                    <li><a href="Javascript:dispatch('bindex')">Buckets</a></li>
+                    <li><a href="Javascript:dispatch('dindex')">Collections</a></li>
+                    <li><a href="Javascript:dispatch('sindex')">Rooms</a></li>
+                    <li><a href="Javascript:dispatch('pindex')">Paths</a></li>
+                    
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="container marketing mainContent">
+<h3>Technology Credits</h3>
+All of the games are written in html5 (CSS3 + javascript with the <a href="http://www.w3schools.com/tags/ref_canvas.asp">&lt;canvas&gt;</a> context) using <a href="http://www.phaser.io/">Phaser</a>, an open source html5 game framework. 
+<br/>The web server is open source <a href="http://httpd.apache.org/">Apache</a> with open source <a href="http://www.web2py.com/">web2py</a> as the app server and database.
+
+<h3>Content Credits</h3>
+Images used in these games are currently pulled from the web, and credits both in general and with specific referral URLs are presented in the game. As permission is received or the principle of 'fair use' is decided, chunks of content will be made available to public versions of the games. 
+<br/><br/>For any copyright issues, please contact us immediately at <a href="mailto:ideategames@gmail.com">ideategames@gmail.com</a>. We have no intent to infringe copyright. 
+<br/><br/>Each image used has its own source URL within the game. A sample of the credit given within the game is shown below.
+<br/><br/>
+The table below shows the general credits per subject. Note that some images from the literature category (book cover images) and the city photos are used under the 'fair use' principle because they are low resolution and the games are educational and non-commercial. In addition, those images are promotional images, so it is our conclusion that inclusion at low resolution in the game cannot cause any commercial harm to the copyright owners, if anything a slight benefit. If you are the owner of a copyright to any images used in these games, please contact us immediately at <a mailto:ideategames@gmail.com>IdeateGames@gmail.com</a>.
+<br/><br/>
+<table id="credittable">
+<script>
+  console.log("partner: "+IGpartner)
+  var foo = document.getElementById("credittable")
+  if (!IGpartner || (IGpartner=="Museum")) {
+  foo.innerHTML +=  '<tr><td>&nbsp;</td><td>&nbsp;&nbsp;</td></tr>'+
+  '<tr><td><b>Museum&nbsp;&nbsp;</b></td>'+
+    '<td>These images are taken from the British Museum web site, '+
+  '© Trustees of the British Museum, used in accordance with their terms '+
+  '(http://www.britishmuseum.org/about_this_site/terms_of_use.aspx). '+
+  'All objects in the images are from '+
+    'the fabulous book <i>The History of the World in 100 Objects</i> by Neil MacGregor.</td>'+
+  '</tr>'
+  }
+
+  if (!IGpartner) {
+  foo.innerHTML += '<tr><td colspan="2">&nbsp;</td></tr>'+
+	'<tr><td><b>Art&nbsp;&nbsp;</b></td>'+
+		'<td>The list of paintings is generally from the website <i>The 100 Greatest Paintings of All time</i> '+
+    'with personal favorites added. '+
+    'Images of paintings are from Wikipedia, and all with <i>public domain</i> or Creative Commons licenses. '+
+    '20th Century paintings (eg, Dali) are not included because of unclear rights to use them.</td>'+
+	'</tr>'
+  }
+
+  if (!IGpartner) {
+  foo.innerHTML += '<tr><td colspan="2">&nbsp;</td></tr>'+
+	'<tr><td><b>Literature&nbsp;&nbsp;</b></td>'+
+		'<td>Images are unaltered, low resolution book cover images (in some cased our own photographs of our own books), '+ 
+    'believed by IdeateGames to be used in accordance with <i>Fair Use</i> principles. '+
+    'Please contact us if you are a publisher who believes we violate your copyright, we will remove the images.</td>'+
+	'</tr>'
+  }
+
+  if (!IGpartner) {
+  foo.innerHTML += 	'<tr><td colspan="2">&nbsp;</td></tr>'+
+	'<tr><td><b>Science&nbsp;&nbsp;</b></td>'+
+		'<td>Information is taken mostly from <i>100 Greatest Science Discoveries of All Time</i> by Kendall Haven. '+
+    'Images are either drawn by IdeateGames or licensed from 123rf.com</td>'+
+	'</tr>'
+  }
+
+  if (!IGpartner) {
+  foo.innerHTML +=	'<tr><td colspan="2">&nbsp;</td></tr>'+
+	'<tr><td><b>Culture&nbsp;&nbsp;</b></td>'+
+		'<td>The images in this category are a combination of Art, Literature, and Science.</td>'+
+	'</tr>'
+}
+  if (!IGpartner) {
+  foo.innerHTML +=	'<tr><td colspan="2">&nbsp;</td></tr>'+
+	'<tr><td><b>Movies&nbsp;&nbsp;</b></td>'+
+		'<td>The list of movies and the images are from IMDB. The Images are unaltered, low resolution promotion images, '+
+		'and used under the assumption of <i>Fair Use</i> principles as with book cover images.</td>'+
+	'</tr>'
+}
+  if (!IGpartner) {
+  foo.innerHTML +=	'<tr><td colspan="2">&nbsp;</td></tr>'+
+	'<tr><td><b>Cities Latitude&nbsp;&nbsp;</b></td>'+
+		'<td>The list of cities is taken from various lists of cities by population, with a few additions of small '+
+    'well-known cities (eg, Oxford). '+
+			'Images are taken from web searches for city promotional sites.</td>'+
+	'</tr>'
+}
+  if (!IGpartner) {
+  foo.innerHTML +='<tr><td colspan="2">&nbsp;</td></tr>'+
+  '<tr><td><b>Nature&nbsp;&nbsp;</b></td>'+
+    '<td>The content is taken (rewritten from the concept) from a card game, Sierra Club Knowledge Cards "How Many", '+
+    'produced and published '+
+    'by Pomegranate Communications Inc. <p>Images are taken from web searches, using only images with '+
+    'Creative Commons licenses '+
+    '(<a href="http://creativecommons.org/licenses/">http://creativecommons.org/licenses/</a>) '+
+    'permitting non-commercial use. None of the images have been altered except to reduce the resolution and '+
+    '(for game play) to crop with a circle mask.</p></td>'+
+    '</tr>'
+  }
+  if (!IGpartner) {
+  foo.innerHTML +='<tr><td colspan="2">&nbsp;</td></tr>'+
+  '<tr><td><b>Western Composers&nbsp;&nbsp;</b></td>'+
+    '<td>Selection of composers is our own judgment. The content is taken from <a href="http://en.wikipedia.org/">Wikipedia</a>. The text has been '+
+    'edited slightly in some cases. The images have been unaltered except reducing the resolution and cropping '+
+    'as needed to fit in the game.'+
+    '<br/><br/>Be careful of dates in this topic: we have used the year of the death of the composers as the dates in the '+
+    'games, as indicating the end of their influence.</td>'
+  '</tr>'
+  }
+  if (!IGpartner) {
+  foo.innerHTML +='<tr><td colspan="2">&nbsp;</td></tr>'+
+  '<tr><td><b>World Ancient History (coming soon)&nbsp;&nbsp;</b></td>'+
+    '<td>The content is taken from a lot of reading, key sources being '+
+    '<a href="http://www.penguin.com/book/the-penguin-history-of-the-world-by-j-m-roberts/9781846144431">'+
+    '<i>The Penguin History of the World</i></a> by J.M. Roberts, '+
+    '<a href="http://press.uchicago.edu/ucp/books/book/chicago/R/bo3645507.html"><i>Rise of the West</i></a> '+
+    'by William H. McNeill, '+
+     'and <a href="http://www.susanwisebauer.com/books/"><i>The History of the Ancient World</i></a> '+
+     'by Susan Wise Bauer, supplemented occasionally by <a href="http://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>. '+
+    '<p>Images are taken from web searches, using only images with Creative Commons licenses'+
+    '(<a href="http://creativecommons.org/licenses/">http://creativecommons.org/licenses/</a>) '+
+    'permitting non-commercial use. None of the images have been altered except to reduce the resolution and '+
+    '(for game play) to crop with a circle mask.</p></td>'+
+    '</tr>'
+  }
+  </script>
+  </table>
+<br/><br/>
+<img align="center" src="/common/pics/image_credit_bm.png"/>
+<hr/>
+      <!-- FOOTER -->
+      <footer id = "includedFooter"/>
+</div>
+
+</body>
+</html>

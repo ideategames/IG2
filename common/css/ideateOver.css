@@ -1,0 +1,692 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	font-family: 'Roboto';
+}
+#game {
+	width: 100%;
+	/* IE */
+	display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto
+}
+@media (max-width: 1095px) {
+#game {
+	width: 100%;
+}
+}
+
+h1 {
+	font-weight:300;
+}
+.IGtext {
+	text-align: center;
+}
+.IGtestPathsY {
+	border: 2px solid #66ccff;
+	border-radius: 5px;
+	background-color: #eeeeee;
+}
+.IGtestPathsC {
+	border: 2px solid #ff7700;
+	border-radius: 5px;
+	background-color: #eeeeee;
+}
+.IGtextContainer {
+    vertical-align:middle;
+    margin: 0 auto;
+    text-align:center;
+    overflow: hidden;
+    display:table;
+}
+.IGtextContainerI .IGtextContainer {
+    vertical-align:middle;
+    margin: 0 auto;
+    text-align:center;
+    width: 100%;
+    display:table-cell;
+}
+.IGdescBox {
+	position: absolute;
+	border-radius: 5px;
+	border: 1px solid #CCC;
+	background-color: #DDDDDD
+}
+@media (min-width: 1200px) {
+.IGdescBox {
+	position: absolute;
+	left: 1000px;
+	border-radius: 5px;
+	border: 1px solid #CCC;
+	background-color: #DDDDDD
+}
+}
+.IGendScreen {
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #CCCCCC;
+	opacity: 0.3;
+}
+.IGsprite {
+    position: absolute;
+    cursor: move;
+    right: auto;
+    border-radius:50%;
+    border: 0;
+    margin: 0;
+}
+.IGspriteW {
+    position: absolute;
+    cursor: move;
+    right: auto;
+    border-radius:50%;
+    border: 5px solid #FFF;
+    margin: 0px;
+}
+.IGspriteD {
+    border: 5px solid #3FA9F5;
+}
+.IGspriteH {
+    position: absolute;
+    cursor: move;
+    border-radius:50%;
+    border: 5px solid #FFF;
+    margin: 0px;
+}
+.IGnoDrag {
+    position: absolute;
+    -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+    -webkit-user-select: none;
+    -ms-user-select: none; /* From IE10 only */
+    user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+    -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+    user-drag: none;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+.mainContent {
+	position: relative;
+	top: 80px;
+}
+.game {
+	text-align:center;
+	left: 0;
+}
+.inGameNav{
+	text-align:right;
+}
+.dropdown-menu {
+	position:absolute;
+	right:0;
+	left:auto;
+}
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+/*    left: 100%;
+*/    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+/*    content: " ";  << this sets the caret to the right */
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+.switchGame {
+	left: auto;
+	right:210px;
+}
+.menuImage {
+	position: absolute;
+	top:12px;
+}
+.menuHelp {
+	position: absolute;
+	top:12px;
+	right: auto;
+}
+.menuBtns {
+	position: absolute;
+	top:12px;
+	right:auto;
+}
+.gameEnd {
+	text-align:center;
+	background-color:#bbbbbb;
+	border-radius: 8px;
+	position: absolute;
+	top: 45%;
+	left: 35%;
+	width: 30%;
+	height: 270px;
+	font-weight:300;
+	line-height: 1.3;
+}
+.gameEndA {
+  text-align:center;
+  background-color:#ff0000;
+  border-radius: 8px;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  font-weight:300;
+  line-height: 100%;
+}
+.menuDiv {
+	text-align:center;
+	background-color:#bbbbbb;
+	border-radius: 8px;
+	position: absolute;
+	left: 25%;
+	top: 30%;
+	height: 260px;
+	width: 50%;
+	font-weight:300;
+}
+.gameEndL {
+	text-align:center;
+	background-color:#bbbbbb;
+	border-radius: 8px;
+	display:inline-block;
+	vertical-align:middle;
+	position: absolute;
+	left: 20%;
+	top: 5%;
+	height: 90%;
+	width: 60%;
+	line-height: 1.3;
+	font-weight:300;
+}
+@media (max-height: 560px) {
+.gameEndL {
+	top: 1%;
+}
+}
+@media (min-height: 700px) {
+.gameEndL {
+	height: 680px;
+}
+}
+
+.endContain {
+	position:absolute;
+	background-color:#bbbbbb;
+	font-size: 16px;
+	border-radius: 8px;
+	display:inline-block;
+	vertical-align:middle;
+	top:10%;
+	left:10%;
+	height: 60%;
+	width: 80%;
+	opacity: 1.0;
+	font-weight:300;
+}
+.endContainL {
+	position:absolute;
+	background-color:#bbbbbb;
+	font-size: 16px;
+	font-weight:300;
+	border-radius: 8px;
+	display:inline-block;
+	vertical-align:middle;
+	top:1%;
+	left:13%;
+	height: 75%;
+	width: 76%;
+	opacity: 1.0;
+}
+.endContainA {
+  position:absolute;
+  background-color:#99ddff;
+  font-size: 16px;
+  font-weight:300;
+  border-radius: 8px;
+  display:inline-block;
+  vertical-align:middle;
+  top:7px;
+  left:15%;
+  width: 50%;
+  opacity: 1.0;
+  line-height: 1.3;
+}
+@media (max-height: 560px) {
+.endContain .endContainL {
+	top: 0px;
+}
+}
+.endContainS {
+	position:absolute;
+	background-color:#bbbbbb;
+	font-size: 16px;
+	font-weight:300;
+	border-radius: 8px;
+	display:inline-block;
+	vertical-align:middle;
+	top:7px;
+	left:15%;
+	height: 250px;
+	width: 70%;
+	opacity: 1.0;
+}
+
+.whatNext {
+	width:200px;
+	float: center;
+	margin:23px auto;
+}
+.whatNextL {
+	top: 0px;
+	width:200px;
+	float: left;
+	right:auto;
+	margin:23px auto;
+}
+.whatNextR {
+	top: 0px;
+	width:200px;
+	float: right;
+	margin:23px auto;
+}
+
+.gameEnd button {
+	width:200px;
+	display:block;
+	margin-bottom:10px;
+	background-color: #3FA9F5;
+	border:0;
+	font-size:16px;
+	font-weight:300;
+	padding:8px;
+}
+.gameEndL button {
+	width:200px;
+	display:block;
+	margin-bottom:10px;
+	background-color: #3FA9F5;
+	border:0;
+	font-size:16px;
+	font-weight:300;
+	padding:8px;
+}
+.menuDiv button {
+	width:200px;
+	display:block;
+	margin-bottom:10px;
+	background-color: #3FA9F5;
+	border:0;
+	font-size:16px;
+	font-weight:300;
+	padding:8px;
+}
+
+.gameEnd h2 {
+	font-size:30px;
+	font-weight:300;
+	color:#666666;
+	margin-bottom:25px;
+}
+
+.gameEnd p {
+	font-size:20px;
+	font-weight:200;
+	color:#666666;
+}
+.mapRoom {
+	position: absolute;
+	background-color: #CCC;
+	font-color: #fff;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 5px;
+	border: 1px solid #888;
+}
+.mapRoomDoorH {
+	position: absolute;
+	width: 20px;
+	height: 4px;
+	background-color: #333;
+}
+.mapRoomDoorV {
+	position: absolute;
+	width: 4px;
+	height: 20px;
+	background-color: #333;
+}
+.mapRoomBG {
+	position: absolute;
+	top: 5%;
+	left: 20%;
+	width: 60%;
+	height: 80%;
+	background-color: #EEE;
+	border-radius: 5px;
+	border: 1px solid #888;
+}
+
+/* navigation bars */
+.navbar-brand {
+color: #fff !important;
+font-weight: 300;
+font-size:24px;
+}
+/*.navbar-header {
+  background-image:url('/common/pics/IGlogo_50.png');
+}
+*/.nav {
+font-weight: 300;
+font-size:18px;
+}
+
+.dropdown-menu {
+font-size:18px;
+font-weight: 100 !important;
+}
+
+.carousel .item {
+background-color: #fff;
+font-weight: 100;
+}
+
+.carousel-control.left {
+background-image: none;
+background-repeat: repeat-x;
+}
+
+.carousel-control.right {
+background-image: none;
+background-repeat: repeat-x;
+}
+
+.carousel-inner > .item > img {
+position: absolute;
+top: 50%;
+left: 50%;
+margin-left: -108px;
+margin-top: -184px;
+min-width: 0;
+height: 268px;
+}
+
+.carousel-control {
+	margin-top:200px !important;
+}
+
+.collections {
+  background-color:#ff5d5c !important;
+}
+.buckets {
+  background-color:#00C4CE !important;
+}
+
+.paths {
+	background-color:#a9dc61 !important;
+}
+
+.rooms {
+  background-color:#FFCC33 !important;
+}
+
+.squares {
+	background-color:#B98EC1 !important;
+}
+
+.strings {
+	background-color:#26bbf9 !important;
+}
+.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+.fa-chevron-left:before{content:"\f053"}
+.fa-chevron-right:before{content:"\f054"}
+
+
+/* .squaredThree */
+.squaredThree {
+  width: 20px;
+  position: relative;
+  margin: 20px auto;
+  label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
+    &:after {
+      content: '';
+      width: 9px;
+      height: 5px;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      border: 3px solid #fcfff4;
+      border-top: none;
+      border-right: none;
+      background: transparent;
+      opacity: 0;
+      transform: rotate(-45deg);
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }    
+  }
+}
+/* end .squaredThree */
+
+
+/* .squaredFour */
+.squaredFour {
+  width: 20px;
+  position: relative;
+  margin: 20px auto;
+  label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    &:after {
+      content: '';
+      width: 9px;
+      height: 5px;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      border: 3px solid #333;
+      border-top: none;
+      border-right: none;
+      background: transparent;
+      opacity: 0;
+      transform: rotate(-45deg);
+    }
+    &:hover::after {
+      opacity: 0.5;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }    
+}
+/* end .squaredFour */
+
+/* .roundedOne */
+.roundedOne {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  margin: 20px auto;
+  background: #fcfff4;
+  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+  label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    &:after {
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      background: $activeColor;
+      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+      opacity: 0;
+      border-radius: 50px;
+      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }    
+}
+/* end .roundedOne */
+
+.topicSelect {
+  font-family: 'Roboto';
+    font-weight: 100;
+    font-size:22px;
+  text-align:left;
+  vertical-align: middle;
+  background-position: center;
+  color:#666;
+  height:74px;
+  width:400px;
+  line-height:74px;
+    box-shadow: 3px 3px rgba(0,0,0,0.2);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 49px;
+    background-position: 16px;
+    padding-left: 85px;
+    margin-bottom: 13px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*.container {
+    width: 418px;
+    margin: 20px auto;
+}
+*/
+@media screen and (max-width: 900px) {
+.topicSelect {
+    font-size:16px;
+    height:56px;
+    width:300px;
+    line-height:56px;
+    box-shadow: 3px 3px rgba(0,0,0,0.2);
+    background-color: #fff;
+    background-size: 37px;
+    background-position: 16px;
+    padding-left: 64px;
+    margin-bottom: 10px;
+}
+}
+@media screen and (max-height: 590px) {
+.topicSelect {
+    font-size:16px;
+    height:56px;
+    width:300px;
+    line-height:56px;
+    box-shadow: 3px 3px rgba(0,0,0,0.2);
+    background-color: #fff;
+    background-size: 37px;
+    background-position: 16px;
+    padding-left: 64px;
+    margin-bottom: 10px;
+}
+}

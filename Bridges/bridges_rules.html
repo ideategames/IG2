@@ -1,0 +1,99 @@
+<html>
+<head>
+	<title>Rules for Buckets</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet" type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/init/static/IG/common/css/ideateOver.css" type='text/css'>
+    <link rel="stylesheet" href="/init/static/IG/common/css/ideateOver2.css" type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href='/init/static/IG/common/css/select.css' rel='stylesheet' type='text/css'>
+	<script src="/init/static/IG/common/js/jquery-2.0.3.min.js"></script>
+	<script src="/init/static/IG/common/js/bootstrap.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53888584-1', 'auto');
+  ga('send', 'pageview');
+
+	function qs(key) {
+	    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+	    var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+	    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+	}
+	if (qs('alias')) {
+		alias = qs('alias')
+	} else {alias=""}
+
+    function goIndex() {
+    	window.open("/init/strings/bindex.html?alias="+alias,"_self")
+    }
+    function dispatch(game) {
+      alias = alias.trim()
+        window.open('/init/strings/'+game+'.html?alias='+alias,"_self")
+      return false;
+    }
+    function navDispatch(page) {
+      alias = alias.trim()
+        window.open('/init/default/'+page+'.html?alias='+alias+"&partner="+IGpartner,"_self")
+      return false;
+    }
+    $(function(){
+      $("#includedContent").load("/init/static/IG/common/css/navBar.html"); 
+    });
+    if (qs('partner')) {
+        IGpartner=qs('partner')
+        // currentTopic = IGpartner
+        dispatch2(IGpartner,true)
+      } else {IGpartner = ""}
+
+</script>
+<style>
+td {
+	padding: 12px 5px;
+}
+</style>
+<body style="background-color:#00c4ce">
+<div id="includedContent"></div>
+<div class="container" style="position:absolute;top:10%">
+	<h2 align="center">Help and Scoring Rules for Paths</h2>
+<table border="0" align="center" width="50%">
+<tr align="center">
+	<td id="h">
+		Buckets is a category game. Your goal is to create the largest buckets you can. 
+	</td></tr>
+<tr align="center">
+	<td id="h">
+	Buckets are defined by whatever is common to each item. Each item belongs in several different 
+	categories, and when you click on the first item, it defines the bucket with all the categories
+	of that item.
+</td></tr>
+<tr align="center">
+	<td id="h">
+		Each subsequent item you click on must have something in common with all the other items
+		already in the bucket.
+</td></tr>
+<tr align="center">
+	<td id="h">
+        When there are no more items sharing something with all the other items in the bucket, that
+        bucket will automatically close. Thus if the bucket items are still at the bottom, there is at
+        least one more item that will fit in that bucket.
+</td></tr>
+<tr align="center">
+	<td id="h">
+		You can close the current bucket at any time and start a new bucket.
+</td></tr>
+<tr align="center">
+	<td id="h">
+		Click or touch the filmstrip icon
+			to see all images at full height. Click on each large image to advance through the deck.
+	</td></tr>
+<tr height="40"/>
+</table>
+</div>
+</body>
+</html>
+

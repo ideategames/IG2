@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://getbootstrap.com/examples/carousel/ -->
+<html lang="en">
+<head>
+    <title>Ideate Games - Who We Are and Why We Do This</title>
+    <meta name="description" content="Our driving interest is in finding better ways to make science and history more
+    interesting, and perhaps easier to understand and more memorable. If our games take some players to the original
+    sources for more information, we have succeeded."/>
+<script src="/common/js/IGga.js"></script>
+<script>
+    var alias = ""
+    var game = ""
+    function qs(key) {
+        key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+        var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+        return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+    }
+    function dispatch(game) {
+      alias = alias.trim()
+        window.open('/launch/'+game+'.html?alias='+alias+"&partner="+IGpartner,"_self")
+      return false;
+    }
+    function navDispatch(page) {
+      alias = alias.trim()
+        window.open('/'+page+'.html?alias='+alias+"&partner="+IGpartner,"_self")
+      return false;
+    }
+    if (qs('partner')) {IGpartner=qs('partner')} else {IGpartner=""}
+</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Jez Alder, David Marques">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/common/css/bootstrap.min.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="/common/css/carousel.css" rel="stylesheet" type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/common/css/ideateOver.css" type='text/css'>
+    <link rel="stylesheet" href="/common/css/ideateOver2.css" type='text/css'>
+    <link href="/common/css/font-awesome.min.css" rel="stylesheet">
+<script src="/common/js/jquery-2.0.3.min.js"></script>
+<script src="/common/js/bootstrap.min.js"></script>
+  <style id="holderjs-style" type="text/css"></style>
+  <style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style>
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -90px !important;
+    width: 180px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style>
+<script>
+      $(function(){
+          $("#includedContent").load("/common/css/navBar.html"); 
+      });
+      $(function(){
+          $("#includedFooter").load("/common/css/footer.html"); 
+      });
+</script>
+</head>
+<!-- NAVBAR
+================================================== -->
+  <body data-pinterest-extension-installed="cr1.35">
+  <script>
+    window.onload = function() {
+      if (qs('alias')) {
+         alias = qs('alias')
+      } else {alias = "anonymous"}
+
+      IGga()
+    }
+  </script>
+  <!--div id="includedContent"></div-->
+      <div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header" id="headerdiv">
+              <img style="float:left" src='/common/pics/IGlogo_50.png'/>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <script>
+                var foo = document.getElementById('headerdiv')
+                var Partners = {Museum: 'The British Museum'}
+                var title = "&nbsp;&nbsp;Ideate Games"
+                var nav = "/"+IGpartner
+                if (IGpartner) {title = "&nbsp;&nbsp;Ideate Games for "+Partners[IGpartner]}
+                foo.innerHTML += '<a class="navbar-brand" href="'+nav+'">'+title+'</a>'
+              </script>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="Javascript:navDispatch('about')">About</a></li>
+                <li><a href="Javascript:navDispatch('players')">Players</a></li>
+                <li><a href="Javascript:navDispatch('content')">Educators</a></li>
+                <!--li><a href="Javascript:navDispatch('contribute')">Contribute</a></li-->
+                <li><a href="Javascript:navDispatch('credits')">Credits</a></li>
+                <li class="dropdown">
+                  <a href="http://getbootstrap.com/examples/carousel/#" class="dropdown-toggle" data-toggle="dropdown">Play <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="Javascript:dispatch('index')">Strings</a></li>
+                    <li><a href="Javascript:dispatch('ssindex')">Clues</a></li>
+                    <li><a href="Javascript:dispatch('bindex')">Buckets</a></li>
+                    <li><a href="Javascript:dispatch('dindex')">Collections</a></li>
+                    <li><a href="Javascript:dispatch('sindex')">Rooms</a></li>
+                    <li><a href="Javascript:dispatch('pindex')">Paths</a></li>
+                    
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container marketing mainContent">
+<h3>About Ideate Games</h3>
+Ideate Games is a non-commercial exploration of learning and games, particularly (though not exclusively) with topics in science and history. Ideate Games is built and maintained by one retired programmer, as a personal exploration in some of the trade-offs of learning and fun, learning and competitiveness, and ways to present/interact with content beyond the simple "testing" approach taken by most education games.
+
+<br/><br/>
+<table>
+<tr>
+	<td><img width="200" src="/common/pics/dmm_head.jpg" align="left"/></td>
+	<td>&nbsp;&nbsp;</td>
+	<td>The lead for Ideate Games is David Marques, a retired programmer. Ideate Games was built for fun and our own learning. After a doctorate in neuroscience and a few years in research, David has worked in technology for over 30 years: 15 years at Digital Equipment Corporation (software consulting, AI Research, Education Marketing, and Alta Vista); and 17 years at Reed Elsevier (CTO at Elsevier, CTO at Harcourt Education UK, VP Architecture and New Technology at Elsevier, Sr VP Research Data Services at Elsevier). David's biggest interest has been in trying to make games that are fun and compelling but still help students learn important content (or at least stimulate more interest), particularly in history and science. Now retired, this is his opportunity to pursue this elusive goal.
+  <br/><a target="_blank" href="https://www.linkedin.com/pub/david-marques/4/b11/66">
+      
+          <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_liprofile_blue_80x15.png" width="80" height="15" border="0" alt="View David Marques's profile on LinkedIn"/>
+        
+    </a></td>
+</tr>
+</table>
+<br/>
+<p>Jez Alder created the visual design, layout, icons, and processed the images for these games and the web site. He also suggested the Keyholes game. He works more than full time, so this is accomplished in his spare time. All the good looking stuff is his, all the mistakes are David's.</p>
+
+<p>Gregory Marques is a full-time game designer, but not for Ideate Games. He has critiqued and made many helpful suggestions for the games here.</p>
+
+<p/>Ideate Games is interested in working with teachers (or their students) who would like to experiment with presenting or learning content in this game format. Requirements for the content are that it be broken into discrete items (50 or more makes a good game, possible with 25 items), that each item be associated with a number (date, quantity, even GPS) and have a unique image. Games with such content can be set up for exlusive class access. For more information, contact <a href="mailto:ideategames@gmail.com">ideategames@gmail.com</a>.
+<hr size="3"/>
+      <!-- FOOTER -->
+      <footer id = "includedFooter"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto';
+    font-weight: 100;
+}
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+.IGtemp {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    position: absolute;
+    pointer-events: none;
+}
+.IGsprite {
+    position: absolute;
+    left: 100px;
+    top: 500px;
+    cursor: move;
+}
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+.title {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size:36px;
+    text-align:center;
+    color:#ffffff;
+}
+.back {
+    position: absolute;
+    left:12%;
+}
+.rules {
+    position: absolute;
+    top: 85%;
+    left: 10%;
+    font-size:32px;
+}
+.credits {
+    position: absolute;
+    top: 85%;
+    left: 82%;
+    font-size:32px;
+}
+@media screen and (min-height: 650px) {
+    .rules {
+        top: 590px;
+    }
+    .credits {
+        top: 590px;
+    }
+}
+#infoi {
+    font-family: 'Roboto';
+    font-weight: 100;
+    font-size:18px;
+    text-align:center;
+    vertical-align: middle;
+    background-color: #888888;
+    display: none;
+    font-size:20;
+    color:#ffffff;
+    border: 2px solid;
+    border-radius: 25px;
+    width: 200px;
+    height: 180px;
+    position: absolute;
+    top:200;
+    left:40%;
+    z-index: 11;
+}
+.container2 {
+    width: 880px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.topicSelect {
+	font-family: 'Roboto';
+    font-weight: 100;
+    font-size:22px;
+	text-align:left;
+	background-position: center;
+	color:#666;
+	height:74px;
+	width:420px;
+	line-height:74px;
+    box-shadow: 3px 3px rgba(0,0,0,0.2);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 49px;
+    background-position: 16px;
+    padding-left: 85px;
+    margin-bottom: 13px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.topicSpacer {
+    height:74px;
+    width:420px;
+    line-height:74px;
+    background-repeat: no-repeat;
+    background-size: 49px;
+    background-position: 16px;
+    padding-left: 85px;
+    margin-bottom: 13px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 850px) {
+.container2 {
+    width: 720px;
+}
+.topicSelect {
+    font-size:16px;
+    height:56px;
+    width:352px;
+    line-height:56px;
+}
+.topicSpacer {
+    font-size:16px;
+    height:56px;
+    width:352px;
+    line-height:56px;
+}
+}
+@media screen and (max-height: 590px) {
+.topicSelect {
+    font-size:16px;
+    height:56px;
+    width:352px;
+    line-height:56px;
+}
+.topicSpacer {
+    font-size:16px;
+    height:56px;
+    width:352px;
+    line-height:56px;
+}
+}
+
+#movies {
+    background-image:url('/common/pics/movies_Icon.png');
+}
+
+#museum {
+    background-image:url('/common/pics/museum_Icon.png');
+}
+
+#science {
+    background-image:url('/common/pics/science_Icon.png');
+}
+
+#literature {
+    background-image:url('/common/pics/lit_Icon.png');
+}
+
+#art {
+    background-image:url('/common/pics/art_Icon.png');
+}
+
+#culture {
+    background-image:url('/common/pics/cult_Icon.png');
+}
+
+#medHist {
+    background-image:url('/common/pics/med_Icon.png');
+}
+
+#city {
+    background-image:url('/common/pics/city_Icon.png');
+}
+#nature {
+    background-image:url('/common/pics/nature_Icon.png');
+}
+#ahistory {
+    background-image:url('/common/pics/ancient_Icon.png');
+    opacity: 0.4;
+}
+#mhistory {
+    background-image:url('/common/pics/medieval_Icon.png');
+    opacity: 0.4;
+}
+#whistory {
+    background-image:url('/common/pics/whist_Icon.png');
+    opacity: 0.4;
+}
+#culture {
+    background-image:url('/common/pics/culture_Icon.png');
+}
+#composers {
+    background-image:url('/common/pics/composer_Icon.png');
+}

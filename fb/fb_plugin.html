@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>Ideate Games Share App</title>
+<style type="text/css">
+div { padding: 10px; }
+</style>
+<meta charset="UTF-8">
+</head>
+<body>
+<script type="text/javascript">
+	userID = ""
+  EventType = "Composers"
+  IGgameApp = "Strings"
+  IGlcapp = IGgameApp.toLowerCase()
+  IGwizardLevel = 1
+extname = {Strings: 'Strings', Buckets: 'Buckets', Squares: 'Clues', Stacks: 'Rooms', Doors: 'Collections', Paths: 'Paths'}
+aids = {Strings: '1580562312186768', Buckets: '753496904745456', Squares: '1383415398637351', Stacks: '', Doors: '1379064372407372', Paths: ''}
+gameicons = {Strings: 'featBlue.png', Buckets: 'featTeal.png', Squares: 'featLavender.png', 
+    Stacks: 'featYellow.png', Doors: 'featRed.png', Paths: 'featGreen.png'}
+wizicons = {1: 'wizYellow2.png', 2: 'wizRed2.png', 3: 'wizBlue2.png', 4: 'wizGreen2.png'}
+wizards = {1: 'Competency in', 2: 'Proficiency in', 3: 'Mastery of', 4: 'Distinguished Master of'}
+wizlevel = {1: 'competent', 2: 'proficient', 3: 'master', 4: 'distinguished',
+    5: 'competent', 6: 'proficient', 7: 'master', 8: 'distinguished'}
+gamedescs = {Strings: 'Strings is a sequencing game, put events or topics in chronological or numerical order.', 
+    Buckets: 'Buckets is a quick game sorting objects into groups of the same category.', 
+    Squares: 'Clues is a quick but tricky clue-event matching game.', 
+    Stacks: 'Rooms is a many-room object to room sorting game.', 
+    Doors: 'Collections is a many-room shortest-path object collection game.', 
+    Paths: 'Paths is a player vs computer game of building categorized timelines of events.'}
+IGwizardScores = {Strings: 149, Buckets: 270, Squares: 270, Stacks: 270, Doors: 270, Paths: 3}
+  TopicDescs = {Museum: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+        "about 100 objects, their dates, origins, makers, and key facts.", 
+      Science: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+          "about 50 discoveries before the 20th century, their discoverers, dates, and key facts.", 
+      Literature: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+        "about 80 classics, their authors, quotes, characters, dates, and key facts.", 
+      Art: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+' consists of 94 paintings of Western art '+
+          'before the 20th century, randomly presented with titles, art period or style, or descriptions.', 
+      Culture: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+        'about 275 books, paintings, composers, and science discoveries and their dates and key facts.', 
+      Composers: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+        'about 51 composers of Western music and their compositions, dates, and origins.',
+      Nature: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+        'about 50 concepts in the conservation of nature and their key statistics.',
+      Movies: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+        'about 136 movies and their directors, quotes, and dates.',
+      Cities: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+        'about 149 cities around the world, their latitudes and populations.',
+  }
+var displayTopics = {Movies: "Movies", Museum: "Objects from the British\nMuseum", Culture: "Western\nCulture", Fashion: "Fashion", Art: "Art", 
+  Science: "Discoveries\nin Science", Nature: "Nature", Cities: "City\nLatitudes", 
+    Mediterranean: "Mediterranean\nHistory", Dinosaurs: "Dinosaurs\n(when extinct)",
+    Literature: "Western\nLiterature", AncientHistory: "Ancient\nHistory",
+      Composers: "Western\nComposers"}
+
+	var objPost = {'og:url': "http://www.ideategames.org/"+extname[IGgameApp], 
+		'og:title': wizards[IGwizardLevel]+" "+displayTopics[EventType].replace('\n',' ')+"\n\n"+TopicDescs[EventType],
+		'og:type': 'ig'+IGlcapp+':'+wizlevel[IGwizardLevel], 
+		'og:image': 'http://54.167.199.174:8080/common/pics/'+wizicons[IGwizardLevel]+"?mw=200&mh=200" , 
+		'fb:app_id': aids[IGgameApp],
+	}
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : aids[IGgameApp],
+      status : true,
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
+  function postMaster() {
+    FB.getLoginStatus(function(response) {
+      console.log("userID: "+response.authResponse.userID)
+      userID = response.authResponse.userID
+    });
+    var whatpost = {}
+    whatpost[wizlevel[IGwizardLevel]] = objPost
+    FB.api(
+       'https://graph.facebook.com/me/ig'+IGlcapp+':attain',
+       'post',
+  		whatpost,
+       function(response) {
+         if (!response) {
+           alert('Error occurred.');
+         } else if (response.error) {
+           document.getElementById('result').innerHTML =
+             'Error: ' + response.error.message;
+         } else {
+           document.getElementById('result').innerHTML =
+             '<a href=\"https://www.facebook.com/me/activity/' +
+             response.id + '\">' +
+             'Story created.  ID is ' +
+             response.id + '</a>';
+         }
+       }
+    );
+  }
+
+</script>
+
+
+<!--
+  Login Button
+
+  https://developers.facebook.com/docs/reference/plugins/login
+
+  This example needs the 'publish_actions' permission in
+  order to publish an action.  The scope parameter below
+  is what prompts the user for that permission.
+-->
+<div id="fb-root"/>
+<div
+  class="fb-login-button"
+  data-show-faces="true"
+  data-width="200"
+  data-max-rows="1"
+  data-scope="publish_actions">
+</div>
+
+<div>
+That button will share on your timeline that you achieved mastery of 
+<a href="http://www.ideategames.org/init/static/IG/Strings/entry.html?topic=Museum">
+Strings through the British Museum</a>.  The story should only
+be visible to you.
+</div>
+
+<div>
+<input
+  type="button"
+  value="Share your mastery"
+  onclick="postMaster();">
+</div>
+
+<div id="result"></div>
+
+</body>
+</html>

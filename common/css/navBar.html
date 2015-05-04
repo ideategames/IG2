@@ -1,0 +1,50 @@
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header" id="headerdiv">
+              <img style="float:left" src='/common/pics/IGlogo_50.png'/>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <script>
+                var foo = document.getElementById('headerdiv')
+                var Partners = {Museum: 'The British Museum', Alaska: 'the History of Alaska', Facebook: "Facebook", 
+                  Elsevier: "Elsevier"}
+                var title = "&nbsp;&nbsp;Ideate Games"
+                var nav = "/"+IGpartner
+                if (IGpartner) {title = "&nbsp;&nbsp;Ideate Games for "+Partners[IGpartner]}
+                foo.innerHTML += '<a class="navbar-brand" href="'+nav+'">'+title+'</a>'
+              </script>
+              
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="Javascript:navDispatch('about')">About</a></li>
+                <li><a href="Javascript:navDispatch('players')">Players</a></li>
+                <li><a href="Javascript:navDispatch('content')">Educators</a></li>
+                <!--li><a href="Javascript:navDispatch('contribute')">Contribute</a></li-->
+                <li><a href="Javascript:navDispatch('credits')">Credits</a></li>
+                <li class="dropdown">
+                  <a href="http://getbootstrap.com/examples/carousel/#" class="dropdown-toggle" data-toggle="dropdown">Play <span class="caret"></span></a>
+                  <ul class="dropdown-menu pull-right" role="menu">
+                    <!--li><a href="Javascript:dispatch('bindex')">Buckets</a></li-->
+                    <li><a href="Javascript:dispatch('index')">Strings</a></li>
+                    <li><a href="Javascript:dispatch('dindex')">Collections</a></li>
+                    <li><a href="Javascript:dispatch('ssindex')">Clues</a></li>
+                    <li><a href="Javascript:dispatch('sindex')">Rooms</a></li>
+                    <li><a href="Javascript:dispatch('pindex')">Paths</a></li>
+                    
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
