@@ -1,8 +1,6 @@
 //
 // dummy communication file
 //
-
-IGisIGServer = false
 IGactiveComm = false
 
 function DMMGetHttpRequest(packet,page) {
