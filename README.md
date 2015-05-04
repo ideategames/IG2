@@ -9,10 +9,7 @@ To set up a local version:
 
 Clone this repository into a local directory. Then, you will need to either edit each index.html file to include all the .js files in each game directory and the /common directory or build the <game>_net.js file and common_net.js file. The scripts used to build those _net.js files are in /helpers: make_net.sh or make_common_net.sh. Correct the directory pointers in those files. These scripts use uglifyjs.
 
-The games are configured to send usage data back to the Ideate Games database. This is optional (the games work without), and I have left this code out of the repository, but you need a dummy file to substitute:
-
-    In the common directory, include a comm.js file. Put this in the comm.js file:
-    function DMMGetHttpRequest(packet,page) {return}
+The games are configured to send usage data back to the Ideate Games database. This is optional (the games work without), and I have left this code out of the repository, but put in a dummy file to substitute.
 
 Install or run a web server pointing to the top directory of this repository. Any web server should work.
 
