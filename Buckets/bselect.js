@@ -155,7 +155,7 @@ var bucketsSelect = {
 	    	var icon = (TopicIcons[top]) ? TopicIcons[top] : TopicIcons[EventType2]
 			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
 			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
-			    	image: '/init/static/IG/common/pics/'+icon,talign: "left",
+			    	image: CommonPath+'pics/'+icon,talign: "left",
 			    	rtn: 'dispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
 
 			    i++;

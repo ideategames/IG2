@@ -8,8 +8,6 @@
 /////////////////////////////////////////////////////////////
 
 var notLoaded = true
-var ploc = window.location.pathname;
-AppPath = ploc.substring(0, ploc.lastIndexOf('/')+1);
 
 var emitter
 var bpmText, IGplayer, cursors, descr, timerText, preloadBar, instruct2, descLen, title,currentCategory,
