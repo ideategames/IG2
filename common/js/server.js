@@ -10,7 +10,7 @@ IGisIGServer = true
 // this is my desktop server for marques42.tk
 var server = "67.183.64.43"
 
-var IGuseFB = false
+var IGuseFB = true
 function IGloadFBjs() {
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];

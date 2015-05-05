@@ -39,7 +39,6 @@ var iimgs = []
 var iimgstxt = []
 var updcnt = 0
 var APPbaseScore = 10
-var thisScore = 0
 
 function DMMmenu() {
     IGendGame({msg:'You are in the middle of a game. Selecting any button but the first will abort this game.',
@@ -138,7 +137,7 @@ function SScheckHit(ev) {
             "\n\nTo achieve Mastery of "+displayTopics[EventType].replace('\n',' ')+", you need "+IGwizardScores[IGgameApp]+" points from 3 consecutive games. "+
             "You have "+DMMtotalScore+
             " points (total for "+IGgetGameCount()+" game"+IGplur(IGgetGameCount())+")."
-            var userDataMsg = thisScore+":"+tot+":"+spm+":"+numMistakes+" (Level "+DMMlevel+")"
+            var userDataMsg = DMMscore+":"+tot+":"+spm+":"+numMistakes+" (Level "+DMMlevel+")"
             var ldr = true
             if (!IGisIGServer) {ldr = false}
             IGendGame({msg:scoreText,fcns:{again:'APPrestart',subj:'APPnewGame',diff:'IGchangeGame',leader:ldr},
@@ -164,7 +163,7 @@ function SSresetGame() {
     iimgs = []
     iimgstxt = []
     updcnt = 0
-    thisScore = 0
+    DMMscore = 0
 
 }
 

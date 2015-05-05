@@ -101,7 +101,7 @@ var pathsSelect = {
 
 	    //  Load all the target images -- same image for all spots
 	    // for (var top in Topics) {
-	   	//     iTopics[top] = '/init/static/IG/common/pics/'+Topics[top].toLowerCase()+'_bar.png';
+	   	//     iTopics[top] = '/common/pics/'+Topics[top].toLowerCase()+'_bar.png';
 	    // }
 	    game.load.image('AppBG',CommonPath+'pics/PathsBG.png')
 		
@@ -153,7 +153,7 @@ var pathsSelect = {
 	    	var icon = (TopicIcons[top]) ? TopicIcons[top] : TopicIcons[EventType2]
 			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
 			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
-			    	image: '/init/static/IG/common/pics/'+icon,talign: "left",
+			    	image: '/common/pics/'+icon,talign: "left",
 			    	rtn: 'dispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
 
 			    i++;

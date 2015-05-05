@@ -34,9 +34,9 @@ IGisPublic = false
 IGwhite = false
 // these next 4 are reset by each application to be relative paths
 IGgameApp = 'Strings'
-AppPath = "../../../../init/static/IG/Strings/"
-CommonPath = "../../../../init/static/IG/common/"
-ImgPath = "../../../../init/static/IG/stringsThumbs/"
+AppPath = "/Strings/"
+// CommonPath = "/common/"
+// ImgPath = "/stringsThumbs/"
 
 
 extname = {Strings: 'Strings', Buckets: 'Buckets', Squares: 'Clues', Stacks: 'Rooms', Doors: 'Collections', Paths: 'Paths'}
@@ -329,7 +329,7 @@ IGsetTopicDescrs()
 function DMMSetTopics() {
 	if (IGpartner) {
 		IGconsole("getting topic for: "+IGpartner)
-		$.getScript("/init/static/IG/common/js/"+IGpartner+"_topics.js", function(data, textStatus) {
+		$.getScript("/common/js/"+IGpartner+"_topics.js", function(data, textStatus) {
 		  // IGconsole(data); //data returned
 		  IGconsole("topic list load: "+textStatus+":"+EventNum); //success
 		});

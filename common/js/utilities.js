@@ -1057,12 +1057,16 @@ var objPost = {'og:url': "http://www.ideategames.org/"+extname[IGgameApp],
 var FBstatus
 IGfacebookInit = function() {
     if (IGuseFB && !IGisApp && FB) {
-        FBstatus = FB.init({
-          appId      : aids[IGgameApp],
-          status : true,
-          xfbml      : true,
-          version    : 'v2.2'
-        });
+        try {
+            FBstatus = FB.init({
+              appId      : aids[IGgameApp],
+              status : true,
+              xfbml      : true,
+              version    : 'v2.2'
+            });
+        } catch(e) {
+            IGconsole("FB not available.")
+        }
     }
 };
 

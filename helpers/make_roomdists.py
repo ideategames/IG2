@@ -91,7 +91,7 @@ def getRoomAdjacencies(room):
 #
 # Write out the distances
 #
-of = open('/Users/davidmarques/prog/Mongoose.app/Contents/IdeateGames/init/static/IG/common/js/IGroomPaths.js','w')
+of = open('/Users/davidmarques/prog/Mongoose.app/Contents/IdeateGames/common/js/IGroomPaths.js','w')
 of.write("// \n// IGroomPaths.js\n//\n// Source for all room maps\n//\n\n")
 #
 # write out the rooms

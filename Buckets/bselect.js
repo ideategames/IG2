@@ -107,7 +107,7 @@ var bucketsSelect = {
 
 	    //  Load all the target images -- same image for all spots
 	    // for (var top in Topics) {
-	   	//     iTopics[top] = '/init/static/IG/common/pics/'+Topics[top].toLowerCase()+'_bar.png';
+	   	//     iTopics[top] = '/common/pics/'+Topics[top].toLowerCase()+'_bar.png';
 	    // }
 	    game.load.image('AppBG',CommonPath+'pics/BucketsBG.png')
 
