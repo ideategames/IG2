@@ -1,0 +1,5 @@
+# Redirect for game names
+#
+Redirect /Clues /Squares
+Redirect /Rooms /Stacks
+Redirect /Collections /Doors

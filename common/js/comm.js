@@ -16,7 +16,7 @@
 
 IGactiveComm = false
 $.getScript("/common/js/server.js", function() {
-    IGconsole("Server: "+IGisIGServer+":"+server);
+    IGconsole("Server, FB: "+IGisIGServer+":"+server+":"+IGuseFB);
 });
 
 function DMMGetHttpRequest(packet,page) {

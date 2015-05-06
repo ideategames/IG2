@@ -99,7 +99,8 @@ function SScalcThisScore(score) {
     // calculation to normalize to about 100
     // 100 pts for 16 items at 15 spm
     var tmp = APPbaseScore + Math.round(score*.375) - 5*numMistakes
-    IGconsole("score: "+score+":"+tmp)
+    if (tmp>100 && numMistakes>0) {tmp = 100 - 5*numMistakes}
+    IGconsole("raw score: "+tmp)
     return (tmp<10) ? 10 : tmp
 }
 function SScalcTotalScore(score) {

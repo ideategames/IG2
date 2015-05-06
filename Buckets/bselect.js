@@ -106,8 +106,8 @@ var bucketsSelect = {
 			 }
 
 	    //  Load all the target images -- same image for all spots
-	    // for (var top in Topics) {
-	   	//     iTopics[top] = '/common/pics/'+Topics[top].toLowerCase()+'_bar.png';
+	    // for (var top in BTopics) {
+	   	//     iTopics[top] = '/common/pics/'+BTopics[top].toLowerCase()+'_bar.png';
 	    // }
 	    game.load.image('AppBG',CommonPath+'pics/BucketsBG.png')
 
@@ -134,11 +134,11 @@ var bucketsSelect = {
 
 		// topic icons
 		var topicCount = 0
-		for (var top in Topics) {topicCount++}
+		for (var top in BTopics) {topicCount++}
 		var i = 0
 		// if only 1 topic, jump right to the game (for partners)
 		if (topicCount<2) {
-			var top = Object.keys(Topics)
+			var top = Object.keys(BTopics)
 			dispatchEvent2(top[0]);
 			return;
 		}
@@ -146,7 +146,7 @@ var bucketsSelect = {
    		var sc = (HEIGHT<590) ? HEIGHT/590 : 1.0
 		var rowcnt = (topicCount<8) ? 4 : Math.ceil(topicCount/2)
 		var midvert = rowcnt/2*65
-	    for (var top in Topics) {
+	    for (var top in BTopics) {
 	    	// because buckets uses a higher base, only shrink with width
 	    	var xsc = 450*IGratio
 	    	var ysc = 77*IGxratio*0.9
@@ -156,7 +156,7 @@ var bucketsSelect = {
 			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
 			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
 			    	image: CommonPath+'pics/'+icon,talign: "left",
-			    	rtn: 'dispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
+			    	rtn: 'dispatchEvent2("'+BTopics[top]+'")', width: xsc, height: ysc});
 
 			    i++;
 		}

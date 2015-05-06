@@ -336,16 +336,19 @@ function DMMSetTopics() {
 	} else {
 		Topics = {Museum: "Museum",
 			Science: "Science", Literature: "Literature", Art: "Art", Composers: "Composers", Culture: "Culture", 
-			Movies: "Movies", Nature: "Nature", AncientHistory: "AncientHistory", Cities: "Cities"}
+			Movies: "Movies", Nature: "Nature", Cities: "Cities"}
 		PTopics = {Museum: "Museum", 
 			Science: "Science", Literature: "Literature", Art: "Art", Composers: "Composers", 
-			Movies: "Movies", AncientHistory: "AncientHistory", Cities: "Cities"}
+			Movies: "Movies", Cities: "Cities"}
 		STopics = {Museum: "Museum", 
 			Science: "Science", Literature: "Literature", Art: "Art", Composers: "Composers", Culture: "Culture", 
-			Movies: "Movies", Nature: "Nature", AncientHistory: "AncientHistory"}
+			Movies: "Movies", Nature: "Nature"}
 		DTopics = {Museum: "Museum", 
 			Science: "Science", Literature: "Literature", Art: "Art", Composers: "Composers", Culture: "Culture", 
-			Movies: "Movies", Nature: "Nature", AncientHistory: "AncientHistory"}
+			Movies: "Movies", Nature: "Nature"}
+		BTopics = {Museum: "Museum",
+			Science: "Science", Literature: "Literature", Art: "Art", Composers: "Composers", 
+			Movies: "Movies", Cities: "Cities"}
 		StTopics = {Bears: "Bears"}
 		BrTopics = {Museum: "Museum", Science: "Science", Literature: "Literature", 
 			Art: "Art", Composers: "Composers",Culture: "Culture"}

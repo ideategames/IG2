@@ -132,7 +132,7 @@ var pathsSelect = {
 		// topic icons
 		var topicCount = 0
 		for (var top in PTopics) {topicCount++}
-			IGconsole("topics: "+topicCount)
+			// IGconsole("topics: "+topicCount)
 		// if only 1 topic, jump right to the game (for partners)
 		if (topicCount<2) {
 			var top = Object.keys(PTopics)
@@ -143,7 +143,7 @@ var pathsSelect = {
 		var i = 0
    		var sc = (HEIGHT<590) ? HEIGHT/590 : 1.0
 		var rowcnt = (topicCount<8) ? 4 : Math.ceil(topicCount/2)
-		var midvert = rowcnt/2*65
+		var midvert = rowcnt/2*70
 	    for (var top in PTopics) {
 	    	// because Paths uses a higher base, only shrink with width
 	    	var xsc = 450*IGratio
@@ -153,7 +153,7 @@ var pathsSelect = {
 	    	var icon = (TopicIcons[top]) ? TopicIcons[top] : TopicIcons[EventType2]
 			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
 			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
-			    	image: '/common/pics/'+icon,talign: "left",
+			    	image: CommonPath+'pics/'+icon,talign: "left",
 			    	rtn: 'dispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
 
 			    i++;

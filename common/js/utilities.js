@@ -392,7 +392,7 @@ function IGsetGlobalFunctions(register) {
     // this silly replacement is caused by differences in platform treatment of paths
     AppPath = AppPath.replace('//','/')
     IGlcapp = IGgameApp.toLowerCase()
-    if (IGuseFB && !FBuserID && !IGisApp) {IGfacebookInit();game.time.events.add(1000,IGcheckFacebookStatus,this)}
+    if (IGuseFB && !FBuserID && !IGisApp) {game.time.events.add(1000,IGcheckFacebookStatus,this)}
 
     IGconsole("FB result: "+FBuserID+":"+IGgameApp)
     if (register) {IGcheckIn(DMMalias,clientIP,EventType)}
@@ -1025,6 +1025,7 @@ function IGdrawCircle(xloc,yloc,wid,border,color,fill) {
 // EVERY MASTERY IS AUTOMATICALLY BLUE RIBBON, 'MASTERY OF'
 // WIZLEVEL IS ALWAYS 3 OR NOTHING
 //
+// careful, this is a duplicate definition for aids (see server.js)
 aids = {Strings: '1580562312186768', Buckets: '753496904745456', Squares: '1383415398637351', Stacks: '', Doors: '1379064372407372', Paths: ''}
 gameicons = {Strings: 'featBlue.png', Buckets: 'featTeal.png', Squares: 'featLavender.png', 
     Stacks: 'featYellow.png', Doors: 'featRed.png', Paths: 'featGreen.png'}
@@ -1051,12 +1052,12 @@ function IGfacebookCleanup() {
 var objPost = {'og:url': "http://www.ideategames.org/"+extname[IGgameApp], 
     'og:title': 'Competent in British Museum Objects', 
     'og:type': 'igstrings:proficient', 
-    'og:image': 'http://54.167.199.174:8080/common/pics/IGlogo.png', 
+    'og:image': 'http://www.ideategames.org/common/pics/IGlogo.png', 
     'fb:app_id': aids[IGgameApp]}
 
 var FBstatus
 IGfacebookInit = function() {
-    if (IGuseFB && !IGisApp && FB) {
+    if (IGuseFB && !IGisApp) {
         try {
             FBstatus = FB.init({
               appId      : aids[IGgameApp],
@@ -1116,19 +1117,20 @@ function IGupdateWizardStatus() {
     FBendDIV.innerHTML = ("\n\nYou are now ranked a "+wizards[IGwizardLevel]+" "+displayTopics[EventType].replace('\n',' ')+"!")
 }
 function IGcheckFacebookStatus() {
-    if (IGuseFB && !FBuserID && !IGisApp && FB) {
-        FB.getLoginStatus(function(response) {
+    if (IGuseFB && !FBuserID && !IGisApp) {
+        var fbs = FB.getLoginStatus(function(response) {
             try {
                 IGconsole("userID: "+response.authResponse.userID)
                 FBuserID = response.authResponse.userID
-            } catch (e) {}
+            } catch (e) {IGconsole("no FB status")}
         });
     }
-    if (FBuserID) {
-        var packet = {query: "getMastery",gameApp: IGgameApp, fb_userID: FBuserID}
-        DMMGetHttpRequest(packet,'getMastery')
+    IGconsole("FBS result: "+fbs+":"+FBuserID)
+    // if (FBuserID) {
+        // var packet = {query: "getMastery",gameApp: IGgameApp, fb_userID: FBuserID}
+        // DMMGetHttpRequest(packet,'getMastery')
 
-    }
+    // }
     return FBuserID
 }
 function IGcheckToPostMastery() {
@@ -1165,7 +1167,7 @@ function IGshowFacebookPost() {
     var achtxt = "\n\n"+TopicDescs[EventType]
     objPost['fb:app_id'] = aids[IGgameApp]
     objPost['og:type'] = 'ig'+IGlcapp+':'+wizlevel[IGwizardLevel]
-    objPost['og:image'] = 'http://mrqland.com/common/pics/'+wizicons[IGwizardLevel]+"?mw=200&mh=200"
+    objPost['og:image'] = 'http://www.ideategames.org/common/pics/'+wizicons[IGwizardLevel]+"?mw=200&mh=200"
     objPost['og:title'] = wizards[IGwizardLevel]+" "+displayTopics[EventType].replace('\n',' ')+achtxt
 
     var endDIV1 = document.createElement("div");
