@@ -68,8 +68,14 @@ function SSshowAltClues(ev) {
     }
     IGalertDIV("\n\n"+desctext,"auto",false,true,true,13)
 }
-function SSshowName(ev) {
-    var onoff = (ev.hidden) ? true : false
+function SSshowNameOn(ev) {
+    var onoff = false //(ev.hidden) ? true : false
+    IGhide(titlestxt[ev.idx],onoff)
+    IGhide(titleshade[ev.idx],onoff)
+    ev.hidden = !onoff
+}
+function SSshowNameOff(ev) {
+    var onoff = true //(ev.hidden) ? true : false
     IGhide(titlestxt[ev.idx],onoff)
     IGhide(titleshade[ev.idx],onoff)
     ev.hidden = !onoff
@@ -481,8 +487,8 @@ var gameEntry = {
       squares[i].inputEnabled = true
       squares[i].events.onInputDown.add(SScheckHit,this)
       if (!isAndroid & !isiOS) {
-          squares[i].events.onInputOver.add(SSshowName,this)
-          squares[i].events.onInputOut.add(SSshowName,this)
+          squares[i].events.onInputOver.add(SSshowNameOn,this)
+          squares[i].events.onInputOut.add(SSshowNameOff,this)
       }
       checks[i] = IGaddSprite(sqLoc.x+(xoff*sqspacing),sqLoc.y+(yoff*sqspacing),'correct')
       checks[i].visible = false
