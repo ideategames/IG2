@@ -201,7 +201,7 @@ function PSshowScores() {
 		"\nYou have now returned a total of "+DMMtotalShelved+" different "+ObjTypes[EventType2]+
 			" of the overall "+EventNumU+" possible."
 	// var coverage = DMMobsShelved.toString().replace(/,/g, ":")
-	var userDataMsg = numShelved+":"+DMMtotalShelved+":"+IGnumSecs+":"+steps+
+	var userDataMsg = numShelved+":"+DMMtotalShelved+":"+steps+":"+EventNumU+
 		":"+bpm+":"+numMistakes+" (Level "+DMMlevel+")"
 	IGendGame({msg:scoreText,fcns: {again:'APPrestart',subj:'APPnewGame',diff:'IGchangeGame'}})
 	IGsendScore(userDataMsg)

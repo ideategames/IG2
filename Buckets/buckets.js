@@ -1073,6 +1073,7 @@ var gameEntry = {
 			"fill a bucket.\n\nOnce started, you must fill or close the bucket before starting a different bucket!"+
 			"\nDate buckets are a maximum of 20 years end-to-end."+CategoryMsg
 		if (EventType=="Museum") {imsg += "\n\nIn this Museum topic, 'art' is too large a category and has been excluded."}
+
 		IGalertDIV(imsg,"auto",false,true,true,14,true)
 
 	    helpTextLocal = "\n\n"+helpTextB[0]

@@ -162,7 +162,7 @@ function PCshowScores() {
 	// hint.visible = true
 	// hintBack.visible = true
 	// var coverage = DMMobsCollected.toString().replace(/,/g, ":")
-	var userDataMsg = IGnumSecs+":"+steps+":"+DMMtotalCollected+":"+EventNumU+":"+miss+" (Level "+DMMlevel+")"
+	var userDataMsg = pctscore+":"+DMMtotalScore+":"+steps+":"+minSteps+":"+IGnumSecs+":"+miss+" (Level "+DMMlevel+")"
 	IGendGame({msg:scoreText,fcns:{again:'APPrestart',subj:'APPnewGame',diff:'IGchangeGame'}})
 	IGsendScore(userDataMsg)
 }

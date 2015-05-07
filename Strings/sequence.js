@@ -29,7 +29,10 @@ var numEvents = events.length
 var navTab, newGame, nextSet, leaderboard, shortest, textScore, textPenalties, textBonuses,
 	hscore,hbon,hpen, topRow
 var numChecks = 0
+var numMistakes = 0
 var BASESCORE = 20
+var MINSCORE = BASESCORE/2
+var MAXPENALTY = BASESCORE/2
 var BCEBONUS = 3
 var maxSpanPts = 15
 function DMMmenu() {
@@ -120,9 +123,10 @@ function calcScore() {
 	// subtract for retries
 	if (numChecks == 1) {numChecks = 0}
 //	IGconsole("penalties: "+spanPenalty+":"+Math.pow((numChecks),2)+":"+timePenalty)
-	penalties = Math.round(Math.pow((numChecks),2) + timePenalty)
-	if (penalties>20) {penalties=20}
+	penalties = numMistakes*5 + timePenalty
+	if (penalties>MAXPENALTY) {penalties=MAXPENALTY}
 	DMMscore = DMMscore - penalties
+	DMMscore = (DMMscore<MINSCORE) ? MINSCORE : DMMscore
 	textPenalties.setText(penalties+" ")
 	textScore.setText(DMMscore+" ")
 	textBonuses.setText((timeBonus+firstBonus+BCEbonus)+" ")
@@ -154,6 +158,7 @@ function checkSequence() {
 	for (var i=0; i<targs.length; i++) {
 		if (targs[i].date != null) {targs[i].dattext.setText("[+]")}
 	}
+	if (numChecks == 1) {numMistakes = 0}
 	var ret = true
 	var forgive = 0
 	if (EventType=="Fashion" || EventType=="History") {forgive = 5}
@@ -161,6 +166,7 @@ function checkSequence() {
 		if (targs[i].date != null) {
 			if (targs[i+1].date != null) {
 				if (parseInt(targs[i].date) > parseInt(targs[i+1].date)+forgive) {
+					if (numChecks == 1) {numMistakes++}
 	 				// IGconsole("no dates: "+parseInt(targs[i].date) +":"+ parseInt(targs[i+1].date))
 					ret = false;
 					targs[i+1].dattext.setText("move << left")
@@ -244,7 +250,7 @@ function showSuccess() {
 		ret = calcScore(); thisSpan = ret[1]
 		var numgames = (DMMscores.length>=3) ? 3 : DMMscores.length
 		IGconsole("Scores: "+ret[0]+":"+ret[1]+":"+ret[2]+":"+ret[3])
-		var ftrymsg = (numChecks==0) ? "\nYou received 10 bonus points for getting it right the first time." : ""
+		var ftrymsg = (numChecks==0) ? "\nYou received 10 bonus points for getting it right the first time." : "\nYou made "+IGzero(numMistakes)+" mistake"+IGplur(numMistakes)+"."
 		var bcemsg = (ret[3]>0) ? "\nYou have "+Math.floor(ret[3]/BCEBONUS)+" date"+IGplur(ret[3]/BCEBONUS)+" from BCE for "+ret[3]+" bonus point"+IGplur(ret[3])+"." : ""
 		endMsg = "Success!"+
 			"\nYour span is "+thisSpan+". This gives you "+ret[2]+" span point"+IGplur(ret[2])+" of a possible "+maxSpanPts+"."+
@@ -254,8 +260,8 @@ function showSuccess() {
 	        " points (total for "+numgames+" game"+IGplur(numgames)+")."
 		instruct.setText("")
 		instruct2.setText("")
-		userDataMsg = DMMscore+":"+DMMtotalScore+":"+IGnumSecs+":"+
-			ret[2]+":"+(numChecks-1)+" (Level "+DMMlevel+")"
+		userDataMsg = DMMscore+":"+DMMtotalScore+":"+ret[2]+":"+
+			IGnumSecs+":"+numMistakes+" (Level "+DMMlevel+")"
 		game.time.events.add(200,endGame)
 	} else {instruct.setText("Try again.")}
   }

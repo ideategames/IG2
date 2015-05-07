@@ -223,7 +223,7 @@ DMMtotalScore = 0
 IGaliasScores = []
 maxTime = 40
 DMMnumRooms = 11
-DMMnumRoomsC = 15
+DMMnumRoomsC = 11
 DMMnumDoors = 4
 DMMnumObjects = 4
 DMMtarget = 5
@@ -367,26 +367,34 @@ var introText = "This is a game to create ordered Strings of concepts. You are g
 	"events or numerical concepts (eg, 'The number of acres of tropical rainforest destroyed each year.'), and asked to "+
 	"put some of them in numerical order, making a String with the shortest span. "+
 	"Put them in order by dragging the images to the boxes at the top."+
-	"\n\nTolerance for each step is within 5 years for fashion and history, the others must be exact."
+	"\n\nTolerance for each step is within 5 years for fashion and history, the others must be exact."+
+    "\n\nClick or touch the filmstrip icon
+      to see all images at full height. Click on the arrows to advance through the deck."
 var hIntroS = "Rooms"
-var stacksText = "Rooms is a many-rooms sorting game with the same content as Strings, but a bit more complex.\n\nWe have a problem. "+
+var stacksText = "\n\nWe have a problem. "+
 	"A history student borrowed 11 objects to make a report on them, but then carelessly (or intentionally!) returned them to the wrong "+
-	"room. As the newest member of our museum staff, your task is to move them all to the right rooms, and you must finish "+
-	"before we open in 20 minutes!"
+	"rooms. As the newest member of our museum staff, your task is to move them all (or just 4 in Level 1) to the right rooms, and you must finish "+
+	"before we open in 20 minutes!"+
+    "\n\nClick or touch the filmstrip icon
+      to see all images at full height. Click on the arrows to advance through the deck."
 var hIntroD = "Collections"
-var doorsText = "Collections is a many-room object collection game with the same content as Strings.\n\n"+
+var doorsText = "\n\n"+
 	"In this game, you are a gofer (http://en.wikipedia.org/wiki/Gofer) in the museum, asked to collect 4 objects from the museum "+
 	" and bring them to "+
 	"the curator for more work -- whatever it is she does. \n\nBecause you are the newbie, for initiation "+
 	"she has only given you a set of clues to these "+
 	"objects, and your task is to visit the right places to find and collect "+
-	"objects. Collect them by dragging them onto the their clues on the cart at the left."
+	"objects. Collect them by dragging them onto their clues on the cart at the left."+
+    "\n\nClick or touch the filmstrip icon
+      to see all images at full height. Click on the arrows to advance through the deck."
 var hAlias = "Alias or nickname:"
 var hIntroP = "Paths"
-var pathsText = "Paths is a competitve game, each player extending a shared set of events that must be connected chronologically "+
+var pathsText = "\n\nPaths is a competitve game, each player extending a shared set of events that must be connected chronologically "+
 	"(or numerically for some content). The object is to get the most in sequential order (runs of 2, 3, and 4 nodes count) that are your own, "+
 	"uninterrupted by events placed by the other player. Players take turns playing events from a common (visible to both) "+
-	"pool of events that is refreshed from the database after each play."
+	"pool of events that is refreshed from the database after each play."+
+    "\n\nClick or touch the filmstrip icon
+      to see all images at full height. Click on the arrows to advance through the deck."
 
 var instruct
 hText = ["",
@@ -401,12 +409,14 @@ helpText = ["Help and Scoring Rules",
 	"Place any 5 images in the correct numerical or chronological order, left to right.",
 		"20 points are given for completing a string.",
 		"Up to 15 additional points are awarded for Strings matching "+
-        "the shortest span for any 5 within the given set. All Strings are rated against the shortest "+
+        	"the shortest span for any 5 within the given set. All Strings are rated against the shortest "+
         "span for that set.",
         "Bonus points (10 pts) are given for getting the first try correct, and for speed (up to 10 pts).",
-        "Bonus points (3 pts) are given for any Before Common Era (BCE) date.",
-        "Penalties (max 20) are taken for incorrect guesses (number of guesses squared).",
-        "Total score is a sum of the 3 most recent Strings."
+        "Bonus points (5 pts) are given for any Before Common Era (BCE) date.",
+        "Penalties (max 10) are taken for incorrect guesses (number of guesses squared).",
+        "Total score is a sum of the 3 most recent Strings."+
+			"\n\nClick or touch the filmstrip icon "+
+    		"to see all images at full height. Click on the arrows to advance through the deck."
        	]
 hText2 = ["","","","","","","",""]
 helpTextS = ["Help and Scoring Rules",
@@ -416,23 +426,25 @@ helpTextS = ["Help and Scoring Rules",
 	"Your task is to move all 11 objects into their correct rooms. ",
 	"To move an object, drag it to cart on the left. To place it in the correct room, drag it from the cart into the room.",
 	"",
-	"Time and number of steps only start when you take your first object to the cart.",
-	"Rooms are arranged somewhat chronologically. All rooms have doors to another room, "+
-	"and each door (except the 'return' door at the bottom) is to a room from a later (more recent) date.",
+	"Rooms are arranged somewhat chronologically. "+
+		"Move between rooms by touching/clicking the door to another room.",
+	"Click or touch the filmstrip icon "+
+    	"to see all images at full height. Click on the arrows to advance through the deck.",
 	"",""
 	],
 helpTextD = ["Help and Scoring Rules",
 	"You are a gofer at the museum. The curator has sent you to find and collect the 4 objects "+
-	"indicated by the clues she has given you, in bubbles at the left. "+
-	"\nThere are "+DMMnumRoomsC+" rooms in this museum, each containing containing objects from the topic you select below.",
-	"Full points (40) are awarded for collecting all objects.",
-	"Bonuses are awarded for visiting fewer than 8 rooms after you pick up your first object."+
-	"\nPenalties (max 30) are given for attempting to collect objects that are not in the list (-"+Ppenalty+" pts). "+
-	"Move between rooms by touching/clicking the door describing the object or subject in that room.",
-	"Your moves are timed, but the timer does not start and your steps are not counted until you move your first object.",
-	"Hints: Use the filmstrip to see what is in all the stacks first. \nIf you are not sure where to go next, "+
-	"pick the oldest date to not skip any room, or look at the map.",
-	"",""]
+		"indicated by the clues she has given you, in bubbles at the left. ",
+	"There are "+DMMnumRoomsC+" rooms in this museum, each containing containing items from the museum."+
+		"\nFull points are awarded for collecting all items with the shortest path between rooms.",
+	"Penalties are given for attempting to collect items that are not in the list. ",
+	"Rooms are arranged somewhat chronologically. "+
+		"Move between rooms by touching/clicking the door to another room.",
+	"",
+	"Hints: Use the filmstrip to see what is in all the stacks. \nTo plan your shortest path, look at the map.",
+	"Click or touch the filmstrip icon "+
+    	"to see all images at full height. Click on the arrows to advance through the deck.",
+	""]
 hTextP = ["","","","","","","",""]
 helpTextP = ["Help and Scoring Rules",
 	"Build and extend a network of topics or objects by dragging them onto the network.",
@@ -440,19 +452,22 @@ helpTextP = ["Help and Scoring Rules",
 	"The game ends after 10 turns each or when each player passes consecutively.",
 	"",
 	"Points (5 pts each) are awarded for each category a player 'owns' at the end of the game."+
-	" A player owns a category if they played "+
+		" A player owns a category if they played "+
 	"more items of that category than the other player.",
 	"Bonus points (10 points) are awarded for any consecutive (in the network, not in turns) placements "+
-	"by the same player with the same category, and (3 points) for insertions between two other placements.",
-	""]
+		"by the same player with the same category, and (3 points) for insertions between two other placements.",
+	"Click or touch the filmstrip icon "+
+    	"to see all images at full height. Click on the arrows to advance through the deck."
+	]
 helpTextSS = ["Help and Scoring Rules",
 	"This is a timed game.",
 	"Click on the image that matches the description in the box.",
 	"Descriptions can be detailed or just a single fact, quote, or vague reference to the event in the image.",
 	"The game ends when you have correctly identified all 16 images.",
 	"You are told at the end how long it took you and how many mistakes you made.",
-	"Your total score is the sum of the most recent 3 games (for each game: 100 - your time - #errors*5).",
-	"After 3 consecutive games, you can post your score to the leaderboard."
+	"Your total score is the sum of the most recent 3 games.",
+	"Click or touch the filmstrip icon "+
+    	"to see all images at full height. Click on the arrows to advance through the deck."
 	]
 helpTextB = ["Help and Scoring Rules",
 	"Your goal is to create the largest buckets you can. Buckets are defined by whatever is common to each item. ",
@@ -464,9 +479,11 @@ helpTextB = ["Help and Scoring Rules",
 	"When there are no more items that share something with all the other items in the bucket, that "+
         "bucket will automatically close. Whenever the selected items are still at the bottom, there is at "+
         "least one more item that will fit in that bucket.",
-	"You can close the current bucket at any time and start a new bucket.",
+	"You can close the current bucket at any time.",
 	"Larger buckets score higher than smaller buckets.\\nThe first buckets are harder and score higher than later ones.",
-	"Mistakes are penalized."
+	"Mistakes are penalized."+
+	"\n\nClick or touch the filmstrip icon "+
+    	"to see all images at full height. Click on the arrows to advance through the deck."
 	]
 
 
