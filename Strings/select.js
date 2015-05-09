@@ -105,6 +105,7 @@ var game_entry = {
 	    	var ysc = 77*IGratio*0.9
 	    	var xoff = ((i %2)==0) ? MIDX-xsc/2-5 : MIDX+xsc/2+5
 	    	var yoff = sc*midvert+Math.floor(i/2)*86*sc
+	    	if (topicCount>10) yoff-= 80*sc
 	    	var icon = (TopicIcons[top]) ? TopicIcons[top] : TopicIcons[EventType2]
 			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
 			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),

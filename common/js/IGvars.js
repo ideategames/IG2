@@ -35,6 +35,7 @@ IGwhite = false
 // these next 4 are reset by each application to be relative paths
 IGgameApp = 'Strings'
 AppPath = "/Strings/"
+// these have been moved to config.js which is loaded before this
 // CommonPath = "/common/"
 // ImgPath = "/stringsThumbs/"
 
@@ -43,7 +44,8 @@ extname = {Strings: 'Strings', Buckets: 'Buckets', Squares: 'Clues', Stacks: 'Ro
 
 IGdebug = true
 IGpartner = ""
-IGisApp = false
+// this has been moved to config.js which is loaded before this
+// IGisApp = false
 Partners = {Museum: 'Museum'}
 EventType2 = ""
 
@@ -257,6 +259,7 @@ var Topics, PTopics
 
 var objectTypes = {Movies: "movie", Museum: "object", Culture: "object", Fashion: "dress", Art: "work of art", 
 	Science: "discovery", Nature: "fact", Cities: "city", Mediterranean: "event",
+	Alaska: "event", AlaskanCities: "city",
 	Dinosaurs: "dinosaur", Literature: "book",
 	default: "item"}
 
@@ -273,15 +276,16 @@ PTopics = {}//{Movies: "Movies", Museum: "Museum",
 //
 // These need to be defined before partner topics to allow partners to redefine them
 //
-var displayTopics = {Movies: "Movies", Museum: "Objects from the British\nMuseum", Culture: "Western\nCulture", Fashion: "Fashion", Art: "Art", 
-	Science: "Discoveries\nin Science", Nature: "Nature", Cities: "City\nLatitudes", 
-		Mediterranean: "Mediterranean\nHistory", Dinosaurs: "Dinosaurs\n(when extinct)",
-		Literature: "Western\nLiterature", AncientHistory: "Ancient\nHistory",
-			Composers: "Western\nComposers"}
+var displayTopics = {Movies: "Movies", Museum: "Objects from the British Museum", Culture: "Western Culture", Fashion: "Fashion", Art: "Art", 
+	Science: "Discoveries in Science", Nature: "Nature", Cities: "City Latitudes", 
+		Mediterranean: "Mediterranean History", Dinosaurs: "Dinosaurs (when extinct)",
+		Literature: "Western Literature", AncientHistory: "Ancient History",
+			Composers: "Western Composers", Alaska: "History of Alaska", AlaskanCities: "Alaskan City Latitudes"}
 var Subjects = {Movies: "Strings of Movies", Museum: "Strings in the British Museum", Culture: "Strings through Western Culture", 
 	Fashion: "Strings of Fashion", Art: "Strings of Art", Science: "Strings in Science Discoveries", Nature: "Strings through Nature",
 	Cities: "Strings between Cities", Mediterranean: "Strings through the Mediterranean",
 	Dinosaurs: "Strings in Dinosaurs", Literature: "Strings through Western Literature",
+	Alaska: "Strings through Alaksan History", AlaskanCities: "Strings through Alaskan Cities",
 	AncientHistory: "Strings through Ancient History",
 			Composers: "Strings of Composers",
 			default: "Strings of Objects"}
@@ -298,7 +302,7 @@ var TopUnits = {Movies: " years", Museum: " years", Culture: " years", Fashion: 
 			default: " years"}
 var ObjTypes = {Movies: "movies", Museum: "objects", Culture: "objects", Fashion: "dresses", Art: "paintings", 
 	Science: "diagrams", Nature: "facts", Cities: "cities", Mediterranean: "events",
-	Dinosaurs: "dinosaurs", Literature: "books",
+	Dinosaurs: "dinosaurs", Literature: "books", Alaska: "events", AlaskanCities: "cities",
 			Composers: "composers",
 			default: "items"}
 // need to define this outside the set topics in case that is not used
@@ -352,6 +356,26 @@ function DMMSetTopics() {
 		StTopics = {Bears: "Bears"}
 		BrTopics = {Museum: "Museum", Science: "Science", Literature: "Literature", 
 			Art: "Art", Composers: "Composers",Culture: "Culture"}
+		if (DMMalias=="wiwax") {
+			Topics.Alaska = "Alaska"
+			Topics.AlaskanCities = "AlaskanCities"
+			Topics.AncientHistory = "AncientHistory"
+			PTopics.Alaska = "Alaska"
+			PTopics.AlaskanCities = "AlaskanCities"
+			PTopics.AncientHistory = "AncientHistory"
+			STopics.Alaska = "Alaska"
+			DTopics.AlaskanCities = "AlaskanCities"
+			STopics.AncientHistory = "AncientHistory"
+			DTopics.Alaska = "Alaska"
+			DTopics.AlaskanCities = "AlaskanCities"
+			DTopics.AncientHistory = "AncientHistory"
+			BTopics.Alaska = "Alaska"
+			BTopics.AlaskanCities = "AlaskanCities"
+			BTopics.AncientHistory = "AncientHistory"
+			BrTopics.Alaska = "Alaska"
+			BrTopics.AlaskanCities = "AlaskanCities"
+			BrTopics.AncientHistory = "AncientHistory"
+		}
 	}
 	IGsetTopicDescrs()
 	EventType2 = (ObjTypes[EventType]) ? EventType : "default"

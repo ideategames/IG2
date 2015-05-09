@@ -51,8 +51,9 @@ function IGgetGameCount() {
     return (DMMscores.length>DMMscoreCount) ? DMMscoreCount : DMMscores.length
 }
 
-
+// these should be defined previously in config.js
 if (!CommonPath) {CommonPath = "/common/"}
+if (!BasePath) {BasePath = "/"}
 
 // have to have a default IP -- but it is ignored
 clientIP = "0.0.0.0"
@@ -1526,6 +1527,9 @@ function IGaddMenuBar(xloc) {
             men15.setAttribute("class", "fa fa-caret-down");
           men14.appendChild(men15);
 
+          var pref = ""
+          IGconsole("IGisApp: "+IGisApp)
+
           var men16 = document.createElement("ul");
           men16.setAttribute("class", "dropdown-menu inGameNav multi-level");
             var men17 = document.createElement("li");
@@ -1543,32 +1547,38 @@ function IGaddMenuBar(xloc) {
               men20.setAttribute("class", "dropdown-menu switchGame");
                 var men22a = document.createElement("li");
                   var men23a = document.createElement("a");
-                  men23a.setAttribute("href", "/launch/bindex.html?alias="+DMMalias+"&partner="+IGpartner);
+                  pref = (IGisApp) ? '../Buckets/index.html' : '/launch/bindex.html'
+                  men23a.setAttribute("href", pref+"?alias="+DMMalias+"&partner="+IGpartner);
                   men23a.innerHTML = "Buckets"
                 men22a.appendChild(men23a);
                 var men22 = document.createElement("li");
                   var men23 = document.createElement("a");
-                  men23.setAttribute("href", "/launch/index.html?alias="+DMMalias+"&partner="+IGpartner);
+                  pref = (IGisApp) ? '../Strings/index.html' : '/launch/index.html'
+                  men23.setAttribute("href", pref+"?alias="+DMMalias+"&partner="+IGpartner);
                   men23.innerHTML = "Strings"
                 men22.appendChild(men23);
                 var men24 = document.createElement("li");
                   var men25 = document.createElement("a");
-                  men25.setAttribute("href", "/launch/ssindex.html?alias="+DMMalias+"&partner="+IGpartner);
+                  pref = (IGisApp) ? '../Squares/index.html' : '/launch/ssindex.html'
+                  men25.setAttribute("href", pref+"?alias="+DMMalias+"&partner="+IGpartner);
                   men25.innerHTML = "Clues"
                 men24.appendChild(men25);
                 var men26 = document.createElement("li");
                   var men27 = document.createElement("a");
-                  men27.setAttribute("href", "/launch/sindex.html?alias="+DMMalias+"&partner="+IGpartner);
+                  pref = (IGisApp) ? '../Stacks/index.html' : '/launch/sindex.html'
+                  men27.setAttribute("href", pref+"?alias="+DMMalias+"&partner="+IGpartner);
                   men27.innerHTML = "Rooms"
                 men26.appendChild(men27);
                 var men28 = document.createElement("li");
                   var men29 = document.createElement("a");
-                  men29.setAttribute("href", "/launch/dindex.html?alias="+DMMalias+"&partner="+IGpartner);
+                  pref = (IGisApp) ? '../Doors/index.html' : '/launch/dindex.html'
+                  men29.setAttribute("href", pref+"?alias="+DMMalias+"&partner="+IGpartner);
                   men29.innerHTML = "Collections"
                 men28.appendChild(men29);
                 var men30 = document.createElement("li");
                   var men31 = document.createElement("a");
-                  men31.setAttribute("href", "/launch/pindex.html?alias="+DMMalias+"&partner="+IGpartner);
+                  pref = (IGisApp) ? '../Paths/index.html' : '/launch/pindex.html'
+                  men31.setAttribute("href", pref+"?alias="+DMMalias+"&partner="+IGpartner);
                   men31.innerHTML = "Paths"
                 men30.appendChild(men31);
               men20.appendChild(men22a);
@@ -1585,7 +1595,7 @@ function IGaddMenuBar(xloc) {
             men32a.setAttribute("class", "divider")
             var men32 = document.createElement("li");
               var men33 = document.createElement("a");
-              men33.setAttribute("href", "/"+IGpartner);
+              men33.setAttribute("href", BasePath+IGpartner);
               men33.innerHTML = "Home";
             men32.appendChild(men33);
             if (!IGisApp && !IGpartner) {
