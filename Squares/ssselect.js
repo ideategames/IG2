@@ -14,7 +14,7 @@ dispatchGame = function() {
 	game.state.start('entry',true,true)
 }
 
-dispatchEvent2 = function(topic) {
+IGdispatchEvent2 = function(topic) {
     IGaddMenuBar(WIDTH/2+IGratio*290+IGxratio*280/2)
 	IGstartSpinner()
 
@@ -102,7 +102,7 @@ var squaresSelect = {
 		// if only 1 topic, jump right to the game (for partners)
 		if (topicCount<2) {
 			var top = Object.keys(Topics)
-			dispatchEvent2(top[0]);
+			IGdispatchEvent2(top[0]);
 			return;
 		}
 
@@ -120,12 +120,12 @@ var squaresSelect = {
 			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
 			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
 			    	image: CommonPath+'pics/'+icon,talign: "left",
-			    	rtn: 'dispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
+			    	rtn: 'IGdispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
 			    if ((top != "Music") || (DMMalias == "wiwax") || (DMMalias == "sara")) {
 				    selTopics[top].inputEnabled=true;
-				    // selTopics[top].events.onInputDown.add(dispatchEvent2,this);
+				    // selTopics[top].events.onInputDown.add(IGdispatchEvent2,this);
 				    selTopics[top].topic = Topics[top]
-				    // IGaddOverlay(selTopics[top],dispatchEvent2,1.0,"icon")
+				    // IGaddOverlay(selTopics[top],IGdispatchEvent2,1.0,"icon")
 				} else {
 					selTopics[top].alpha = 0.3
 					// selTexts[top].alpha = 0.6

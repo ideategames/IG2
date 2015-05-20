@@ -2,7 +2,7 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-  <title>Clues - Match Images to Clues from Ideate Games</title>
+  <title>Clues - Match Images to Clues free from Ideate Games</title>
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <link rel="icon" type="image/x-icon" href="/common/pics/IGlogo_favicon.ico" />
   <meta name="description" content="Clues is the simplest game, a speed-recognition game. You are given 16 images, and presented one description at a time. Each time you touch the correct image for that description, you are given the next, until you get them all right. Currently 4 topics. Includes a leaderboard."/>
@@ -16,6 +16,7 @@
   ga('send', 'pageview');
 
 </script>
+<script src="/config.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,13 +69,12 @@ $(document).ready(function(){
 	});
 	$(this).css("opacity","0");
 	});
-
-	if (qs('alias')) {
-		alias = qs('alias')
-	} else {alias = "anonymous"}
-
 });
-		var alias = ""
+
+  	if (qs('alias')) {
+  		alias = qs('alias')
+  	} else {alias = "anonymous"}
+
 		var currentTopic = ""
         function qs(key) {
             key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars

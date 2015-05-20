@@ -610,7 +610,9 @@ function PCloadPaths() {
 	IGstopSpinner()
 	IGanalytics(['Doors', 'Load', EventType]);
 
-	IGalertDIV("\n\nFind the objects indicated on the left and drag them onto their clues.","auto",false,true,true,16)
+	var dbsiz = "\n\n\n"+DMMnumRooms+" "+ObjTypes[EventType2]+" selected from "+EventNum+" in "+displayTopics[EventType2]+"."
+
+	IGalertDIV("\n\nFind the objects indicated on the left and drag them onto their clues."+dbsiz,"auto",false,true,true,16)
 
 }
 var updcnt = 0

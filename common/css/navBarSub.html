@@ -28,7 +28,15 @@
                 </li>
                 
                 <li class="divider"></li>
-                <li><a href="/">Home</a></li>
+                <li id="homediv">
+                  <script>
+                    var foo = document.getElementById('homediv')
+                    if (!BasePath) {BasePath = "/"}
+                    var nav =BasePath+IGpartner
+                    if (IGpartner) {title = "&nbsp;&nbsp;Ideate Games for "+Partners[IGpartner]}
+                    foo.innerHTML += '<a class="navbar-brand" href="'+nav+'">&nbsp;&nbsp;Ideate Games</a>'
+                  </script>
+                </li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/players.html">Players</a></li>
                 <li><a href="/content.html">Educators</a></li>

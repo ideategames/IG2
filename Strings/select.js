@@ -15,37 +15,7 @@
 */
 var CleanupList = []
 var iTopics = []
-dispatchGame = function() {
-	game.state.start('entry',true,true)
-}
 
-dispatchEvent2 = function(topic) {
-    IGaddMenuBar(WIDTH/2+IGxratio*304+IGxratio*123)
-	IGstartSpinner()
-
-	DMMgameReset()
-	IGconsole("Topic: "+topic)
-	EventType = topic
-
-	$.getScript(CommonPath+"js/"+EventType+"_data.js", function(data, textStatus) {
-	  // IGconsole(data); //data returned
-	  IGconsole("file load: "+textStatus+":"+EventNum); //success
-	  window.setTimeout(dispatchGame,100)
-	});
-	    // DMMGetHttpRequest({query: "getTopicFull"},"getTopicFull")
-
-	    // function partB() {
-	    // 	if (IGactiveComm) {
-	    // 		window.setTimeout(partB,500)
-	    // 	} else {window.setTimeout(dispatchGame,1000)}
-
-	    // }
-	    // // the timeout is to be sure that the initial fetch of data above 
-	    // // is completed before drawing the screen. 
-	    // // Eventually, we will put a subject choice screen first, but this
-	    // // is needed for now.
-	    // window.setTimeout(partB,500)
-}
 function enter_fullscreen() {
 	game.stage.scale.startFullScreen();
 
@@ -91,7 +61,7 @@ var game_entry = {
 		// if only 1 topic, jump right to the game (for partners)
 		if (topicCount<2) {
 			var top = Object.keys(Topics)
-			dispatchEvent2(top[0]);
+			IGdispatchEvent2(top[0]);
 			return;
 		}
 
@@ -110,7 +80,7 @@ var game_entry = {
 			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
 			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
 			    	image: CommonPath+'pics/'+icon,talign: "left",
-			    	rtn: 'dispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
+			    	rtn: 'IGdispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
 		    if ((top == "Music") && (DMMalias != "sara") && (DMMalias != "wiwax")) {
 		    	selTexts[top].alpha = 0.6
 		    }

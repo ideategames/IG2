@@ -14,8 +14,9 @@
               </button>
               <script>
                 var foo = document.getElementById('headerdiv')
+                if (!BasePath) {BasePath = "/"}
                 var title = "&nbsp;&nbsp;Ideate Games"
-                var nav = "/"+IGpartner
+                var nav = BasePath+IGpartner
                 if (IGpartner) {title = "&nbsp;&nbsp;Ideate Games for "+Partners[IGpartner]}
                 foo.innerHTML += '<a class="navbar-brand" href="'+nav+'">'+title+'</a>'
               </script>

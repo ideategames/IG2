@@ -60,7 +60,14 @@ function SshowHelp() {
 function SshowName(ev) {
 	var objnum = (isAndroid || isFireFox) ? ev.iloc : ev
     var onoff = (events[objnum].hidden) ? true : false
-    IGhide(titlestxt[objnum],onoff)
+    IGhide(titlestxt[objnum],false)
+    // IGhide(titleshade[ev.idx],onoff)
+    events[objnum].hidden = !onoff
+}
+function ShideName(ev) {
+	var objnum = (isAndroid || isFireFox) ? ev.iloc : ev
+    var onoff = (events[objnum].hidden) ? true : false
+    IGhide(titlestxt[objnum],true)
     // IGhide(titleshade[ev.idx],onoff)
     events[objnum].hidden = !onoff
 }
@@ -567,7 +574,7 @@ function loadGame() {
     	} else {
 		    drags = {denter: spriteMoving, dstart: spriteTouched,  dend: spriteMoved, 
 		    	dover: targetHighlight, ddrop: arrowHit, touch: 'spriteTouchedDIV('+i+')',
-		    	mouseover: 'SshowName('+i+')', mouseout: 'SshowName('+i+')'}
+		    	mouseover: 'SshowName('+i+')', mouseout: 'ShideName('+i+')'}
 		    events[i] = IGaddSpriteDIV({xloc:WIDTH/2+adj*arrowLoc.spacing,yloc:arrowLoc.y, halo: true,
 		    	ifile:ievents[i],width:bubbleW+4,height:bubbleW+4,fcns: drags});
     	}
@@ -597,7 +604,7 @@ function loadGame() {
 	    	// 	evTitles[i], tsty);
 	   		if (isAndroid || isFireFox) {
 	    		events[i].events.onInputOver.add(SshowName,this)
-	    		events[i].events.onInputOut.add(SshowName,this)
+	    		events[i].events.onInputOut.add(ShideName,this)
 	    	}
     	}
    		IGhide(titlestxt[i],true)
@@ -615,8 +622,9 @@ function loadGame() {
 
 	IGstillTrying = true
 
+	var dbsiz = "\n\n9 "+ObjTypes[EventType2]+" selected from "+EventNum+" in "+displayTopics[EventType2]+"."
 //		waiting.visible = false
-	instruct2.setText("The shortest span is " + shortest + typ)
+	instruct2.setText("The shortest span is " + shortest + typ+dbsiz)
 	instruct2.visible = true
 
 	if (preloadBar) {preloadBar.visible = false; preloadBar.destroy()}
@@ -706,7 +714,7 @@ var sequence = {
 				wordWrapWidth: rx(600) };
 	    	var tsty2 = {font: 'bold '+(siz2+1)+"px Arial", fill: "#000", align: "center", wordWrap: true,
 				wordWrapWidth: rx(600) };
-	    	instruct = IGaddText(WIDTH/2, HEIGHT/2-(IGyratio*20), it, tsty);
+	    	instruct = IGaddText(WIDTH/2, HEIGHT/2+(IGyratio*16), it, tsty);
 	    	instruct2 = IGaddText(WIDTH/2, 3*HEIGHT/4 - 60, "Loading...", tsty2);
 	    } else {
 			instruct = IGaddDivText({xloc:WIDTH/2, yloc:HEIGHT/2-(IGyratio*20), text:it, 

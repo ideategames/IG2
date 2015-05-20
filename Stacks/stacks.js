@@ -679,7 +679,9 @@ function PSloadPaths() {
 	IGstopSpinner()
 	IGanalytics(['Stacks', 'Load', EventType]);
 
-	IGalertDIV("\n\nUse the cart on the left to carry each object to the correct room.","auto",false,true,true,16)
+	var dbsiz = "\n\n\n"+DMMnumRooms+" "+ObjTypes[EventType2]+" randomly selected from "+EventNum+" in "+displayTopics[EventType2]+"."
+
+	IGalertDIV("\n\nUse the cart on the left to carry each object to the correct room."+dbsiz,"auto",false,true,true,16)
 
 }
 var updcnt = 0

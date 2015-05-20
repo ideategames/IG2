@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+	<url>
+	  <loc>http://www.ideategames.org/</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/about.html</loc>
+	  <changefreq>yearly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/players.html</loc>
+	  <changefreq>yearly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/content.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/credits.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+
+	<url>
+	  <loc>http://www.ideategames.org/launch/index.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/launch/bindex.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/launch/sindex.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/launch/dindex.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/launch/ssindex.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/launch/pindex.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+
+
+	<url>
+	  <loc>http://www.ideategames.org/Strings/index.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/Buckets/index.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/Clues/index.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/Rooms/index.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/Collections/index.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ideategames.org/Paths/index.html</loc>
+	  <changefreq>monthly</changefreq>
+	</url>
+
+</urlset>

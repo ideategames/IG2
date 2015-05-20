@@ -47,6 +47,14 @@ var FBuserID, IGuseFB
 // very important for Facebook awards
 DMMscoreCount = 3
 
+// Event flag mechanism to force synchronicity
+//
+var EFL1,EFL2,EFL3
+
+function IGwfef(flag) {
+    while (!flag) {if (flag) {IGconsole("flag set")}}
+}
+
 function IGgetGameCount() {
     return (DMMscores.length>DMMscoreCount) ? DMMscoreCount : DMMscores.length
 }
@@ -158,6 +166,35 @@ function exit_fullscreen() {
 function notReady() {
 	alert("Not ready yet.")
 }
+
+IGdispatchGame = function() {
+    game.state.start('entry',true,true)
+}
+
+IGdispatchEvent2 = function(topic) {
+    IGaddMenuBar(WIDTH/2+IGxratio*304+IGxratio*123)
+    IGstartSpinner()
+
+    DMMgameReset()
+    IGconsole("Topic: "+topic)
+    EventType = topic
+
+    $.getScript(CommonPath+"js/"+EventType+"_data.js", function(data, textStatus) {
+      // IGconsole(data); //data returned
+      IGconsole("file load: "+textStatus+":"+EventNum); //success
+      window.setTimeout(IGdispatchGame,100)
+    });
+}
+
+// function IGloadImage(iname,img) {
+//     try {
+//         game.load.image(iname, img)
+//         IGconsole("found image")
+//     } catch (e) {
+//         game.load.image(iname, CommonPath+'pics/default_Icon.png')
+//         IGconsole("loaded default image")
+//     }
+// }
 function IGcalcTotalScore() {
     var countStop = DMMscores.length - IGgetGameCount()
     var totScore = 0
@@ -430,15 +467,11 @@ function IGsetGlobalFunctions(register) {
         game.load.image('pwdbox', CommonPath+'pics/passwordBox.png');
         game.load.image('blankscreen',CommonPath+'pics/blankScreen.png')
         game.load.image('IGblankBut',CommonPath+'pics/blankBut.png')
-        game.load.image("close", CommonPath+'pics/close.png');
         game.load.image(URLbut, CommonPath+'pics/grey_l.png');
         game.load.image('filmback', CommonPath+'pics/filmBack.png');
-        game.load.image("filmstrip", CommonPath+'pics/filmstrip.png');
-        game.load.image("close", CommonPath+'pics/close.png');
         game.load.image('tbutton', CommonPath+'pics/blank_text_l.png');
 
         game.load.image(IGendBtn,CommonPath+'pics/endBtn.png')
-        game.load.image('menu',CommonPath+'pics/menuIcon.png')
 
 }
 function IGturnOff(ev) {
@@ -1118,13 +1151,14 @@ function IGupdateWizardStatus() {
     FBendDIV.innerHTML = ("\n\nYou are now ranked a "+wizards[IGwizardLevel]+" "+displayTopics[EventType].replace('\n',' ')+"!")
 }
 function IGcheckFacebookStatus() {
+    var fbs
     if (IGuseFB && !FBuserID && !IGisApp) {
-        var fbs = FB.getLoginStatus(function(response) {
             try {
-                IGconsole("userID: "+response.authResponse.userID)
-                FBuserID = response.authResponse.userID
+                fbs = FB.getLoginStatus(function(response) {
+                    IGconsole("userID: "+response.authResponse.userID)
+                    FBuserID = response.authResponse.userID
+                });
             } catch (e) {IGconsole("no FB status")}
-        });
     }
     IGconsole("FBS result: "+fbs+":"+FBuserID)
     // if (FBuserID) {

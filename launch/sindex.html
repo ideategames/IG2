@@ -2,7 +2,7 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-  <title>Rooms - A Museum Room and Sorting Game from Ideate Games</title>
+  <title>Rooms - A Museum Room and Sorting Game free from Ideate Games</title>
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <link rel="icon" type="image/x-icon" href="/common/pics/IGlogo_favicon.ico" />
   <meta name="description" content="Rooms is a museum game. Your task is move mis-placed objects to the correct room, based on clues about the objects. Currently 4 topics."/>
@@ -16,6 +16,7 @@
   ga('send', 'pageview');
 
 </script>
+<script src="/config.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,13 +68,12 @@ $(document).ready(function(){
 	});
 	$(this).css("opacity","0");
 	});
+});
 
 	if (qs('alias')) {
 		alias = qs('alias')
 	} else {alias = "anonymous"}
 
-});
-		var alias = ""
 		var currentTopic = ""
         function qs(key) {
             key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars

@@ -103,6 +103,7 @@ function BgetAllCategories() {
 }
 function Bbucketlist() {
 	bucketList = BgetAllCategories()
+	return bucketList
 }
 function BbucketlistFormat() {
 	var CategoryMsg = "\\n"
@@ -173,12 +174,12 @@ function BcalcBucketsAll() {
 }
 
 function BshowCategories() {
-	var CategoryMsg = "\\n\\nBuckets for the remaining images:"
+	var CategoryMsg = "\\n\\nBuckets for the remaining images:\n"
 	if (DMMlevel==2) {
 		for (key in PoolBuckets) {
 			if (PoolBuckets[key]>0) {CategoryMsg = CategoryMsg+"\\n"+key}
 		}		
-	} else {CategoryMsg+=Bbucketlist()}
+	} else {CategoryMsg+=Bbucketlist().toString().replace(/,/g,", ")}
 	
     IGanalytics(['Buckets', 'Categories', EventType]);
 	IGalertDIV(CategoryMsg,"auto",false,true,true,13)
@@ -1074,7 +1075,9 @@ var gameEntry = {
 			"\nDate buckets are a maximum of 20 years end-to-end."+CategoryMsg
 		if (EventType=="Museum") {imsg += "\n\nIn this Museum topic, 'art' is too large a category and has been excluded."}
 
-		IGalertDIV(imsg,"auto",false,true,true,14,true)
+	    var dbsiz = "\n\n\n"+numSquares+" "+ObjTypes[EventType2]+" selected from "+EventNum+" in "+displayTopics[EventType2]+"."
+
+		IGalertDIV(imsg+dbsiz,"auto",false,true,true,14,true)
 
 	    helpTextLocal = "\n\n"+helpTextB[0]
 	    for (var i=1; i<8; i++) {helpTextLocal = helpTextLocal + "\n\n"+helpTextB[i]}

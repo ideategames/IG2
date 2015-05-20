@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /stringsThumbs/
+Disallow: /partners/
+Disallow: /common/
+Disallow: /cgi-bin/

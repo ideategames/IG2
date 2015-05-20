@@ -14,7 +14,7 @@ dispatchGame = function() {
 	game.state.start('doors',true,true)
 }
 
-dispatchEvent2 = function(topic) {
+IGdispatchEvent2 = function(topic) {
     IGaddMenuBar(WIDTH/2+IGratio*304+IGxratio*123)
 	IGstartSpinner()
 	EventType = topic
@@ -92,7 +92,7 @@ var doorsSelect = {
 		// if only 1 topic, jump right to the game (for partners)
 		if (topicCount<2) {
 			var top = Object.keys(DTopics)
-			dispatchEvent2(top[0]);
+			IGdispatchEvent2(top[0]);
 			return;
 		}
 
@@ -108,7 +108,7 @@ var doorsSelect = {
 			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
 			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
 			    	image: CommonPath+'pics/'+icon,talign: "left",
-			    	rtn: 'dispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
+			    	rtn: 'IGdispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
 
 			    i++;
 		}

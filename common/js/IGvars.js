@@ -272,6 +272,8 @@ STopics = {}//{Movies: "Movies", Museum: "Museum",
 	// Science: "Science", Mediterranean: "Mediterranean", Literature: "Literature", Culture: "Culture"}
 PTopics = {}//{Movies: "Movies", Museum: "Museum", 
 	// Science: "Science", Literature: "Literature", Art: "Art", Cities: "Cities"}
+BTopics = {}//{Movies: "Movies", Museum: "Museum", 
+	// Science: "Science", Literature: "Literature", Art: "Art", Cities: "Cities"}
 
 //
 // These need to be defined before partner topics to allow partners to redefine them
@@ -298,7 +300,7 @@ var TopicIcons = {Movies: 'movies_Icon.png', Museum: 'museum_Icon.png', Culture:
 var TopUnits = {Movies: " years", Museum: " years", Culture: " years", Fashion: " years", Art: " years", 
 	Science: " years", Nature: "", Cities: " degrees of latitude", Mediterranean: " years",
 	Dinosaurs: " million years", Literature: " years", AncientHistory: " years",
-			Composers: " years",
+			Composers: " years", Alaska: " years", AlaskanCities: " degrees of latitude",
 			default: " years"}
 var ObjTypes = {Movies: "movies", Museum: "objects", Culture: "objects", Fashion: "dresses", Art: "paintings", 
 	Science: "diagrams", Nature: "facts", Cities: "cities", Mediterranean: "events",
@@ -330,14 +332,13 @@ function IGsetTopicDescrs() {
 	}
 }
 IGsetTopicDescrs()
+IGpartnerLoaded = false
 function DMMSetTopics() {
-	if (IGpartner) {
-		IGconsole("getting topic for: "+IGpartner)
-		$.getScript("/common/js/"+IGpartner+"_topics.js", function(data, textStatus) {
-		  // IGconsole(data); //data returned
-		  IGconsole("topic list load: "+textStatus+":"+EventNum); //success
-		});
-	} else {
+
+	// set all the topics first, before checking for partner
+	// in case partner file not found
+	if (!IGpartnerLoaded) {
+		IGconsole("setting topics")
 		Topics = {Museum: "Museum",
 			Science: "Science", Literature: "Literature", Art: "Art", Composers: "Composers", Culture: "Culture", 
 			Movies: "Movies", Nature: "Nature", Cities: "Cities"}
@@ -376,7 +377,24 @@ function DMMSetTopics() {
 			BrTopics.AlaskanCities = "AlaskanCities"
 			BrTopics.AncientHistory = "AncientHistory"
 		}
+		EF1 = false
+		if (IGpartner) {
+			IGconsole("getting topic for: "+IGpartner)
+			var request = $.getScript("/common/js/"+IGpartner+"_topics.js")
+			request.done(function(data, textStatus) {
+				  // IGconsole(data); //data returned
+				  IGconsole("topic list load: "+textStatus+":"+IGpartner);
+				  IGpartnerLoaded = true
+				  game.state.start('select',true,true)
+				});
+			request.fail(function() {
+					IGconsole("no data")
+				});
+
+		}
 	}
+	if (EF1) {IGconsole("data done")}
+
 	IGsetTopicDescrs()
 	EventType2 = (ObjTypes[EventType]) ? EventType : "default"
 	IGconsole("EventType2: "+EventType2)

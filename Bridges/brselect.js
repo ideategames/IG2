@@ -16,7 +16,7 @@ dispatchGame = function() {
 	game.state.start(selpath,true,true)
 }
 
-dispatchEvent2 = function(topic) {
+IGdispatchEvent2 = function(topic) {
     IGaddMenuBar(WIDTH/2+IGxratio*436)
 	IGstartSpinner()
 
@@ -134,7 +134,7 @@ var bucketsSelect = {
 		// if only 1 topic, jump right to the game (for partners)
 		if (topicCount<2) {
 			var top = Object.keys(BrTopics)
-			dispatchEvent2(top[0]);
+			IGdispatchEvent2(top[0]);
 			return;
 		}
 
@@ -151,7 +151,7 @@ var bucketsSelect = {
 			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
 			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
 			    	image: '/common/pics/'+icon,talign: "left",
-			    	rtn: 'dispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
+			    	rtn: 'IGdispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
 
 			    i++;
 		}

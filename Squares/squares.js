@@ -334,7 +334,7 @@ var gameEntry = {
             else {clue = 'date';altclue = "actor"}
             titleclue = 'image'
         case 'Alaska':
-            var ch = Math.floor(Math.random()*2)
+            var ch = Math.floor(Math.random()*3)
             switch (ch) {
                 case 0:
                     clue = "description";
@@ -342,7 +342,12 @@ var gameEntry = {
                     titleclue = 'image'
                     break;
                 case 1:
-                    clue = 'objects';
+                    clue = 'date';
+                    altclue = "description"
+                    titleclue = 'image'
+                    break;
+                case 2:
+                    clue = 'date';
                     altclue = "description"
                     titleclue = 'image'
                     break;
@@ -507,7 +512,7 @@ var gameEntry = {
             if (voff>2 && titles[i].length<26) {voff=2}
             titlestxt[i] = IGaddDivText({xloc:sqLoc.x+(xoff*sqspacing),
                 yloc:sqLoc.y+(yoff*sqspacing)-IGratio*(8+voff*15),
-          	    size:Math.ceil(17*IGratio),text:titles[i],width:0.8*sqspacing,color:"#fff",weight:100,
+          	    size:Math.ceil(17*IGratio),text:titles[i],width:0.8*sqspacing,color:"#fff",weight:300,
                 rtn: "SScheckHitDiv", arg: i.toString()})
             titlestxt[i].idx = i
             titleshade[i] = IGaddSprite(sqLoc.x+(xoff*sqspacing),sqLoc.y+(yoff*sqspacing),'shade')
@@ -582,7 +587,9 @@ var gameEntry = {
     helpTextLocal = helpTextSS[0]
     for (var i=1; i<8; i++) {helpTextLocal = helpTextLocal + "\n\n"+helpTextSS[i]}
 
-    IGalertDIV("\n\nTap the image that matches each clue.","auto",false,true,true,16)
+    var dbsiz = "\n\n\n"+numSquares+" "+ObjTypes[EventType2]+" selected from "+EventNum+" in "+displayTopics[EventType2]+"."
+
+    IGalertDIV("\n\nTap the image that matches each clue."+dbsiz,"auto",false,true,true,16)
   },
 
   update: function() {

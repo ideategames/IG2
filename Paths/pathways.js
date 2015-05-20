@@ -1066,7 +1066,10 @@ var enter_pathway = {
 			"",tsty);
 		instruct.scale.setTo(1.0)
 
-		IGalertDIV("\n\n"+instructTextP,"auto",false,true,true,16)
+	    var dbsiz = "\n\n\n"+ievents.length+" "+ObjTypes[EventType2]+" selected from "+EventNum+" in "+displayTopics[EventType2]+"."
+
+
+		IGalertDIV("\n\n"+instructTextP+dbsiz,"auto",false,true,true,16)
 
 	    helpTextLocal = helpTextP[0]
 	    for (var i=1; i<8; i++) {helpTextLocal = helpTextLocal + "\n\n"+helpTextP[i]}
