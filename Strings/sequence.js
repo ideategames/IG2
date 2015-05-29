@@ -33,8 +33,10 @@ var numMistakes = 0
 var BASESCORE = 20
 var MINSCORE = BASESCORE/2
 var MAXPENALTY = BASESCORE/2
-var BCEBONUS = 3
+var BCEBONUS = 5
 var maxSpanPts = 15
+var maxTime = 60
+
 function DMMmenu() {
 	// last three parameters are small, skip header, and put lower
     IGendGame({msg: 'You are in the middle of a game. Selecting any button but the first will abort this game.',
@@ -76,6 +78,12 @@ function ShideAllNames() {
 	    IGhide(titlestxt[t],true)
 	}
 }
+function SshowFinishedNames() {
+	for (var t=0;t<titlestxt.length;t++) {
+		IGconsole("yloc: "+titlestxt[t].yloc())
+	    if (titlestxt[t].yloc()<HEIGHT/3) {IGhide(titlestxt[t],false)}
+	}
+}
 function setScoresVisible(onoff) {
 	hscore.visible = onoff
 	hbon.visible = onoff
@@ -108,7 +116,7 @@ function calcScore() {
 	var timePenalty = 0
 	if (IGnumSecs < maxTime) {
 		timeBonus = Math.round((maxTime/IGnumSecs) * 5)
-		if (timeBonus > 10) {timeBonus = 10}
+		if (timeBonus > 12) {timeBonus = 12}
 		if (numChecks < 2) {IGconsole("BIG BONUS"); firstBonus = 10}
 	} else {
 		// // calculate time penalty -- NO, ABANDON THIS
@@ -227,6 +235,7 @@ function isReady() {
 var endMsg, userDataMsg
 function endGame() {
 	// do this as a final act to catch swap arrows left on Android platform
+		SshowFinishedNames()
 	setEndText()
 	var ldr = true
 	if (!IGisIGServer) {ldr = false}
@@ -527,7 +536,8 @@ function loadGame() {
     //  This creates a simple sprite that is using our loaded image and
     //  displays it on-screen
     var ff = Math.floor(15*IGxratio).toString()
-    var f2 = Math.floor(13*IGxratio).toString()
+	var twid = 230*IGxratio//(isAndroid || isiOS) ? 250 : 250
+    // var f2 = Math.floor(13*IGxratio).toString()
    //  var targtsty = { font: "12px Arial", fill: "#ddffdd", align: "center", wordWrap: true,
 			// wordWrapWidth: targsLoc.spacing };
    	var drags
@@ -543,7 +553,7 @@ function loadGame() {
 	    targs[i].iloc = i
 	    targs[i].istarget = true
 	    targtexts[i] = IGaddText({xloc:(i+1)*WIDTH/(targs.length+1)-rx(4), yloc: targsLoc.y+ry(98), text: "[ ]", 
-	    	size: ff, weight: 300, vtop: true, width: 100, height: 60 });
+	    	size: ff, weight: 300, vtop: true, width: twid, height: 60 });
 	    targs[i].dattext = targtexts[i]
 	    // set the arrows between targets
 	    if (i<targs.length-1) {
@@ -593,8 +603,7 @@ function loadGame() {
 	    	// evt[i].scale.setTo(sc,sc)
 	    	// events[i].txt = evt[i]
 	    // new scheme allows full width on tablets
-	    var twid = (isAndroid || isiOS) ? 250 : 250
-	    var fsiz = (isAndroid || isiOS) ? f2 : ff
+	    var fsiz = ff//(isAndroid || isiOS) ? f2 : ff
 	   //  var tsty = {font: ff+"px Arial", fill: "#000", align: "center", wordWrap: true,
 				// wordWrapWidth: IGratio*twid }
 	    if (EventType !="Other") {
@@ -776,7 +785,7 @@ var sequence = {
 	        if (EventType.indexOf("Cities")>=0) {
 	        	evTitles[i] = EventVars[EventType][r].description
 	        	evDescriptions[i] = EventVars[EventType][r].actor
-	        } else if ((EventType=="Science") || (EventType=="Alaska")) {
+	        } else if ((EventType=="Science") || (EventType=="Alaska") || (EventType=="GeoEras")) {
 	        	var pos = EventVars[EventType][r].image.lastIndexOf('.')
 	        	evTitles[i] = EventVars[EventType][r].image.substr(0,pos).replace('01','').replace(/_/g," ").trim()
 			} else {evTitles[i] = EventVars[EventType][r].actor.trim()}
@@ -819,6 +828,7 @@ var sequence = {
 
 	},
 	create: function() {
+		if (EventType=="GeoEras") {BCEBONUS=0}
 		if (isAndroid || isFireFox) {
 			halo = IGaddSprite(-200,-200,'halo')
 			halo.scale.setTo(IGratio*0.77)

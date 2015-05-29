@@ -47,13 +47,13 @@ a {
 }
 .rules {
     position: absolute;
-    top: 85%;
+    top: 15%;
     left: 10%;
     font-size:32px;
 }
 .credits {
     position: absolute;
-    top: 85%;
+    top: 15%;
     left: 82%;
     font-size:32px;
 }
@@ -206,4 +206,7 @@ a {
 }
 #composers {
     background-image:url('/common/pics/composer_Icon.png');
+}
+#default {
+    background-image:url('/common/pics/default_Icon.png');
 }

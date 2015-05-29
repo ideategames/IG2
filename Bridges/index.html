@@ -4,6 +4,8 @@
     <head>
         <meta charset="UTF-8" />
         <title>Bridges from Ideate Games</title>
+<script src="/config.js"></script>
+
 <script src="../../../../common/js/IGga.js"></script>
 
     <link href="../../../../common/css/bootstrap.min.css" rel="stylesheet">
@@ -50,10 +52,8 @@
                 return false;
             }
 
-        // if (!qs('pwd')) {
-        //     window.location.replace("http://www.ideategames.org")
-        // } else {
-            window.onload = function() {
+        $(document).ready(function() {
+            IGga();
 
                 var loc = window.location.pathname;
                 AppPath = loc.substring(0, loc.lastIndexOf('/')+1);
@@ -166,8 +166,8 @@
                 IGdefineScales()
                 IGgameApp = 'Bridges'
 
-            };
-        // }
+        });
+
     $(function(){
       $("#includedSubMenu").load("/common/css/navBarSub.html"); 
     });

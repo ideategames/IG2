@@ -62,9 +62,9 @@ function myIP() {
     return false;
 }
 
-  window.onload = function() {
+    $(document).ready(function() {
 
-    IGga();
+                IGga();
 
                 var loc = window.location.pathname;
                 AppPath = loc.substring(0, loc.lastIndexOf('/')+1);
@@ -147,26 +147,26 @@ function myIP() {
                 game.width = WIDTH;
                 game.height = HEIGHT;
 
-    // game = new Phaser.Game(WIDTH, HEIGHT, Phaser.AUTO, 'gameDiv');
-    if (EventType.length>2) {
-        // must fetch the topic data
-        // var tmp = {topic: EventType}
-        IGdispatchEvent2(EventType)
-        game.state.add('entry', gameEntry);
-        game.state.add('select', squaresSelect);
-    } else {
-        game.state.add('entry', gameEntry);
-        game.state.add('select', squaresSelect, true);
-    }
-    // starting with transparent game then switching to this
-    // avoids the initial black screen
-    // game.transparent = false
+        // game = new Phaser.Game(WIDTH, HEIGHT, Phaser.AUTO, 'gameDiv');
+        if (EventType.length>2) {
+            // must fetch the topic data
+            // var tmp = {topic: EventType}
+            IGdispatchEvent2(EventType)
+            game.state.add('entry', gameEntry);
+            game.state.add('select', squaresSelect);
+        } else {
+            game.state.add('entry', gameEntry);
+            game.state.add('select', squaresSelect, true);
+        }
+        // starting with transparent game then switching to this
+        // avoids the initial black screen
+        // game.transparent = false
 
-    IGwhite = true
-    IGgameApp = 'Squares'
+        IGwhite = true
+        IGgameApp = 'Squares'
 
 
-  }
+    });
     $(function(){
       $("#includedSubMenu").load("/common/css/navBarSub.html"); 
     });

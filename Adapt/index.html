@@ -5,6 +5,7 @@
         <meta charset="UTF-8" />
         <title>Adapt from Ideate Games</title>
 <meta name="viewport" content="width=device-width, minimal-ui">
+<script src="/config.js"></script>
 <script src="/common/js/IGga.js"></script>
 <script>
 
@@ -73,7 +74,8 @@ function myIP() {
 
         </script>
     <script type="text/javascript" >
-                window.onload = function() {
+        $(document).ready(function() {
+            IGga();
 
                 var loc = window.location.pathname;
                 //AppPath = loc.substring(0, loc.lastIndexOf('/')+1);
@@ -179,8 +181,7 @@ function myIP() {
                 IGisPublic = true
                 IGgameApp = 'Adapt'
 
-            IGga();
-            };
+        });
     $(function(){
       $("#includedSubMenu").load("/common/css/navBarSub.html"); 
     });

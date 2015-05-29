@@ -3,8 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8" />
-        <title>Buckets from Ideate Games</title>
+        <title>Snark from Ideate Games</title>
+<meta name="viewport" content="width=device-width, minimal-ui">
+<script src="/config.js"></script>
 <script src="/common/js/IGga.js"></script>
+<script>
+
+
+  // enables drag&drop enter and leave events on iOS
+  var iosDragDropShim = { enableEnterLeave: true }
+
+                var ua = navigator.userAgent;
+                var plat = navigator.platform
+                isKindle = /Kindle/i.test(ua) || /Silk/i.test(ua) || /KFTT/i.test(ua) || /KFOT/i.test(ua) || /KFJWA/i.test(ua) || /KFJWI/i.test(ua) || /KFSOWI/i.test(ua) || /KFTHWA/i.test(ua) || /KFTHWI/i.test(ua) || /KFAPWA/i.test(ua) || /KFAPWI/i.test(ua);
+                // fill the screen as much as possible, but need a 10 px border
+                isAndroid = (ua.indexOf('Android') != -1) ? true : false
+                isGalaxy = (ua.indexOf('GT-') != -1) ? true : false
+                isiOS = ((ua.indexOf('iPhone') != -1) || (ua.indexOf('iPad') != -1) ) ? true : false
+                isFireFox = (ua.toLowerCase().indexOf('firefox') != -1) ? true : false
+
+</script>
     <link href="/common/css/bootstrap.min.css" rel="stylesheet">
     <link href="/common/css/carousel.css" rel="stylesheet" type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
@@ -16,58 +34,56 @@
     <script src="/common/js/sha1.js"></script>
 
     <script type="text/javascript" src="/common/js/raphael-min.js"></script>
+    <script type="text/javascript" src="/common/js/dracula_graffle.js"></script>
+    <script type="text/javascript" src="/common/js/dracula_graph.js"></script>
+    <script type="text/javascript" src="/common/js/dracula_algorithms.js"></script>
     <script type="text/javascript" src="/common/js/spin.min.js"></script>
  
-    <script type="text/javascript" src='/config.js?v=1'></script>
-        <script src="/common/js/common_net.js?v=1"></script>
+    <script type="text/javascript" src="/common/js/common_net.js?v=1"></script>
 
-        <script src="/Buckets/Buckets_net.js?v=1"></script>
-
+    <script type="text/javascript" src='/Snark/Snark_net.js?v=1'></script>
 
         <script type="text/javascript">
 
+function myIP() {
+    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+    xmlhttp.send();
+
+    hostipInfo = xmlhttp.responseText.split("\n");
+
+    for (i=0; hostipInfo.length >= i; i++) {
+        ipAddress = hostipInfo[i].split(":");
+        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    }
+
+    return false;
+}
             function qs(key) {
                 key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
                 var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
                 return match && decodeURIComponent(match[1].replace(/\+/g, " "));
             }
-            function myIP() {
-                if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-                else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-
-                xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
-                xmlhttp.send();
-
-                hostipInfo = xmlhttp.responseText.split("\n");
-
-                for (i=0; hostipInfo.length >= i; i++) {
-                    ipAddress = hostipInfo[i].split(":");
-                    if ( ipAddress[0] == "IP" ) return ipAddress[1];
-                }
-
-                return false;
-            }
-
         // if (!qs('pwd')) {
         //     window.location.replace("http://www.ideategames.org")
         // } else {
-            $(document).ready(function() {
 
-                IGga();
+        // }
+
+        </script>
+    <script type="text/javascript" >
+        $(document).ready(function() {
+            IGga();
 
                 var loc = window.location.pathname;
-                AppPath = loc.substring(0, loc.lastIndexOf('/')+1);
+                //AppPath = loc.substring(0, loc.lastIndexOf('/')+1);
+                AppPath = '/Snark/'
+                CommonPath = "/common/"
+                ImgPath = "/stringsThumbs/"
                 IGisApp = false
 
-                var ua = navigator.userAgent;
-                var plat = navigator.platform
-                isKindle = /Kindle/i.test(ua) || /Silk/i.test(ua) || /KFTT/i.test(ua) || /KFOT/i.test(ua) || /KFJWA/i.test(ua) || /KFJWI/i.test(ua) || /KFSOWI/i.test(ua) || /KFTHWA/i.test(ua) || /KFTHWI/i.test(ua) || /KFAPWA/i.test(ua) || /KFAPWI/i.test(ua);
-                // fill the screen as much as possible, but need a 10 px border
-                isAndroid = (ua.indexOf('Android') != -1) ? true : false
-                isGalaxy = (ua.indexOf('GT-') != -1) ? true : false
-                isiOS = ((ua.indexOf('iPhone') != -1) || (ua.indexOf('iPad') != -1) ) ? true : false
-                isDolphin = (ua.indexOf('Dolphin') != -1) ? true : false // this doesn't work, Dolphin IDs as Safari, exactly
-                isFireFox = (ua.toLowerCase().indexOf('firefox') != -1) ? true : false
                 var swid = window.innerWidth
                 var shgt = window.innerHeight
 
@@ -76,13 +92,17 @@
                     // console.log("Kindle")
                     HEIGHT = (shgt>swid) ? swid-20 : shgt-20
                     WIDTH = (swid>shgt) ? swid-20 : shgt-20
-                    // game = new Phaser.Game(WIDTH,HEIGHT, Phaser.CANVAS, '',null);
+                    // HEIGHT = HEIGHT * 0.8
+                    // WIDTH = WIDTH * 0.8
+                   // game = new Phaser.Game(WIDTH,HEIGHT, Phaser.CANVAS, '',null,true);
                 } else if (isGalaxy) {
                     // console.log("Galaxy")
                     // even with 1.33 device/pixel ratio, have to use window width
                     HEIGHT = (shgt>swid) ? swid-20 : shgt-20
                     WIDTH = (swid>shgt) ? swid-20 : shgt-20
-                    // game = new Phaser.Game(WIDTH,HEIGHT, Phaser.CANVAS, 'game',null);
+                    // game = new Phaser.Game(WIDTH,HEIGHT, Phaser.CANVAS, 'game',null,true);
+                    // var anddev = new Phaser.Device()
+                    // addev.requestFullscreen()
                 } else if (isiOS) {
                     // console.log("iOS")
                     // can't yet figure out how to use Retina displays
@@ -93,13 +113,13 @@
                         HEIGHT = (shgt>swid) ? swid-20 : shgt-20
                         WIDTH = (swid>shgt) ? swid-20 : shgt-20
                     }
-                    // game = new Phaser.Game(WIDTH,HEIGHT, Phaser.CANVAS, 'game',null,true);
+                    // game = new Phaser.Game(WIDTH,HEIGHT, Phaser.AUTO, 'game',null,true);
                 } else {
                     // console.log("other")
                     // for non-tablet, square at least
                     HEIGHT = (shgt>swid) ? swid-20 : shgt-20
                     WIDTH = swid-20
-                    // game = new Phaser.Game(WIDTH, HEIGHT, Phaser.CANVAS, 'game',null);
+                    // game = new Phaser.Game(WIDTH, HEIGHT, Phaser.CANVAS, 'game',null,true);
                    }
 
                 // for debugging small screen
@@ -109,15 +129,15 @@
                 WIDTH = (WIDTH<1100) ? WIDTH : 1100;
                 HEIGHT = (HEIGHT<800) ? HEIGHT: 800
                 if (WIDTH<swid) {MXOFF = (swid-WIDTH)/2}
-                // unlike other games, cells for now is still black background until
-                // its gets out of 'beta'
+
                 game = new Phaser.Game(WIDTH, HEIGHT, Phaser.CANVAS, 'game',null,true);
 
-                IGyratio = (HEIGHT < 750) ? HEIGHT/750 : 1.0
+                IGyratio = (HEIGHT < 700) ? HEIGHT/700 : 1.0
                 IGxratio = (WIDTH < 1100) ? WIDTH/1100 : 1.0
                 IGratio = (IGyratio > IGxratio) ? IGxratio : IGyratio
                 console.log("IGratio: "+IGxratio.toFixed(2)+":"+IGyratio.toFixed(2)+":"+WIDTH+":"+HEIGHT)
 
+                // now, adjust all the scale items to this window
 //                game.camera.setSize(WIDTH, HEIGHT);
 //                Phaser.Canvas.setSmoothingEnabled(game.context, false); 
                 game.width = WIDTH;
@@ -126,61 +146,57 @@
                 // game.stage.bounds.width = WIDTH;
                 // game.stage.bounds.height = HEIGHT;
 
+                // establish the sender ID
                 var sender = navigator.userAgent.replace(/\(|\)|\.|,|\/| |;|_/g,"")
                 // IGconsole("Sender: "+sender)
                 setSender(sender)
-
-                // alias is passed along by the controller
                 if (qs('alias')) {DMMalias=qs('alias')}
                 else {DMMalias="anonymous"}
-                if (qs('level')) {DMMlevel=qs('level')}
-                else {DMMlevel=1}
-                if (qs('clevel')) {DMMcompLevel=qs('clevel')}
-                else {DMMcompLevel=1}
-                // is this a public user?
-                // alias is passed along by the controller
-                if (parseInt("{{=public}}")<0) {IGisPublic=false} else (IGisPublic=true)
 
                 if (qs('topic')) {EventType=qs('topic')}
-                else {EventType=""}
+                else {
+                    EventType=""
+                    IGconsole("Error: no event type")
+                }
+
                 if (qs('partner')) {
                     IGpartner=qs('partner')
-                    // EventType=IGpartner
+                    // EventType = IGpartner
                 }
-
+                // no topic for Diverge
+                // but reserve this for possible other configuration variants
+                EventType = "Tales"
                 if (EventType.length>2) {
-                    // must fetch the topic data
-                    // var tmp = {topic: EventType}
-                    // this call is necessary, it is where the topic file is loaded
-                    IGdispatchEvent2(EventType)
-                    game.state.add('entry', gameEntry);
-                    game.state.add('select',bucketsSelect)
+                    // IGdispatchEvent2(EventType)
+                    game.state.add('entry', gameEntry, true);
+                    // game.state.add('select',adaptSelect)
                 } else {
                     game.state.add('entry', gameEntry);
-                    game.state.add('select',bucketsSelect, true)
+                    // game.state.add('select',adaptSelect, true)
                 }
 
-                // starting with transparent game then switching to this
-                // avoids the initial black screen
-                // game.transparent = false
+                game.transparent = true
+                
+                IGwhite = true
+                IGisPublic = true
+                IGgameApp = 'Snark'
 
-                IGdefineScales()
-                IGgameApp = 'Buckets'
-
-            });
-        // }
+        });
     $(function(){
       $("#includedSubMenu").load("/common/css/navBarSub.html"); 
     });
-
-        </script>
+            </script>
 
     </head>
     <body>
 
-        <div id="game" class="game" align="center" width="1100">
+    <div id="map" align="center" ></div>
+    <div id="game" class="game" align="center" width="1100px">
         <!--div id="includedSubMenu" class="IGnavMenu"></div-->
-        </div>
+    </div>
+    </div>
 
+    </div>
+</div>
     </body>
 </html>

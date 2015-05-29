@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
 //
-// diverge.js
+// adapt.js
 //
 // Copyright 2014, 2015 IdeateGames
 // This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. 
@@ -227,7 +227,7 @@ function AmakePopulation(biome,replicate) {
 			var adj = (i - Math.floor(num)/2 + 0.5) * 110
 			popimg[i] = IGaddSprite(WIDTH/2+adj,2*HEIGHT/3,triimg)
 		}
-		popimg[i].scale.setTo(0.3*msi)
+		popimg[i].scale.setTo(0.7*msi)
 	}
 	PopSettings[biome].count = num
 	PopSegments[biome] = AparsePopulation(biome)
@@ -449,7 +449,7 @@ var gameEntry = {
 	    IGsetStage('#000000')
 	    IGdefineScales()
 
-	    game.load.image(triimg, AppPath + 'images/Trilobite.png')
+	    game.load.image(triimg, AppPath + 'images/radiaspis.png')
 	    iimgs[0] = triimg
 	    iimgstxt = [""]
 	    bigImageCredit = {}

@@ -39,6 +39,7 @@ var iimgs = []
 var iimgstxt = []
 var updcnt = 0
 var APPbaseScore = 10
+var GOODSCORE = 0.7
 
 function DMMmenu() {
     IGendGame({msg:'You are in the middle of a game. Selecting any button but the first will abort this game.',
@@ -101,11 +102,13 @@ function SSgetNewDescr(idx) {
         descr.setText(desctext)
     } else {hits.setText("")}
 }
-function SScalcThisScore(score) {
+function SScalcThisScore(score, miss) {
     // calculation to normalize to about 100
-    // 100 pts for 16 items at 15 spm
-    var tmp = APPbaseScore + Math.round(score*.375) - 5*numMistakes
-    if (tmp>100 && numMistakes>0) {tmp = 100 - 5*numMistakes}
+    // 100 pts for 16 items at 10 spm
+    // allow max 10 extra points for really fast
+    var tscore = (score*GOODSCORE<110) ? Math.round(score*GOODSCORE) : 110
+    var tmp = APPbaseScore + tscore - 5*miss
+    if (tmp>100 && miss>0) {tmp = 100 - 5*miss}
     IGconsole("raw score: "+tmp)
     return (tmp<10) ? 10 : tmp
 }
@@ -127,19 +130,18 @@ function SScheckHit(ev) {
         checks[ev.idx].visible = true
         IGbell.play()
         SSgetNewDescr(ev.idx)
-        var plur = (numMistakes==1) ? "" : "s"
         if (yetToHit.length<1) {
             IGstopTimer()
             IGanalytics(['Squares', 'Finish', EventType]);
             var spm = parseInt(600*numSquares/IGnumSecs)/10
-            DMMscore =  SScalcThisScore(numSquares * spm)
+            DMMscore =  SScalcThisScore(numSquares * spm, numMistakes)
             // have to calculate before the number of games is correct
             var tot = SScalcTotalScore(DMMscore)
             // var gcnt = IGgetGameCount()
             // var plur2 = (gcnt==1) ? "" : "(across "+gcnt+" games)"
             var scoreText = "You correctly identified "+numSquares+" "+ObjTypes[EventType2]+" in "+IGnumSecs+" seconds."+
             "\n\nThat's a rate of "+spm+" "+ObjTypes[EventType2]+" per minute."+
-            "\n\nYou made "+numMistakes+" mistake"+plur+"."+
+            "\n\nYou made "+numMistakes+" mistake"+IGplur(numMistakes)+"."+
             "\n\nYour score for this game is "+DMMscore+"."+
             "\n\nTo achieve Mastery of "+displayTopics[EventType].replace('\n',' ')+", you need "+IGwizardScores[IGgameApp]+" points from 3 consecutive games. "+
             "You have "+DMMtotalScore+
@@ -333,20 +335,49 @@ var gameEntry = {
             if (ch>1) {clue = 'actor';altclue = "date"}
             else {clue = 'date';altclue = "actor"}
             titleclue = 'image'
+            break;
         case 'Alaska':
-            var ch = Math.floor(Math.random()*3)
+            var ch = Math.floor(Math.random()*6)
             switch (ch) {
                 case 0:
-                    clue = "description";
-                    altclue = "objects"
-                    titleclue = 'image'
-                    break;
                 case 1:
+                    clue = "description";
+                    altclue = "date"
+                    titleclue = 'actor'
+                    break;
+                case 2:
+                case 3:
                     clue = 'date';
                     altclue = "description"
                     titleclue = 'image'
                     break;
+                case 4:
+                case 5:
+                default:
+                    clue = 'date';
+                    altclue = "description"
+                    titleclue = 'image'
+                    break;
+            }
+            break;
+        case 'GeoEras':
+            var ch = Math.floor(Math.random()*6)
+            switch (ch) {
+                case 0:
+                    clue = "description";
+                    altclue = "date"
+                    titleclue = 'image'
+                    break;
+                case 1:
                 case 2:
+                case 3:
+                    clue = 'objects';
+                    altclue = "description"
+                    titleclue = 'image'
+                    break;
+                case 4:
+                case 5:
+                default:
                     clue = 'date';
                     altclue = "description"
                     titleclue = 'image'
@@ -368,7 +399,7 @@ var gameEntry = {
                     break;
             }
     }
-    IGconsole("clue: "+clue+":"+altclue)
+    IGconsole(EventType+" clue: "+clue+":"+altclue+":"+titleclue)
     function getRandClue(clueset) {
         var lnth=0
         for (var i in clueset) {

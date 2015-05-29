@@ -58,7 +58,7 @@
 }
 </style>
 <link href='/common/css/select.css' rel='stylesheet' type='text/css'>
-<script src="/common/js/jquery-2.0.3.min.js"></script>
+<script src="/common/js/jquery-2.1.4.min.js"></script>
 <script src="/common/js/bootstrap.min.js"></script>
 	<script>
 $(document).ready(function(){
@@ -178,7 +178,10 @@ $(document).ready(function(){
   <a href="" style="float:center"><div class="topicSpacer"></div></a>
   <a href="" style="float:center"><div class="topicSpacer"></div></a>
   <a href="" style="float:center"><div class="topicSpacer"></div></a>
-  <a href="#" style="float:center" onclick="askAlias('Cities');return false;">
+  <a href="#" style="float:left" onclick="askAlias('GeoEras');return false;">
+      <div class="topicSelect" id="default">Geologic Time Periods</div>
+  </a>
+  <a href="#" style="float:right" onclick="askAlias('Cities');return false;">
       <div class="topicSelect" id="city">City Latitudes</div>
   </a>
 </div>

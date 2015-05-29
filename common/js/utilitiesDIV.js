@@ -152,6 +152,20 @@ function IGaddDivText(par) {
             "left:calc(50% + "+xloc3+"px);top:"+parseInt(yloc3)+"px;"
         aref.setAttribute("style", tmp2)
     }
+    ret.xloc = function() {
+        var locs = aref.getBoundingClientRect()
+        var wadj = 10
+        // var adj = (ret.halo) ? 2.5 : 2.5
+        // position is always absolute on the screen not the div, so
+        // need to subtract the game div offset
+        return locs.left + (locs.width+wadj)/2 - MXOFF// + adj
+    }
+    ret.yloc = function() {
+        var locs = aref.getBoundingClientRect()
+        var wadj = 0
+        // var adj = (ret.halo) ? -5 : -2.5
+        return locs.top + (locs.height+wadj)/2// + adj
+    }
 
     document.getElementById("game").appendChild(aref);
     ret.setText = function(txt) {this.innerHTML = txt.replace(/\\n/g,'<br/>');};

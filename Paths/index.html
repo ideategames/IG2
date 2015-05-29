@@ -52,9 +52,9 @@
         // if (!qs('pwd')) {
         //     window.location.replace("http://www.ideategames.org")
         // } else {
-            window.onload = function() {
+            $(document).ready(function() {
 
-            IGga();
+                IGga();
 
                 var loc = window.location.pathname;
                 AppPath = loc.substring(0, loc.lastIndexOf('/')+1);
@@ -169,7 +169,7 @@
                 IGdefineScales()
                 IGgameApp = 'Paths'
 
-            };
+            });
         // }
     $(function(){
       $("#includedSubMenu").load("/common/css/navBarSub.html"); 

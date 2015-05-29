@@ -223,7 +223,6 @@ DMMscores = []
 DMMnumStrings = 0
 DMMtotalScore = 0
 IGaliasScores = []
-maxTime = 40
 DMMnumRooms = 11
 DMMnumRoomsC = 11
 DMMnumDoors = 4
@@ -237,7 +236,6 @@ EventNum = 100
 
 EventVars = {}
 
-// abandoning the simple version for now
 DMMlevel = 1
 userRequested = false
 
@@ -274,7 +272,7 @@ PTopics = {}//{Movies: "Movies", Museum: "Museum",
 	// Science: "Science", Literature: "Literature", Art: "Art", Cities: "Cities"}
 BTopics = {}//{Movies: "Movies", Museum: "Museum", 
 	// Science: "Science", Literature: "Literature", Art: "Art", Cities: "Cities"}
-
+TopicDescs = {}
 //
 // These need to be defined before partner topics to allow partners to redefine them
 //
@@ -282,25 +280,26 @@ var displayTopics = {Movies: "Movies", Museum: "Objects from the British Museum"
 	Science: "Discoveries in Science", Nature: "Nature", Cities: "City Latitudes", 
 		Mediterranean: "Mediterranean History", Dinosaurs: "Dinosaurs (when extinct)",
 		Literature: "Western Literature", AncientHistory: "Ancient History",
-			Composers: "Western Composers", Alaska: "History of Alaska", AlaskanCities: "Alaskan City Latitudes"}
+			Composers: "Western Composers", Alaska: "History of Alaska", AlaskanCities: "Alaskan City Latitudes",
+			GeoEras: "Geologic Time Scale"}
 var Subjects = {Movies: "Strings of Movies", Museum: "Strings in the British Museum", Culture: "Strings through Western Culture", 
 	Fashion: "Strings of Fashion", Art: "Strings of Art", Science: "Strings in Science Discoveries", Nature: "Strings through Nature",
 	Cities: "Strings between Cities", Mediterranean: "Strings through the Mediterranean",
 	Dinosaurs: "Strings in Dinosaurs", Literature: "Strings through Western Literature",
 	Alaska: "Strings through Alaksan History", AlaskanCities: "Strings through Alaskan Cities",
 	AncientHistory: "Strings through Ancient History",
-			Composers: "Strings of Composers",
+			Composers: "Strings of Composers", GeoEras: "Strings through Time",
 			default: "Strings of Objects"}
 var TopicIcons = {Movies: 'movies_Icon.png', Museum: 'museum_Icon.png', Culture: 'culture_Icon.png', 
 	Fashion: 'fashion_Icon.png', Art: 'art_Icon.png', Science: 'science_Icon.png', Nature: 'nature_Icon.png',
 	Cities: 'city_Icon.png', Mediterranean: 'med_Icon.png', Dinosaurs: 'dino_Icon.png', Literature: 'lit_Icon.png',
 	AncientHistory: 'whist_Icon.png',
-			Composers: "composer_Icon.png",
+			Composers: "composer_Icon.png", Alaska: "Alaska_icon_50.png", AlaskanCities: "Alaska_icon_50.png",
 			default: "default_Icon.png"}
 var TopUnits = {Movies: " years", Museum: " years", Culture: " years", Fashion: " years", Art: " years", 
 	Science: " years", Nature: "", Cities: " degrees of latitude", Mediterranean: " years",
 	Dinosaurs: " million years", Literature: " years", AncientHistory: " years",
-			Composers: " years", Alaska: " years", AlaskanCities: " degrees of latitude",
+			Composers: " years", Alaska: " years", AlaskanCities: " degrees of latitude", GeoEras: " million years",
 			default: " years"}
 var ObjTypes = {Movies: "movies", Museum: "objects", Culture: "objects", Fashion: "dresses", Art: "paintings", 
 	Science: "diagrams", Nature: "facts", Cities: "cities", Mediterranean: "events",
@@ -311,26 +310,26 @@ var ObjTypes = {Movies: "movies", Museum: "objects", Culture: "objects", Fashion
 EventType2 = (ObjTypes[EventType]) ? EventType : "default"
 
 function IGsetTopicDescrs() {
-	TopicDescs = {Museum: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
-	      "about 100 objects, their dates, origins, makers, and key facts.", 
-	    Science: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
-	        "about 50 discoveries before the 20th century, their discoverers, dates, and key facts.", 
-	    Literature: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
-	      "about 80 classics, their authors, quotes, characters, dates, and key facts.", 
-	    Art: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+' consists of 94 paintings of Western art '+
-	        'before the 20th century, randomly presented with titles, art period or style, or descriptions.', 
-	    Culture: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
-	    	'about 275 books, paintings, composers, and science discoveries and their dates and key facts.', 
-	    Composers: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
-	    	'about 51 composers of Western music and their compositions, dates, and origins.',
-	    Nature: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
-	    	'about 50 concepts in the conservation of nature and their key statistics.',
-	    Movies: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
-	    	'about 136 movies and their directors, quotes, and dates.',
-	    Cities: "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
-	    	'about 149 cities around the world, their latitudes and populations.',
-	}
+	TopicDescs.Museum = "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+	      "about 100 objects, their dates, origins, makers, and key facts."
+	TopicDescs.Science = "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+	        "about 50 discoveries before the 20th century, their discoverers, dates, and key facts."
+	TopicDescs.Literature = "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+	      "about 80 classics, their authors, quotes, characters, dates, and key facts."
+	TopicDescs.Art = "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+' consists of 94 paintings of Western art '+
+	        'before the 20th century, randomly presented with titles, art period or style, or descriptions.'
+	TopicDescs.Culture = "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+	    	'about 275 books, paintings, composers, and science discoveries and their dates and key facts.'
+	TopicDescs.Composers = "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+	    	'about 51 composers of Western music and their compositions, dates, and origins.'
+	TopicDescs.Nature = "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+	    	'about 50 concepts in the conservation of nature and their key statistics.'
+	TopicDescs.Movies = "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+	    	'about 136 movies and their directors, quotes, and dates.'
+	TopicDescs.Cities = "I played Ideate Games "+extname[IGgameApp]+" and learned, with over 90% accuracy, "+
+	    	'about 149 cities around the world, their latitudes and populations.'
 }
+
 IGsetTopicDescrs()
 IGpartnerLoaded = false
 function DMMSetTopics() {
@@ -341,7 +340,7 @@ function DMMSetTopics() {
 		IGconsole("setting topics")
 		Topics = {Museum: "Museum",
 			Science: "Science", Literature: "Literature", Art: "Art", Composers: "Composers", Culture: "Culture", 
-			Movies: "Movies", Nature: "Nature", Cities: "Cities"}
+			Movies: "Movies", Nature: "Nature", GeoEras: "GeoEras", Cities: "Cities"}
 		PTopics = {Museum: "Museum", 
 			Science: "Science", Literature: "Literature", Art: "Art", Composers: "Composers", 
 			Movies: "Movies", Cities: "Cities"}
@@ -361,26 +360,32 @@ function DMMSetTopics() {
 			Topics.Alaska = "Alaska"
 			Topics.AlaskanCities = "AlaskanCities"
 			Topics.AncientHistory = "AncientHistory"
+			Topics.GeoEras = "GeoEras"
 			PTopics.Alaska = "Alaska"
 			PTopics.AlaskanCities = "AlaskanCities"
 			PTopics.AncientHistory = "AncientHistory"
+			PTopics.GeoEras = "GeoEras"
 			STopics.Alaska = "Alaska"
 			DTopics.AlaskanCities = "AlaskanCities"
 			STopics.AncientHistory = "AncientHistory"
+			STopics.GeoEras = "GeoEras"
 			DTopics.Alaska = "Alaska"
 			DTopics.AlaskanCities = "AlaskanCities"
 			DTopics.AncientHistory = "AncientHistory"
+			DTopics.GeoEras = "GeoEras"
 			BTopics.Alaska = "Alaska"
 			BTopics.AlaskanCities = "AlaskanCities"
 			BTopics.AncientHistory = "AncientHistory"
+			BTopics.GeoEras = "GeoEras"
 			BrTopics.Alaska = "Alaska"
 			BrTopics.AlaskanCities = "AlaskanCities"
 			BrTopics.AncientHistory = "AncientHistory"
+			BrTopics.GeoEras = "GeoEras"
 		}
 		EF1 = false
 		if (IGpartner) {
 			IGconsole("getting topic for: "+IGpartner)
-			var request = $.getScript("/common/js/"+IGpartner+"_topics.js")
+			var request = $.getScript(BasePath+"common/js/"+IGpartner+"_topics.js")
 			request.done(function(data, textStatus) {
 				  // IGconsole(data); //data returned
 				  IGconsole("topic list load: "+textStatus+":"+IGpartner);

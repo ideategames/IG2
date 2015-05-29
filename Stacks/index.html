@@ -72,7 +72,7 @@
         // if (!qs('pwd')) {
         //     window.location.replace("http://www.ideategames.org")
         // } else {
-            window.onload = function() {
+        $(document).ready(function() {
 
             IGga();
 
@@ -188,8 +188,8 @@
                 IGdefineScales()
                 IGgameApp = 'Stacks'
                 // this formula comes from stacks.js; sorry about that
-            };
-        // }
+        });
+
     $(function(){
       $("#includedSubMenu").load("/common/css/navBarSub.html"); 
     });

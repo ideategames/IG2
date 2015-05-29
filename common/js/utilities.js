@@ -985,7 +985,8 @@ IGexit = function(ev) {
     } else {IGconsole("error, no game"); loadURLExt('/index.html?alias='+DMMalias);}
 }
 function IGchangeGame() {
-    window.open('/index.html?alias='+DMMalias,'_self')
+    var base = (IGpartner) ? "partners/"+IGpartner+"/" : ""
+    window.open(BasePath+base+'index.html?alias='+DMMalias,'_self')
 }
 IGcurrentDIV = []
 function IGresume() {
@@ -1404,9 +1405,9 @@ function IGendGame(par) {
     var head = (par.nohead) ? false : true
     var islower = (par.lower) ? par.lower : false
     resumeRtn = (fcns.resume) ? fcns.resume : false
-    againRtn = (fcns.again) ? fcns.again : "#"
-    subjRtn = (fcns.subj) ? fcns.subj : "#"
-    diffRtn = (fcns.diff) ? fcns.diff : "#"
+    againRtn = (fcns.again) ? fcns.again+'()' : "#"
+    subjRtn = (fcns.subj) ? fcns.subj+'()' : "#"
+    diffRtn = (fcns.diff) ? fcns.diff+'()' : "#"
     var leader = (fcns.leader) ? fcns.leader : false
     //
     // for the new simpler version, no leaderboard
@@ -1429,14 +1430,14 @@ function IGendGame(par) {
     var b1 = document.createElement("button");
     b1.setAttribute("class", "btn btn-primary");
     b1.setAttribute("type", "button")
-    b1.setAttribute("onclick",againRtn+'()');
+    b1.setAttribute("onclick",againRtn);
     // if (isWide) {b1.setAttribute("style","position:relative:float-left;")}
     b1.innerHTML = 'Play Again'
 
     var b2 = document.createElement("button");
     b2.setAttribute("class", "btn btn-primary");
     b2.setAttribute("type", "button")
-    b2.setAttribute("onclick",subjRtn+'()');
+    b2.setAttribute("onclick",subjRtn);
     // if (isWide) {b2.setAttribute("style","position:absolute:left:calc(50% + 200px);")}
     b2.innerHTML = 'Change Subject'
 
@@ -1444,7 +1445,7 @@ function IGendGame(par) {
     var b3 = document.createElement("button");
     b3.setAttribute("class", "btn btn-primary");
     b3.setAttribute("type", "button")
-    b3.setAttribute("onclick",diffRtn+'()');
+    b3.setAttribute("onclick",diffRtn);
     // if (isWide) {b3.setAttribute("style","position:absolute:left:calc(50% - 200px);")}
     b3.innerHTML = 'Play a Different Game'
 

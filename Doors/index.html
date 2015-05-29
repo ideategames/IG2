@@ -70,10 +70,9 @@
         // if (!qs('pwd')) {
         //     window.location.replace("http://www.ideategames.org")
         // } else {
-            window.onload = function() {
+            $(document).ready(function() {
 
-
-            IGga();
+                IGga();
 
                 var loc = window.location.pathname;
                 AppPath = loc.substring(0, loc.lastIndexOf('/')+1);
@@ -197,7 +196,7 @@
                 IGgameApp = 'Doors'
                 // this formula comes from doors.js; sorry about that
 
-            };
+            });
         // }
 
             // function moveWindow() {window.location.hash="game"}
