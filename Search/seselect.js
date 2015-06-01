@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------------------
 --
--- select.js
+-- seselect.js
 //
 // Copyright 2014, 2015 IdeateGames
 // This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. 
@@ -51,9 +51,7 @@ var game_entry = {
 		var appbg = IGaddSprite(WIDTH/2,HEIGHT/2,'AppBG')
 		appbg.scale.setTo(1.0)
 
-		IGaddDivText({xloc:MIDX, yloc:ry(50),text:"Strings",size:32, color:"#fff",weight:300})
-
-
+		IGaddDivText({xloc:MIDX, yloc:ry(50),text:"Search",size:32, color:"#fff",weight:300})
 
 		IGtopicSelect(Topics)
 

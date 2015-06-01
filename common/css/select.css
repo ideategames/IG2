@@ -110,6 +110,26 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
+.topicSelects {
+    font-family: 'Roboto';
+    font-weight: 100;
+    font-size:22px;
+    text-align:left;
+    background-position: center;
+    color:#666;
+    height:58px;
+    width:420px;
+    line-height:74px;
+    box-shadow: 3px 3px rgba(0,0,0,0.2);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 49px;
+    background-position: 16px;
+    padding-left: 85px;
+    margin-bottom: 13px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .topicSpacer {
     height:74px;
     width:420px;

@@ -3,23 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8" />
-        <title>Strings! from Ideate Games</title>
+        <title>Search Games from Ideate Games</title>
 <meta name="viewport" content="width=device-width, minimal-ui">
 <script src="/common/js/IGga.js"></script>
 <script>
 
-
-  // enables drag&drop enter and leave events on iOS
-  var iosDragDropShim = { enableEnterLeave: true }
-
-                var ua = navigator.userAgent;
-                var plat = navigator.platform
-                isKindle = /Kindle/i.test(ua) || /Silk/i.test(ua) || /KFTT/i.test(ua) || /KFOT/i.test(ua) || /KFJWA/i.test(ua) || /KFJWI/i.test(ua) || /KFSOWI/i.test(ua) || /KFTHWA/i.test(ua) || /KFTHWI/i.test(ua) || /KFAPWA/i.test(ua) || /KFAPWI/i.test(ua);
-                // fill the screen as much as possible, but need a 10 px border
-                isAndroid = (ua.indexOf('Android') != -1) ? true : false
-                isGalaxy = (ua.indexOf('GT-') != -1) ? true : false
-                isiOS = ((ua.indexOf('iPhone') != -1) || (ua.indexOf('iPad') != -1) ) ? true : false
-                isFireFox = (ua.toLowerCase().indexOf('firefox') != -1) ? true : false
 
 </script>
     <link href="/common/css/bootstrap.min.css" rel="stylesheet">
@@ -31,35 +19,25 @@
     <script src="/common/js/bootstrap.min.js"></script>
     <script src="/common/js/phaser230.min.js"></script>
     <script src="/common/js/sha1.js"></script>
-
-    <script type="text/javascript" src="/common/js/raphael-min.js"></script>
-    <script type="text/javascript" src="/common/js/dracula_graffle.js"></script>
-    <script type="text/javascript" src="/common/js/dracula_graph.js"></script>
-    <script type="text/javascript" src="/common/js/dracula_algorithms.js"></script>
-    <script type="text/javascript" src="/common/js/spin.min.js"></script>
  
+    <script type="text/javascript" src="/common/js/spin.min.js"></script>
+
     <script type="text/javascript" src='/config.js?v=1'></script>
 
-        <script type="text/javascript" src="/common/js/common_net.js?v=1"></script>
+    <script type="text/javascript" src="/common/js/common_net.js?v=1"></script>
 
-<!--p>for illustration purposes, future use for dynamic html</p-->
-<!--script>
-var head = document.getElementsByTagName('head')[0];
-var script = document.createElement('script');
+    <script type="text/javascript" src='Search_net.js?v=1'></script>
 
-script.type = 'text/javascript';
+    <script type="text/javascript">
 
-if (isAndroid)
-    script.src = '/Strings/sequence_phaser.js?v=11';
-else
-    script.src = '/Strings/sequence.js?v=11';
-
-head.appendChild(script);
-</script-->
-
-    <script type="text/javascript" src='Strings_net.js?v=1'></script>
-
-        <script type="text/javascript">
+        var ua = navigator.userAgent;
+        var plat = navigator.platform
+        isKindle = /Kindle/i.test(ua) || /Silk/i.test(ua) || /KFTT/i.test(ua) || /KFOT/i.test(ua) || /KFJWA/i.test(ua) || /KFJWI/i.test(ua) || /KFSOWI/i.test(ua) || /KFTHWA/i.test(ua) || /KFTHWI/i.test(ua) || /KFAPWA/i.test(ua) || /KFAPWI/i.test(ua);
+        // fill the screen as much as possible, but need a 10 px border
+        isAndroid = (ua.indexOf('Android') != -1) ? true : false
+        isGalaxy = (ua.indexOf('GT-') != -1) ? true : false
+        isiOS = ((ua.indexOf('iPhone') != -1) || (ua.indexOf('iPad') != -1) ) ? true : false
+        isFireFox = (ua.toLowerCase().indexOf('firefox') != -1) ? true : false
 
 function myIP() {
     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
@@ -91,7 +69,7 @@ function myIP() {
     $(function(){
       $("#includedSubMenu").load("/common/css/navBarSub.html"); 
     });
-            </script>
+    </script>
 
     </head>
     <body>
@@ -188,16 +166,16 @@ function myIP() {
                     // var tmp = {topic: EventType}
                     IGdispatchEvent2(EventType)
                     game.state.add('select', game_entry);
-                    game.state.add('entry', sequence);
+                    game.state.add('entry', gameEntry);
                 } else {
                     game.state.add('select', game_entry, true);
-                    game.state.add('entry', sequence);
+                    game.state.add('entry', gameEntry);
                 }
                 // game.transparent = false
                 
                 IGwhite = true
                 IGisPublic = true
-                IGgameApp = 'Strings'
+                IGgameApp = 'Search'
 
             });
     </script>

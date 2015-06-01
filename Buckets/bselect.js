@@ -132,34 +132,7 @@ var bucketsSelect = {
 		// backB.targ = "buckets"
 		// backB.events.onInputDown.add(IGexit,this)
 
-		// topic icons
-		var topicCount = 0
-		for (var top in BTopics) {topicCount++}
-		var i = 0
-		// if only 1 topic, jump right to the game (for partners)
-		if (topicCount<2) {
-			var top = Object.keys(BTopics)
-			IGdispatchEvent2(top[0]);
-			return;
-		}
-
-   		var sc = (HEIGHT<590) ? HEIGHT/590 : 1.0
-		var rowcnt = (topicCount<8) ? 4 : Math.ceil(topicCount/2)
-		var midvert = rowcnt/2*65
-	    for (var top in BTopics) {
-	    	// because buckets uses a higher base, only shrink with width
-	    	var xsc = 450*IGratio
-	    	var ysc = 77*IGxratio*0.9
-	    	var xoff = ((i %2)==0) ? MIDX-xsc/2-5 : MIDX+xsc/2+5
-	    	var yoff = sc*midvert+Math.floor(i/2)*86*sc
-	    	var icon = (TopicIcons[top]) ? TopicIcons[top] : TopicIcons[EventType2]
-			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
-			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
-			    	image: CommonPath+'pics/'+icon,talign: "left",
-			    	rtn: 'IGdispatchEvent2("'+BTopics[top]+'")', width: xsc, height: ysc});
-
-			    i++;
-		}
+		IGtopicSelect(BTopics)
 
 	},
 	shutdown: function() {

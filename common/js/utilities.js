@@ -26,6 +26,7 @@ IGalertBigBGW = 'alertbigbgw'
 IGgreyScreen = 'IGgreyScreen'
 var IGgreyScreenDIV
 var IGalertText
+var IGtextString = ""
 IGtextBoxBG = 'textboxgbg'
 var IGtextBoxText, IGpasswordBox, IGgamePWDSprite, Telement, IGblankScreen
 IGtimerFlag = false
@@ -186,6 +187,38 @@ IGdispatchEvent2 = function(topic) {
     });
 }
 
+function IGtopicSelect(AppTopics) {
+        // topic icons
+        var topicCount = 0
+        for (var top in AppTopics) {topicCount++}
+            IGconsole("topics: "+topicCount)
+        var i = 0
+        // if only 1 topic, jump right to the game (for partners)
+        if (topicCount<2) {
+            var top = Object.keys(BrTopics)
+            IGdispatchEvent2(top[0]);
+            return;
+        }
+
+        var sc = (HEIGHT<590) ? HEIGHT/590 : 1.0
+        var rowcnt = (topicCount<8) ? 4 : Math.ceil(topicCount/2)
+        var midvert = rowcnt/2*65
+        for (var top in AppTopics) {
+            // because buckets uses a higher base, only shrink with width
+            var xsc = 450*IGratio
+            var ysc = 56*IGxratio
+            var xoff = ((i %2)==0) ? MIDX-xsc/2-5 : MIDX+xsc/2+5
+            var yoff = sc*midvert+Math.floor(i/2)*60
+            if (topicCount>10) yoff-= 80*sc
+            var icon = (TopicIcons[top]) ? TopicIcons[top] : TopicIcons[EventType2]
+                selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelects", 
+                    text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
+                    image: '/common/pics/'+icon,talign: "left",
+                    rtn: 'IGdispatchEvent2("'+AppTopics[top]+'")', width: xsc, height: ysc});
+
+                i++;
+        }
+}
 // function IGloadImage(iname,img) {
 //     try {
 //         game.load.image(iname, img)
@@ -663,11 +696,20 @@ function IGmoveFilmstrip(dir) {
     bigImageCredit.visible = true
 
 }
-var IGcomment,IGcommentDIV
+var IGcomment,IGcommentDIV, IGnotReallyComment
 function IGsendComment() {
 
-    var packet = {query: "sendComment",gameApp: IGgameApp, comment: IGcomment.value}
-    DMMGetHttpRequest(packet,"sendComment")
+    if (IGnotReallyComment) {
+        IGconsole("not a comment")
+        IGtextString = IGcomment.value;
+        var cb = IGcallBack.pop()
+        game.time.events.add(200,cb,this);
+        IGnotReallyComment = false
+
+    } else {
+        var packet = {query: "sendComment",gameApp: IGgameApp, comment: IGcomment.value}
+        DMMGetHttpRequest(packet,"sendComment")
+    }
 
     // IGconsole("\ncleaning up text...\n")
     var nodeList = document.getElementsByClassName('IGcomment');
@@ -687,7 +729,13 @@ function IGnoComment() {
     }
 }
 
-function IGaddComment() {
+function IGaddComment(getText, rtn) {
+    //
+    // if getText, then just asking for text input
+    if (getText && rtn) {
+        IGcallBack.push(rtn)
+        IGnotReallyComment = getText
+    } else {IGnotReallyComment = false}
     var endScreen = document.createElement("div");
     endScreen.setAttribute("class", 'IGtemp IGendScreen IGcomment');
     document.getElementById("game").appendChild(endScreen);
@@ -710,7 +758,7 @@ function IGaddComment() {
     // IGconsole("rtn: "+rtnf)
     endDIV1.setAttribute("class", hclass1)
     endDIV1.setAttribute("style",fontchg)
-    endDIV1.innerHTML = "<b>Enter your comment or suggestion.</b><br/>('"+IGgameApp+"' and '"+EventType+"' will be appended for context.)"
+    endDIV1.innerHTML = (getText) ? "Enter your search string" : "<b>Enter your comment or suggestion.</b><br/>('"+IGgameApp+"' and '"+EventType+"' will be appended for context.)"
 
     IGcomment = document.createElement("textarea");
  

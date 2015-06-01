@@ -657,6 +657,27 @@ height: 268px;
     margin-left: auto;
     margin-right: auto;
 }
+.topicSelects {
+    font-family: 'Roboto';
+    font-weight: 100;
+    font-size:22px;
+    text-align:left;
+    background-position: center;
+    color:#666;
+    height:56px;
+    width:420px;
+    line-height:56px;
+    box-shadow: 3px 3px rgba(0,0,0,0.2);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 49px;
+    background-position: 16px;
+    padding-left: 85px;
+    margin-bottom: 13px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /*.container {
     width: 418px;
     margin: 20px auto;
@@ -678,6 +699,18 @@ height: 268px;
 }
 @media screen and (max-height: 590px) {
 .topicSelect {
+    font-size:16px;
+    height:56px;
+    width:300px;
+    line-height:56px;
+    box-shadow: 3px 3px rgba(0,0,0,0.2);
+    background-color: #fff;
+    background-size: 37px;
+    background-position: 16px;
+    padding-left: 64px;
+    margin-bottom: 10px;
+}
+.topicSelects {
     font-size:16px;
     height:56px;
     width:300px;

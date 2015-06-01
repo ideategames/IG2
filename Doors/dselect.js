@@ -86,33 +86,7 @@ var doorsSelect = {
 		// backB.events.onInputDown.add(IGexit,this)
 
 		// topic icons
-		var topicCount = 0
-		for (var top in DTopics) {topicCount++}
-		var i = 0
-		// if only 1 topic, jump right to the game (for partners)
-		if (topicCount<2) {
-			var top = Object.keys(DTopics)
-			IGdispatchEvent2(top[0]);
-			return;
-		}
-
-   		var sc = (HEIGHT<590) ? HEIGHT/590 : 1.0
-		var rowcnt = (topicCount<8) ? 4 : Math.ceil(topicCount/2)
-		var midvert = rowcnt/2*65
-	    for (var top in DTopics) {
-	    	var xsc = 450*IGratio
-	    	var ysc = 77*IGratio*0.9
-	    	var xoff = ((i %2)==0) ? MIDX-xsc/2-5 : MIDX+xsc/2+5
-	    	var yoff = sc*midvert+Math.floor(i/2)*86*sc
-	    	if (topicCount>10) yoff-= 80*sc
-	    	var icon = (TopicIcons[top]) ? TopicIcons[top] : TopicIcons[EventType2]
-			    selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelect", 
-			    	text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
-			    	image: CommonPath+'pics/'+icon,talign: "left",
-			    	rtn: 'IGdispatchEvent2("'+Topics[top]+'")', width: xsc, height: ysc});
-
-			    i++;
-		}
+		IGtopicSelect(DTopics)
 		// if ((DMMalias=="anonymous") || (DMMalias.indexOf('{')>-1)) {
 		// 	IGsetUpAlias("player name\n\n\n\n\n\n")
 		// }

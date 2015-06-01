@@ -257,7 +257,7 @@ var Topics, PTopics
 
 var objectTypes = {Movies: "movie", Museum: "object", Culture: "object", Fashion: "dress", Art: "work of art", 
 	Science: "discovery", Nature: "fact", Cities: "city", Mediterranean: "event",
-	Alaska: "event", AlaskanCities: "city",
+	Alaska: "event", AlaskanCities: "city", GeoEras: "time period",
 	Dinosaurs: "dinosaur", Literature: "book",
 	default: "item"}
 
@@ -281,7 +281,7 @@ var displayTopics = {Movies: "Movies", Museum: "Objects from the British Museum"
 		Mediterranean: "Mediterranean History", Dinosaurs: "Dinosaurs (when extinct)",
 		Literature: "Western Literature", AncientHistory: "Ancient History",
 			Composers: "Western Composers", Alaska: "History of Alaska", AlaskanCities: "Alaskan City Latitudes",
-			GeoEras: "Geologic Time Scale"}
+			GeoEras: "Geologic Time Periods"}
 var Subjects = {Movies: "Strings of Movies", Museum: "Strings in the British Museum", Culture: "Strings through Western Culture", 
 	Fashion: "Strings of Fashion", Art: "Strings of Art", Science: "Strings in Science Discoveries", Nature: "Strings through Nature",
 	Cities: "Strings between Cities", Mediterranean: "Strings through the Mediterranean",
@@ -304,7 +304,7 @@ var TopUnits = {Movies: " years", Museum: " years", Culture: " years", Fashion: 
 var ObjTypes = {Movies: "movies", Museum: "objects", Culture: "objects", Fashion: "dresses", Art: "paintings", 
 	Science: "diagrams", Nature: "facts", Cities: "cities", Mediterranean: "events",
 	Dinosaurs: "dinosaurs", Literature: "books", Alaska: "events", AlaskanCities: "cities",
-			Composers: "composers",
+			Composers: "composers", GeoEras: "time periods",
 			default: "items"}
 // need to define this outside the set topics in case that is not used
 EventType2 = (ObjTypes[EventType]) ? EventType : "default"
@@ -415,15 +415,15 @@ var introText = "This is a game to create ordered Strings of concepts. You are g
 	"put some of them in numerical order, making a String with the shortest span. "+
 	"Put them in order by dragging the images to the boxes at the top."+
 	"\n\nTolerance for each step is within 5 years for fashion and history, the others must be exact."+
-    "\n\nClick or touch the filmstrip icon
-      to see all images at full height. Click on the arrows to advance through the deck."
+    "\n\nClick or touch the filmstrip icon "+
+      "to see all images at full height. Click on the arrows to advance through the deck."
 var hIntroS = "Rooms"
 var stacksText = "\n\nWe have a problem. "+
 	"A history student borrowed 11 objects to make a report on them, but then carelessly (or intentionally!) returned them to the wrong "+
 	"rooms. As the newest member of our museum staff, your task is to move them all (or just 4 in Level 1) to the right rooms, and you must finish "+
 	"before we open in 20 minutes!"+
-    "\n\nClick or touch the filmstrip icon
-      to see all images at full height. Click on the arrows to advance through the deck."
+    "\n\nClick or touch the filmstrip icon "+
+      "to see all images at full height. Click on the arrows to advance through the deck."
 var hIntroD = "Collections"
 var doorsText = "\n\n"+
 	"In this game, you are a gofer (http://en.wikipedia.org/wiki/Gofer) in the museum, asked to collect 4 objects from the museum "+
@@ -432,16 +432,16 @@ var doorsText = "\n\n"+
 	"she has only given you a set of clues to these "+
 	"objects, and your task is to visit the right places to find and collect "+
 	"objects. Collect them by dragging them onto their clues on the cart at the left."+
-    "\n\nClick or touch the filmstrip icon
-      to see all images at full height. Click on the arrows to advance through the deck."
+    "\n\nClick or touch the filmstrip icon "+
+      "to see all images at full height. Click on the arrows to advance through the deck."
 var hAlias = "Alias or nickname:"
 var hIntroP = "Paths"
 var pathsText = "\n\nPaths is a competitve game, each player extending a shared set of events that must be connected chronologically "+
 	"(or numerically for some content). The object is to get the most in sequential order (runs of 2, 3, and 4 nodes count) that are your own, "+
 	"uninterrupted by events placed by the other player. Players take turns playing events from a common (visible to both) "+
 	"pool of events that is refreshed from the database after each play."+
-    "\n\nClick or touch the filmstrip icon
-      to see all images at full height. Click on the arrows to advance through the deck."
+    "\n\nClick or touch the filmstrip icon "+
+      "to see all images at full height. Click on the arrows to advance through the deck."
 
 var instruct
 hText = ["",

@@ -106,9 +106,9 @@ function SScalcThisScore(score, miss) {
     // calculation to normalize to about 100
     // 100 pts for 16 items at 10 spm
     // allow max 10 extra points for really fast
-    var tscore = (score*GOODSCORE<110) ? Math.round(score*GOODSCORE) : 110
-    var tmp = APPbaseScore + tscore - 5*miss
-    if (tmp>100 && miss>0) {tmp = 100 - 5*miss}
+    var tscore = Math.round(score*GOODSCORE)
+    var tmp = ((APPbaseScore+tscore)>100 && miss>0) ? 100 - 5*miss : APPbaseScore + tscore - 5*miss
+    if (tmp>110) {tmp=110}
     IGconsole("raw score: "+tmp)
     return (tmp<10) ? 10 : tmp
 }

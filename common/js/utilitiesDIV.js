@@ -89,10 +89,10 @@ function IGaddDivText(par) {
     var aref
     if (par.rtn) {
         aref = document.createElement("a");
+        aref.setAttribute("class", hclass)
         aref.setAttribute("onclick",par.rtn+'('+arg+')');
         aref.setAttribute("style", "position:absolute;"+hgtt+"width: "+wid+"px;"+
             "left:calc(50% + "+(par.xloc-WIDTH/2-adj)+"px);"+top)
-        aref.setAttribute("class", hclass)
     } else {
         aref = document.createElement("div");
         aref.setAttribute("style", "position:absolute;"+hgtt+"width: "+wid+"px;"+
