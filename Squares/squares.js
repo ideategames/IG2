@@ -132,7 +132,7 @@ function SScheckHit(ev) {
         SSgetNewDescr(ev.idx)
         if (yetToHit.length<1) {
             IGstopTimer()
-            IGanalytics(['Squares', 'Finish', EventType]);
+            IGanalytics(['Squares', 'Finish', EventType, IGgameVal]);
             var spm = parseInt(600*numSquares/IGnumSecs)/10
             DMMscore =  SScalcThisScore(numSquares * spm, numMistakes)
             // have to calculate before the number of games is correct
@@ -335,6 +335,30 @@ var gameEntry = {
             if (ch>1) {clue = 'actor';altclue = "date"}
             else {clue = 'date';altclue = "actor"}
             titleclue = 'image'
+            break;
+        case 'AlaskanCities':
+            var ch = Math.floor(Math.random()*5)
+            switch (ch) {
+                case 0:
+                case 1:
+                    clue = 'actor';
+                    altclue = "date";
+                    titleclue = "image";
+                    break;
+                case 2:
+                case 3:
+                    clue = 'date';
+                    altclue = "actor";
+                    titleclue = "image";
+                    break;
+                case 4:
+                case 5:
+                default:
+                    clue = 'location';
+                    altclue = "date";
+                    titleclue = "image";
+                    break;
+            }
             break;
         case 'Alaska':
             var ch = Math.floor(Math.random()*6)
@@ -620,7 +644,7 @@ var gameEntry = {
 
     var dbsiz = "\n\n\n"+numSquares+" "+ObjTypes[EventType2]+" selected from "+EventNum+" in "+displayTopics[EventType2]+"."
 
-    IGalertDIV("\n\nTap the image that matches each clue."+dbsiz,"auto",false,true,true,16)
+    IGalertDIV("\n\nTap the image that matches each clue."+dbsiz+IGalertText,"auto",false,true,true,16)
   },
 
   update: function() {

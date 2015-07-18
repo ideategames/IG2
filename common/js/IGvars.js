@@ -39,6 +39,8 @@ AppPath = "/Strings/"
 // CommonPath = "/common/"
 // ImgPath = "/stringsThumbs/"
 
+// value for completing game, for the analytics
+IGgameVal = 1
 
 extname = {Strings: 'Strings', Buckets: 'Buckets', Squares: 'Clues', Stacks: 'Rooms', Doors: 'Collections', Paths: 'Paths'}
 

@@ -10,7 +10,7 @@
 // Author: David Marques
 //
 /////////////////////////////////////////////////////////////
-
+IGconsole("Event val: "+IGgameVal)
 var notLoaded = true
 var ploc = window.location.pathname;
 AppPath = ploc.substring(0, ploc.lastIndexOf('/')+1);
@@ -86,7 +86,7 @@ function APPrestart() {
 	IGconsole("restarting...")
     if ((EventVars[EventType])) {
         IGstartSpinner()
-        window.open(AppPath+'pentry.html?alias='+DMMalias+'&topic='+EventType+
+        window.open(AppPath+'index.html?alias='+DMMalias+'&topic='+EventType+
         	'&level='+DMMlevel+'&clevel='+DMMcompLevel,'_self')
         // game.state.start('paths',true,true)
     } else {APPnewGame()}
@@ -297,8 +297,8 @@ function PcheckScores(ev,hide, gameOver) {
 			"\nYou made "+bons+" link"+lplur+" between same-category nodes."+
 			"\nYou made "+creds+" insertion"+eplur+" between nodes."+
 			"\nYou made "+miss+" mistake"+mplur+"."
-		userDataMsg = yours+":"+IGnumSecs+":"+p2+":"+comps+":"+bons+":"+creds+":"+miss+" (Level "+DMMlevel+")"
-	    IGanalytics(['Paths', 'Finish', EventType]);
+		userDataMsg = yours+":"+p2.replace(':','').trim()+":"+comps+":"+bonuses[1]/strbonus+":"+ExtraCredits[1]+":"+numMistakes[1]+" (Level "+DMMlevel+")"
+	    IGanalytics(['Paths', 'Finish', EventType, IGgameVal]);
 
 	    game.time.events.add(100,APPendGame,this)
 	}
@@ -1069,7 +1069,7 @@ var enter_pathway = {
 	    var dbsiz = "\n\n\n"+ievents.length+" "+ObjTypes[EventType2]+" selected from "+EventNum+" in "+displayTopics[EventType2]+"."
 
 
-		IGalertDIV("\n\n"+instructTextP+dbsiz,"auto",false,true,true,16)
+		IGalertDIV("\n\n"+instructTextP+dbsiz+IGalertText,"auto",false,true,true,16)
 
 	    helpTextLocal = helpTextP[0]
 	    for (var i=1; i<8; i++) {helpTextLocal = helpTextLocal + "\n\n"+helpTextP[i]}

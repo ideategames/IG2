@@ -146,6 +146,8 @@ function PCshowScores() {
 	var miss = (APPmistakes==0) ? "no" : APPmistakes
 	var mplur = (APPmistakes==1) ? "" : "s"
 	var pctscore = parseInt(100*(minSteps/steps)) - 3*APPmistakes
+	// no negative scores, no scores less than 10
+	pctscore = (pctscore<10) ? 10 : pctscore
     DMMscores.push(pctscore)
     // real score is sum of the last 3 runs
     IGcalcTotalScore()
@@ -215,7 +217,7 @@ function PCspriteMoved(ev) {
 	if (isdone) {
 		IGstopTimer(); 
 		DMMisDone = true; 
-		IGanalytics(['Doors', 'Finish', EventType]);
+		IGanalytics(['Doors', 'Finish', EventType, IGgameVal]);
 		PCshowScores()
 	}
 }
@@ -612,7 +614,7 @@ function PCloadPaths() {
 
 	var dbsiz = "\n\n\n"+DMMnumRooms+" "+ObjTypes[EventType2]+" selected from "+EventNum+" in "+displayTopics[EventType2]+"."
 
-	IGalertDIV("\n\nFind the objects indicated on the left and drag them onto their clues."+dbsiz,"auto",false,true,true,16)
+	IGalertDIV("\n\nFind the objects indicated on the left and drag them onto their clues."+dbsiz+IGalertText,"auto",false,true,true,16)
 
 }
 var updcnt = 0

@@ -112,7 +112,9 @@ function IGcount(str,char) {
     for (var c=0;c<str.length;c++) {if (str[c]==char) cnt++}
     return cnt
 }
-
+function IGpadZero(num, lnth) {
+    return Array(Math.max(lnth - String(num).length + 1, 0)).join(0) + num;
+}
 function IGconsole(msg) {
     if (IGdebug) {console.log(msg)}
 }
@@ -186,7 +188,43 @@ IGdispatchEvent2 = function(topic) {
       window.setTimeout(IGdispatchGame,100)
     });
 }
-
+var GeoLocLat = {}
+GeoLocLat.reset = {}
+GeoLocLat.setText = {}
+var GeoLocLong = {}
+GeoLocLong.reset = {}
+GeoLocLat.setText = {}
+function IGgetGeoLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(IGshowGeoLoc, IGshowGeoError);
+        
+    };
+}
+function IGshowGeoLoc(position) {
+    IGconsole("loc: "+position.coords.latitude+":"+position.coords.longitude)
+    GeoLocLat.setText(position.coords.latitude.toFixed(4));
+    GeoLocLong.setText(position.coords.longitude.toFixed(4));
+}
+function IGshowGeoError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            GeoLocLat.setText("User denied the request for Geolocation.")
+            GeoLocLong.setText("")
+            break;
+        case error.POSITION_UNAVAILABLE:
+            GeoLocLat.setText("Location information is unavailable.")
+            GeoLocLong.setText("")
+            break;
+        case error.TIMEOUT:
+            GeoLocLat.setText("The request to get user location timed out.")
+            GeoLocLong.setText("")
+            break;
+        case error.UNKNOWN_ERROR:
+            GeoLocLat.setText("An unknown error occurred.")
+            GeoLocLong.setText("")
+            break;
+    }
+}
 function IGtopicSelect(AppTopics) {
         // topic icons
         var topicCount = 0
@@ -213,7 +251,7 @@ function IGtopicSelect(AppTopics) {
             var icon = (TopicIcons[top]) ? TopicIcons[top] : TopicIcons[EventType2]
                 selTopics[top] = IGaddDivText({xloc: xoff,yloc:yoff, ifile: iTopics[top], hclass: "topicSelects", 
                     text: displayTopics[top].replace(/\\n/g,' ').replace(/\n/g,' '),
-                    image: '/common/pics/'+icon,talign: "left",
+                    image: CommonPath+'pics/'+icon,talign: "left",
                     rtn: 'IGdispatchEvent2("'+AppTopics[top]+'")', width: xsc, height: ysc});
 
                 i++;
@@ -1340,6 +1378,7 @@ function IGmessageDIV(msg,smallp,head,lower, isWide, hasBtns,fsize,isend) {
 
     var endScreen = document.createElement("div");
     endScreen.setAttribute("class", delclass+' IGtemp IGendScreen');
+    endScreen.setAttribute("style", 'width:100%;height:100%;');
     if (!hasBtns) {endScreen.setAttribute("onclick", 'IGresume()')}
     document.getElementById("game").appendChild(endScreen);
 
@@ -1423,6 +1462,7 @@ function IGmessageDIV(msg,smallp,head,lower, isWide, hasBtns,fsize,isend) {
 function DummyCallBack() {
     return
 }
+IGalertText = "\n\n<div style='color:#000;font-weight:300;'>[Tap anywhere to dismiss popup messages.]</div>"
 function IGalertDIV(msg, size, callBack,nobtn,nointro,fsize,iswide) {
     // default should be big message
     // fourth parameter for messageDIV is for lower window

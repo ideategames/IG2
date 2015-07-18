@@ -80,7 +80,7 @@ function ShideAllNames() {
 }
 function SshowFinishedNames() {
 	for (var t=0;t<titlestxt.length;t++) {
-		IGconsole("yloc: "+titlestxt[t].yloc())
+		// IGconsole("yloc: "+titlestxt[t].yloc())
 	    if (titlestxt[t].yloc()<HEIGHT/3) {IGhide(titlestxt[t],false)}
 	}
 }
@@ -260,7 +260,6 @@ function showSuccess() {
 	IGconsole("sequence: "+foo)
 	if (foo) {
 		IGstillTrying = false
-		IGanalytics(['Strings', 'Finish', EventType]);
 		IGstopTimer()
 		var ret = [0,0,0,0]
 		ret = calcScore(); thisSpan = ret[1]
@@ -278,6 +277,7 @@ function showSuccess() {
 		instruct2.setText("")
 		userDataMsg = DMMscore+":"+DMMtotalScore+":"+ret[2]+":"+
 			IGnumSecs+":"+numMistakes+" (Level "+DMMlevel+")"
+		IGanalytics(['Strings', 'Finish', EventType, IGgameVal]);
 		game.time.events.add(200,endGame)
 	} else {instruct.setText("Try again.")}
   }

@@ -17,6 +17,7 @@ var evTitles = []
 var ievents = []
 var evTexts = []
 var sResults = []
+var nextButs = []
 
 evDescriptions[500] = "Search did not find anything."
 
@@ -35,7 +36,7 @@ function APPnewGame() {
 }
 var curItem = 0
 function SeShowResults() {
-	var idx = (sResults[curItem]) ? sResults[curItem] : 500//Math.floor(Math.random()*EventNum+1)
+	var idx = (sResults[curItem]>-1) ? sResults[curItem] : 500//Math.floor(Math.random()*EventNum+1)
 	IGconsole("object: "+curItem+":"+idx)
 	objDescr.setText(evDescriptions[idx])
 	if (sResults[curItem]) {
@@ -61,13 +62,15 @@ function SeShowResults() {
 	curItem = (curItem>sResults.length-2) ? 0 : curItem+1
 
 }
+var started = false
 function SeGotSearchString() {
+	if (!started) {document.getElementById("game").appendChild(nextButs[1]);started=true;}
 	IGconsole("search string: "+IGtextString)
 	curItem = 0
 	sResults = []
 	var ss = IGtextString.toLowerCase().trim()
 	for (var s=0;s<EventNum;s++) {
-		if (evTexts[s].search(ss)>-1) {sResults.push(s);}//IGconsole("hit on "+s)}
+		if (evTexts[s].search(ss)>-1) {sResults.push(s);IGconsole("hit on "+s+":"+evTexts[s])}
 	}
 	resTitle.setText("Search results: "+sResults.length+" hit"+IGplur(sResults.length) )
 	SeShowResults()
@@ -133,7 +136,6 @@ var gameEntry = {
 
 		SeShowSearchBox()
 
-        var nextButs = []
         var xoff = WIDTH/10
         var yoff = 10
         nextButs[0] = document.createElement("a");
@@ -150,10 +152,10 @@ var gameEntry = {
         nextButs[1].setAttribute('role','button')
         nextButs[1].setAttribute('style',"position:absolute;margin-left:auto;margin-right:0;right:"+parseInt(xoff)+"px;top:"+parseInt(yoff)+"%;")
         var chevr = document.createElement("i");
-        chevr.setAttribute("class", "IGtemp fa fa-chevron-right fa-3x")
+        chevr.setAttribute("class", "IGtemp fa fa-chevron-right-dark fa-3x")
         nextButs[1].appendChild(chevr);
         // document.getElementById("game").appendChild(nextButs[0]);
-        document.getElementById("game").appendChild(nextButs[1]);
+        // document.getElementById("game").appendChild(nextButs[1]);
 
 		objDescr = IGaddDivText({xloc:descLoc.x, yloc:descLoc.y,text:"", width:500})
 
@@ -164,7 +166,6 @@ var gameEntry = {
 		objObjects = IGaddDivText({xloc:imgLoc.x, yloc:imgLoc.y+ry(160),text:"", width:600})
 
 		IGstopSpinner()
-
 
 	},
 	update : function() {

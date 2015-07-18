@@ -314,7 +314,7 @@ function PSspriteMoved(ev) {
 	var isdone = (numShelved >= DMMtarget) ? true : false
 	if (isdone) {
 		IGstopTimer(); 
-		IGanalytics(['Stacks', 'Finish', EventType]);
+		IGanalytics(['Stacks', 'Finish', EventType, IGgameVal]);
 		DMMisDone = true; 
 		PSshowScores()
 	}
@@ -681,7 +681,7 @@ function PSloadPaths() {
 
 	var dbsiz = "\n\n\n"+DMMnumRooms+" "+ObjTypes[EventType2]+" randomly selected from "+EventNum+" in "+displayTopics[EventType2]+"."
 
-	IGalertDIV("\n\nUse the cart on the left to carry each object to the correct room."+dbsiz,"auto",false,true,true,16)
+	IGalertDIV("\n\nUse the cart on the left to carry each object to the correct room."+dbsiz+IGalertText,"auto",false,true,true,16)
 
 }
 var updcnt = 0

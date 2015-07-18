@@ -31,6 +31,7 @@ function IGaddDivButton(par) {
     var yloc = (par.yloc) ? par.yloc : HEIGHT/2
     var txt = (par.text) ? par.text : null
     var hclass = (par.hclass) ? par.hclass : "fa fa-exclamation-triangle"
+    var bcolor = (par.bcolor) ? "background-color: "+par.bcolor+";" : ""
  
     var adj=wid/2
 
@@ -42,7 +43,8 @@ function IGaddDivButton(par) {
     ret.setAttribute("id", tid);
     var tmp = "position:absolute;left:calc(50% + "+(xloc-WIDTH/2-adj)+"px);top:"+parseInt(yloc-hgt/2)+
         "px;width="+wid+"px;height="+hgt+"px;"
-    ret.setAttribute("style", tmp)
+    ret.savedStyle = tmp
+    ret.setAttribute("style", tmp+bcolor)
     // this is actually a required parameter, but will 
     // prevent an error
     if (par.rtnf) {
@@ -56,7 +58,9 @@ function IGaddDivButton(par) {
         men3.setAttribute("class", hclass);
         ret.appendChild(men3)
     }
-
+    ret.setBColor = function(b2color) {
+        ret.setAttribute("style", ret.savedStyle+"background-color: "+b2color+";")
+    }
     ret.setText = function(stxt) {this.innerHTML = stxt}
     document.getElementById("game").appendChild(ret);
     return ret

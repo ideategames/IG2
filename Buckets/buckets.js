@@ -2,8 +2,12 @@
 //
 // buckets.js
 //
-// Copyright 2014 IdeateGames
-// all rights reserved
+// Copyright 2014, 2015 IdeateGames
+// This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. 
+// To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/ or 
+// send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+// 
+// Author: David Marques
 //
 /////////////////////////////////////////////////////////////
 
@@ -326,6 +330,8 @@ function CshowScore() {
         IGendGame({msg:scoreText,fcns:{again:'APPrestart',subj:'APPnewGame',diff:'IGchangeGame',leader:ldr},
             wide: true})
         IGsendScore(userDataMsg)
+    IGanalytics(['Buckets', 'Finish', EventType, IGgameVal]);
+
 
 }
 function BmakeDateRange() {
@@ -1077,7 +1083,7 @@ var gameEntry = {
 
 	    var dbsiz = "\n\n\n"+numSquares+" "+ObjTypes[EventType2]+" selected from "+EventNum+" in "+displayTopics[EventType2]+"."
 
-		IGalertDIV(imsg+dbsiz,"auto",false,true,true,14,true)
+		IGalertDIV(imsg+dbsiz+IGalertText,"auto",false,true,true,14,true)
 
 	    helpTextLocal = "\n\n"+helpTextB[0]
 	    for (var i=1; i<8; i++) {helpTextLocal = helpTextLocal + "\n\n"+helpTextB[i]}
